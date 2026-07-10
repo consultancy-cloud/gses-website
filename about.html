@@ -487,6 +487,36 @@
       background: rgba(255,255,255,.8); border-color: var(--ac);
       transform: translateY(-2px);
     }
+
+    /* ════════════════════════════════════════
+       GLOBAL MOBILE OVERRIDES
+    ════════════════════════════════════════ */
+    @media (max-width: 768px) {
+      /* Nav */
+      .nav { max-width: calc(100vw - 20px); }
+      .nav-cta-pill { min-height: 44px; }
+      /* Hero stats: remove horizontal dividers, wrap naturally */
+      .hero-stats { gap: 20px 32px; padding-top: 30px; }
+      .hero-stat { border-right: none; margin-right: 0; padding-right: 0; }
+      /* Button touch targets */
+      .btn-primary, .btn-outline { min-height: 44px; }
+      /* CTA buttons stack */
+      .cta-buttons { flex-direction: column; align-items: center; }
+      .btn-primary, .btn-outline { width: 100%; max-width: 320px; justify-content: center; }
+      /* Accordion button touch target */
+      .acc-btn { width: 40px; height: 40px; }
+    }
+    @media (max-width: 480px) {
+      /* Hero */
+      .hero { padding: 110px var(--cpad) 60px; }
+      .hero h1 { letter-spacing: -1px; margin-bottom: 40px; }
+      /* Milestones header spacing */
+      .milestones-header { margin-bottom: 40px; }
+      /* Community text smaller */
+      .community-row { font-size: 15px; }
+      /* Section spacing — clamp handles most, but tighten further */
+      :root { --sec: clamp(60px,9vw,100px); }
+    }
   </style>
 </head>
 <body>

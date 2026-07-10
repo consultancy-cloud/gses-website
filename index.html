@@ -36,7 +36,7 @@ img{display:block;max-width:100%}
 .cur-ring{position:fixed;top:0;left:0;width:38px;height:38px;border:1.5px solid rgba(255,255,255,.95);border-radius:50%;pointer-events:none;z-index:99998;margin-left:-19px;margin-top:-19px;box-shadow:0 0 0 1px rgba(34,55,90,.28),0 4px 14px rgba(0,0,0,.14);transition:width .22s,height .22s,margin .22s,background .22s}
 
 /* ── Floating glass pill nav ── */
-.nav{position:fixed;top:16px;left:50%;transform:translateX(-50%);z-index:900;display:flex;align-items:center;gap:6px;padding:7px 7px 7px 20px;border-radius:100px;background:rgba(244,244,242,.3);backdrop-filter:blur(24px) saturate(1.6);-webkit-backdrop-filter:blur(24px) saturate(1.6);border:1px solid rgba(24,24,30,.08);box-shadow:0 12px 40px rgba(20,20,30,.12);white-space:nowrap;transition:background .3s}
+.nav{position:fixed;top:16px;left:50%;transform:translateX(-50%);z-index:900;display:flex;align-items:center;gap:6px;padding:7px 7px 7px 20px;border-radius:100px;background:rgba(244,244,242,.3);backdrop-filter:blur(24px) saturate(1.6);-webkit-backdrop-filter:blur(24px) saturate(1.6);border:1px solid rgba(24,24,30,.08);box-shadow:0 12px 40px rgba(20,20,30,.12);white-space:nowrap;transition:background .3s;max-width:calc(100vw - 20px)}
 .nav-logo{display:flex;align-items:center;flex-shrink:0}
 .nav-logo img{height:22px;width:auto}
 .nav-links{display:flex;align-items:center;gap:20px;overflow:hidden;max-width:0;opacity:0;margin-left:0;transition:max-width .7s cubic-bezier(.16,1,.3,1),opacity .55s ease,margin .55s ease}
@@ -161,12 +161,49 @@ img{display:block;max-width:100%}
   .work-grid{grid-template-columns:1fr}
   .work-img{aspect-ratio:16/9}
 }
+@media(max-width:768px){
+  /* Nav: hide links, cap pill width */
+  .nav{max-width:calc(100vw - 20px);padding:7px 7px 7px 14px}
+  .nav-links{display:none!important}
+  .nav-cta{margin-left:8px;padding:9px 16px;font-size:12.5px;min-height:44px}
+  /* Hero */
+  .hero{padding:100px 0 70px}
+  .hero-fg{padding:0 clamp(16px,4vw,40px)}
+  /* Work stats 3-col → single row wrap */
+  .work-stats{grid-template-columns:repeat(3,auto);gap:20px}
+}
 @media(max-width:600px){
   .stats-grid{grid-template-columns:1fr 1fr}
   .hero-btns,.cta-btns{flex-direction:column;align-items:center}
   .btn-primary,.btn-glass{width:100%;justify-content:center;max-width:320px}
   .footer{flex-direction:column;align-items:flex-start;gap:20px}
   .footer-links{order:-1}
+  /* Audiences grid 1-col already set at 900px */
+  .aud-card{padding:22px 20px}
+  /* CTA contact info wrap */
+  .cta-contact{flex-direction:column;align-items:center;gap:8px}
+  .cta-sep{display:none}
+}
+@media(max-width:480px){
+  /* Nav */
+  .nav{padding:6px 6px 6px 12px}
+  /* Stats: single column on very small screens */
+  .stats-grid{grid-template-columns:1fr}
+  /* Hero typography breathing room */
+  .hero{padding:90px 0 60px}
+  .hero-h1{font-size:clamp(2.2rem,9vw,2.8rem)}
+  /* Buttons full width */
+  .btn-primary,.btn-glass{padding:14px 20px;font-size:14px}
+  /* Work stats column */
+  .work-stats{grid-template-columns:1fr;gap:16px}
+  /* Footer footer-copy smaller */
+  .footer-copy{font-size:11px}
+  /* Section padding tighter */
+  .audiences{padding:60px 0}
+  .why{padding:60px 0}
+  .work{padding:60px 0}
+  .cta{padding:70px 0}
+  .stats{padding:50px 0}
 }
 </style>
 </head>
@@ -465,11 +502,17 @@ function showAll(){
 function boot(){
   if(window.SplitText) gsap.registerPlugin(SplitText);
 
-  /* Lenis smooth scroll */
-  var lenis = new Lenis({ duration:1.15, lerp:.085, smoothWheel:true, autoRaf:false });
-  gsap.ticker.add(function(t){ lenis.raf(t*1000); });
-  gsap.ticker.lagSmoothing(0);
-  lenis.on('scroll', function(){ updateNav(); });
+  /* Lenis smooth scroll — desktop only, avoid fighting native touch momentum */
+  var lenis = touch
+    ? null
+    : new Lenis({ duration:1.15, lerp:.085, smoothWheel:true, autoRaf:false });
+  if(lenis){
+    gsap.ticker.add(function(t){ lenis.raf(t*1000); });
+    gsap.ticker.lagSmoothing(0);
+    lenis.on('scroll', function(){ updateNav(); });
+  }
+  /* Fallback scroll listener for nav on touch */
+  if(touch){ window.addEventListener('scroll', function(){ updateNav(); }, {passive:true}); }
 
   function updateNav(){
     var nav = document.getElementById('nav');
@@ -562,7 +605,10 @@ function boot(){
     fitCv();
     window.addEventListener('resize',fitCv);
 
-    var N = Math.max(28, Math.min(120, Math.floor((cv.clientWidth/dpr) / 16)));
+    var isMobile = cv.clientWidth < 600;
+    var N = isMobile
+      ? Math.max(12, Math.min(30, Math.floor((cv.clientWidth/dpr) / 20)))
+      : Math.max(28, Math.min(120, Math.floor((cv.clientWidth/dpr) / 16)));
     var pts = [];
     for(var i=0;i<N;i++) pts.push({
       x: Math.random()*cv.width,

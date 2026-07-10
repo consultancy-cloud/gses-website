@@ -193,6 +193,37 @@ button{font-family:inherit;border:none;background:none;cursor:pointer}
 .footer-nav a{font-size:12.5px;color:rgba(24,24,30,.5)}
 .footer-nav a:hover{color:rgba(24,24,30,.8)}
 .footer-copy{font-size:12px;color:rgba(24,24,30,.42)}
+
+/* ══════════════════════════════════
+   MOBILE OVERRIDES
+══════════════════════════════════ */
+@media(max-width:768px){
+  /* Hero */
+  .hero{padding:120px 0 70px}
+  /* Touch targets */
+  .btn-primary,.btn-glass{min-height:44px}
+  .proj-toggle{min-height:44px}
+  /* Hero stats wrap */
+  .hero-stats{gap:16px 24px}
+  /* CTA buttons stack */
+  .cta-btns{flex-direction:column;align-items:center}
+  .btn-primary,.btn-glass{width:100%;max-width:320px;justify-content:center}
+}
+@media(max-width:480px){
+  /* Hero */
+  .hero{padding:100px 0 60px}
+  .hero-h1{letter-spacing:-.03em}
+  /* Stats */
+  .hero-stats{flex-direction:column;gap:12px}
+  /* Project cards full padding adjustment */
+  .proj-card{padding:22px 20px 18px}
+  /* Footer stack */
+  .footer{flex-direction:column;align-items:flex-start}
+  /* Section padding */
+  .projects-sec{padding:clamp(50px,8vw,80px) 0}
+  .cta-sec{padding:clamp(50px,8vw,80px) 0}
+  /* Reach regions already wrap at 760px and 480px */
+}
 </style>
 </head>
 <body>
@@ -743,11 +774,14 @@ button{font-family:inherit;border:none;background:none;cursor:pointer}
   var rm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   gsap.registerPlugin(ScrollTrigger);
 
-  /* Lenis smooth scroll */
-  var lenis = new Lenis({ duration:1.12, lerp:0.08, smoothWheel:true, autoRaf:false });
-  lenis.on('scroll', ScrollTrigger.update);
-  gsap.ticker.add(function(t){ lenis.raf(t * 1000); });
-  gsap.ticker.lagSmoothing(0);
+  /* Lenis smooth scroll — desktop only */
+  var isTouch = !window.matchMedia('(hover:hover) and (pointer:fine)').matches;
+  var lenis = isTouch ? null : new Lenis({ duration:1.12, lerp:0.08, smoothWheel:true, autoRaf:false });
+  if(lenis){
+    lenis.on('scroll', ScrollTrigger.update);
+    gsap.ticker.add(function(t){ lenis.raf(t * 1000); });
+    gsap.ticker.lagSmoothing(0);
+  }
 
   /* Hero entrance */
   window.addEventListener('load', function(){

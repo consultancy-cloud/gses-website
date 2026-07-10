@@ -153,10 +153,35 @@ button{font-family:inherit;border:none;background:none;cursor:pointer}
 /* ════════════════════════════════════
    RESPONSIVE
 ════════════════════════════════════ */
+@media(max-width:768px){
+  /* Filter row: allow horizontal scroll on small screens */
+  .filter-inner{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:6px}
+  .filter-inner::-webkit-scrollbar{display:none}
+  .f-btn{white-space:nowrap;flex-shrink:0;min-height:40px}
+  /* Touch targets */
+  .btn-primary,.btn-glass{min-height:44px}
+  .art-toggle{min-height:40px}
+  /* Hero */
+  .ins-hero{padding-top:120px}
+  /* CTA buttons stack */
+  .cta-btns{flex-direction:column;align-items:flex-start}
+  .btn-primary,.btn-glass{width:100%;max-width:320px;justify-content:center}
+}
 @media(max-width:640px){
   .art-row{grid-template-columns:36px 1fr;gap:0 16px}
   .art-top-row{flex-direction:column;align-items:flex-start;gap:6px}
   .cta-btns{flex-direction:column;align-items:flex-start}
+}
+@media(max-width:480px){
+  /* Even tighter article rows */
+  .art-row{grid-template-columns:28px 1fr;gap:0 12px;padding:22px 0}
+  .art-num{font-size:clamp(1.6rem,6vw,2rem)}
+  .art-title{font-size:clamp(1rem,4vw,1.2rem)}
+  /* Footer stack */
+  .site-footer{flex-direction:column;align-items:flex-start}
+  /* Section tighter */
+  .ins-hero{padding-top:110px;padding-bottom:clamp(50px,8vw,80px)}
+  .articles-sec{padding:clamp(36px,5vw,60px) 0 clamp(50px,8vw,80px)}
 }
 </style>
 </head>
@@ -481,11 +506,14 @@ button{font-family:inherit;border:none;background:none;cursor:pointer}
 var rm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 gsap.registerPlugin(ScrollTrigger);
 
-/* ── Lenis smooth scroll ── */
-var lenis = new Lenis({ duration: 1.12, lerp: 0.08, smoothWheel: true, autoRaf: false });
-lenis.on('scroll', ScrollTrigger.update);
-gsap.ticker.add(function(t){ lenis.raf(t * 1000); });
-gsap.ticker.lagSmoothing(0);
+/* ── Lenis smooth scroll — desktop only ── */
+var isTouch = !window.matchMedia('(hover:hover) and (pointer:fine)').matches;
+var lenis = isTouch ? null : new Lenis({ duration: 1.12, lerp: 0.08, smoothWheel: true, autoRaf: false });
+if(lenis){
+  lenis.on('scroll', ScrollTrigger.update);
+  gsap.ticker.add(function(t){ lenis.raf(t * 1000); });
+  gsap.ticker.lagSmoothing(0);
+}
 
 /* ── Nav elevation on scroll ── */
 ScrollTrigger.create({

@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About GSES — 27 Years Building Australia's Clean Energy Industry</title>
+  <title>About GSES â€” 27 Years Building Australia's Clean Energy Industry</title>
   <meta name="description" content="GSES has been at the foundation of Australia's renewable energy industry since 1992. Independent engineering, assurance, and training specialists." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -35,7 +35,7 @@
       overflow-x: hidden;
     }
 
-    /* ── Cursor ── */
+    /* â”€â”€ Cursor â”€â”€ */
     @media (hover: hover) and (pointer: fine) { body { cursor: none; } }
     .cur-dot {
       position: fixed; top: 0; left: 0;
@@ -55,14 +55,14 @@
       transition: width .22s, height .22s, margin .22s, background .22s;
     }
 
-    /* ── Container ── */
+    /* â”€â”€ Container â”€â”€ */
     .container {
       max-width: var(--cmax);
       margin: 0 auto;
       padding: 0 var(--cpad);
     }
 
-    /* ── Nav ── */
+    /* â”€â”€ Nav â”€â”€ */
     body { padding-top: 0; }
     .nav {
       position: fixed; top: 16px; left: 50%; transform: translateX(-50%);
@@ -94,21 +94,21 @@
       .nav-cta-pill { padding: 9px 16px; font-size: 12.5px; }
     }
 
-    /* ── Eyebrow ── */
+    /* â”€â”€ Eyebrow â”€â”€ */
     .eyebrow {
       display: inline-block; font-size: 11px; font-weight: 700;
       letter-spacing: 1.8px; text-transform: uppercase;
       color: var(--ac); margin-bottom: 18px;
     }
 
-    /* ── Reveal ── */
+    /* â”€â”€ Reveal â”€â”€ */
     .rv {
       opacity: 0; transform: translateY(26px);
       transition: opacity .7s var(--e1), transform .7s var(--e1);
     }
     .rv.visible { opacity: 1; transform: translateY(0); }
 
-    /* ── Accordion shared ── */
+    /* â”€â”€ Accordion shared â”€â”€ */
     .acc-body {
       max-height: 0; overflow: hidden;
       transition: max-height .5s cubic-bezier(.16,1,.3,1), opacity .4s ease;
@@ -125,9 +125,9 @@
     }
     .acc-btn.open { background: #2C4A73; color: #fff; transform: rotate(45deg); }
 
-    /* ════════════════════════════════════════
+    /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
        SECTION 1: HERO
-    ════════════════════════════════════════ */
+    â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
     .hero {
       background: var(--bg-mid);
       padding: 160px var(--cpad) 100px;
@@ -173,9 +173,9 @@
       .hero { padding: 130px var(--cpad) 80px; }
     }
 
-    /* ════════════════════════════════════════
+    /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
        SECTION 2: STORY
-    ════════════════════════════════════════ */
+    â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
     .story { padding: var(--sec) var(--cpad); background: var(--bg); }
     .story-inner {
       max-width: var(--cmax); margin: 0 auto;
@@ -208,10 +208,10 @@
       .story-highlight { grid-template-columns: 1fr; }
     }
 
-    /* ════════════════════════════════════════
+    /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
        SECTION 3: MILESTONES
-    ════════════════════════════════════════ */
-    /* ── Timeline ── */
+    â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+    /* â”€â”€ Timeline â”€â”€ */
     .milestones { padding: var(--sec) var(--cpad); background: var(--bg-off); }
     .milestones-header { max-width: var(--cmax); margin: 0 auto 72px; text-align:center; }
     .milestones-header h2 {
@@ -255,20 +255,30 @@
     .tl-item.tl-r .tl-center { grid-column: 2; }
     .tl-item.tl-r .tl-right { grid-column: 3; }
     @media (max-width: 680px) {
-      .tl-spine { left: 20px; }
-      .tl-item { grid-template-columns: 40px 1fr; }
-      .tl-item.tl-l .tl-right,
-      .tl-item.tl-r .tl-left { display: none; }
+      /* Collapse alternating timeline to single left-aligned list */
+      .tl-spine { left: 20px; transform: none; }
+      .tl-item {
+        display: grid;
+        grid-template-columns: 44px 1fr;
+        grid-template-rows: auto;
+        margin-bottom: 40px;
+      }
+      /* Always put the dot in column 1 */
+      .tl-center { grid-column: 1; grid-row: 1; justify-content: center; padding-top: 2px; }
+      /* Content always in column 2 */
+      .tl-left, .tl-right {
+        grid-column: 2; grid-row: 1;
+        text-align: left; padding-left: 16px; padding-right: 0;
+      }
+      /* Hide the empty placeholder cell (tl-r hides tl-left, tl-l hides tl-right) */
       .tl-item.tl-l .tl-right { visibility: visible; display: block; }
-      .tl-center { grid-column: 1; justify-content: center; }
-      .tl-left, .tl-right { grid-column: 2; text-align: left; padding-left: 20px; padding-right: 0; }
-      .tl-item.tl-l .tl-right { grid-column: 2; }
-      .tl-item.tl-r .tl-right { grid-column: 2; }
+      .tl-item.tl-r .tl-left  { display: none; }
+      .tl-item.tl-l .tl-left  { display: none; }
     }
 
-    /* ════════════════════════════════════════
+    /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
        SECTION 4: LEADERSHIP
-    ════════════════════════════════════════ */
+    â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
     .leadership { padding: var(--sec) var(--cpad); background: var(--bg-mid); }
     .leadership-header { max-width: var(--cmax); margin: 0 auto 52px; }
     .leadership-header h2 {
@@ -322,9 +332,9 @@
       .leader-photo-wrap { height: 260px; }
     }
 
-    /* ════════════════════════════════════════
+    /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
        SECTION 5: WHY GSES
-    ════════════════════════════════════════ */
+    â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
     .why-gses { padding: var(--sec) var(--cpad); background: var(--bg); }
     .why-gses-header { max-width: var(--cmax); margin: 0 auto 52px; }
     .why-gses-header h2 {
@@ -357,9 +367,9 @@
       .why-grid { grid-template-columns: 1fr; }
     }
 
-    /* ════════════════════════════════════════
+    /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
        SECTION 6: CREDENTIALS
-    ════════════════════════════════════════ */
+    â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
     .credentials { padding: var(--sec) var(--cpad); background: var(--bg-off); }
     .credentials-inner { max-width: var(--cmax); margin: 0 auto; }
     .credentials-inner h2 {
@@ -382,9 +392,9 @@
       .cred-detail { text-align: left; }
     }
 
-    /* ════════════════════════════════════════
+    /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
        SECTION 7: ALLIED BRANDS
-    ════════════════════════════════════════ */
+    â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
     .allied { padding: var(--sec) var(--cpad); background: var(--bg-mid); }
     .allied-header { max-width: var(--cmax); margin: 0 auto 52px; }
     .allied-header h2 {
@@ -420,9 +430,9 @@
     }
     @media (max-width: 860px) { .allied-grid { grid-template-columns: 1fr; max-width: 540px; } }
 
-    /* ════════════════════════════════════════
+    /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
        SECTION 8: COMMUNITY
-    ════════════════════════════════════════ */
+    â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
     .community { padding: var(--sec) var(--cpad); background: var(--bg); }
     .community-inner { max-width: var(--cmax); margin: 0 auto; }
     .community-inner h2 {
@@ -435,9 +445,9 @@
     }
     .community-sep { color: var(--ac); margin: 0 12px; font-weight: 300; }
 
-    /* ════════════════════════════════════════
+    /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
        SECTION 9: CTA
-    ════════════════════════════════════════ */
+    â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
     .cta-section {
       padding: var(--sec) var(--cpad);
       background: var(--bg-off); text-align: center;
@@ -484,7 +494,7 @@
   <div class="cur-dot" id="curDot"></div>
   <div class="cur-ring" id="curRing"></div>
 
-  <!-- ── NAV ── -->
+  <!-- â”€â”€ NAV â”€â”€ -->
   <nav class="nav" id="nav">
     <a href="index.html" class="nav-logo"><img src="assets/gses-logo.png" alt="GSES"></a>
     <div class="nav-links">
@@ -497,9 +507,9 @@
     <a href="mailto:consultancy@gses.com.au" class="nav-cta-pill">Get in touch</a>
   </nav>
 
-  <!-- ════════════════════════════════════════
+  <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
        SECTION 1: HERO
-  ════════════════════════════════════════ -->
+  â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
   <section class="hero">
     <div class="hero-inner">
       <p class="hero-eyebrow" id="heroEyebrow">Est. 1998 &middot; Global Sustainable Energy Solutions</p>
@@ -529,17 +539,17 @@
     </div>
   </section>
 
-  <!-- ════════════════════════════════════════
+  <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
        SECTION 2: STORY
-  ════════════════════════════════════════ -->
+  â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
   <section class="story">
     <div class="story-inner">
       <div class="rv">
         <span class="eyebrow">Our Story</span>
         <h2>We Helped Write the Rules</h2>
         <div class="story-body">
-          <p>GSES was founded in 1998 by engineers who had been building Australia's solar industry since 1992 — before there were standards, before accreditation, before most Australians had seen a solar panel.</p>
-          <p>We worked with regulators to create the national inspection scheme still in use today, chaired the Industry Reference Group that shaped Australia's electrical training packages, and took our frameworks to ASEAN — the model NABCEP later adapted for the United States.</p>
+          <p>GSES was founded in 1998 by engineers who had been building Australia's solar industry since 1992 â€” before there were standards, before accreditation, before most Australians had seen a solar panel.</p>
+          <p>We worked with regulators to create the national inspection scheme still in use today, chaired the Industry Reference Group that shaped Australia's electrical training packages, and took our frameworks to ASEAN â€” the model NABCEP later adapted for the United States.</p>
         </div>
       </div>
       <div class="story-highlight rv">
@@ -563,9 +573,9 @@
     </div>
   </section>
 
-  <!-- ════════════════════════════════════════
+  <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
        SECTION 3: MILESTONES
-  ════════════════════════════════════════ -->
+  â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
   <section class="milestones">
     <div class="milestones-header rv">
       <span class="eyebrow">Since 1992</span>
@@ -578,7 +588,7 @@
         <div class="tl-left">
           <div class="tl-year">1992</div>
           <div class="tl-title">First Solar Trainers in Australia</div>
-          <div class="tl-body">GSES founders deliver the first technician-level solar training in Australia. No accreditation scheme exists yet — they are building the foundations of an industry.</div>
+          <div class="tl-body">GSES founders deliver the first technician-level solar training in Australia. No accreditation scheme exists yet â€” they are building the foundations of an industry.</div>
         </div>
         <div class="tl-center"><div class="tl-dot"></div></div>
         <div class="tl-right"></div>
@@ -636,7 +646,7 @@
 
       <div class="tl-item tl-l rv">
         <div class="tl-left">
-          <div class="tl-year">2015–2020</div>
+          <div class="tl-year">2015â€“2020</div>
           <div class="tl-title">Standards Authorship</div>
           <div class="tl-body">Principal author of AS/NZS 5139:2019, Australia's battery storage systems standard. Appointed to Standards Australia Committee EL42 and IEA PVPS Task 9 and Task 18.</div>
         </div>
@@ -668,7 +678,7 @@
         <div class="tl-left"></div>
         <div class="tl-center"><div class="tl-dot"></div></div>
         <div class="tl-right">
-          <div class="tl-year">2025–2026</div>
+          <div class="tl-year">2025â€“2026</div>
           <div class="tl-title">Industry at Scale</div>
           <div class="tl-body">12,000+ CER inspections delivered. 3.8 MW fire investigation for Noumi. 48-site program for Property NSW. National O&amp;M for Sigma Healthcare across 5 states.</div>
         </div>
@@ -677,9 +687,9 @@
     </div>
   </section>
 
-  <!-- ════════════════════════════════════════
+  <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
        SECTION 4: LEADERSHIP
-  ════════════════════════════════════════ -->
+  â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
   <section class="leadership">
     <div class="leadership-header rv">
       <span class="eyebrow">The Team</span>
@@ -690,7 +700,7 @@
       <!-- Christopher Martell -->
       <div class="leader-card rv">
         <div class="leader-photo-wrap">
-          <img src="assets/chris-martell.jpg" alt="Christopher Martell" class="leader-photo">
+          <img src="assets/chris-martell.png" alt="Christopher Martell" class="leader-photo">
         </div>
         <div class="leader-card-body">
           <div class="leader-card-head">
@@ -731,7 +741,7 @@
             </div>
           </div>
           <div class="acc-body">
-            <p class="leader-bio-body">Pioneer of Australian solar industry training. Led GSES's 30+ year international capacity building portfolio across 40+ countries. Co-authored GSES's foundational solar publications — 30,000+ copies sold worldwide.</p>
+            <p class="leader-bio-body">Pioneer of Australian solar industry training. Led GSES's 30+ year international capacity building portfolio across 40+ countries. Co-authored GSES's foundational solar publications â€” 30,000+ copies sold worldwide.</p>
           </div>
         </div>
       </div>
@@ -739,9 +749,9 @@
     </div>
   </section>
 
-  <!-- ════════════════════════════════════════
+  <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
        SECTION 5: WHY GSES
-  ════════════════════════════════════════ -->
+  â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
   <section class="why-gses">
     <div class="why-gses-header rv">
       <span class="eyebrow">Why GSES</span>
@@ -756,7 +766,7 @@
       <div class="why-item rv">
         <div class="why-num">02</div>
         <div class="why-title">Specialist</div>
-        <p class="why-body">Renewable energy is not a division — it is our entire business.</p>
+        <p class="why-body">Renewable energy is not a division â€” it is our entire business.</p>
       </div>
       <div class="why-item rv">
         <div class="why-num">03</div>
@@ -781,9 +791,9 @@
     </div>
   </section>
 
-  <!-- ════════════════════════════════════════
+  <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
        SECTION 6: CREDENTIALS
-  ════════════════════════════════════════ -->
+  â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
   <section class="credentials">
     <div class="credentials-inner">
       <span class="eyebrow rv">Accreditations</span>
@@ -820,9 +830,9 @@
     </div>
   </section>
 
-  <!-- ════════════════════════════════════════
+  <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
        SECTION 7: ALLIED BRANDS
-  ════════════════════════════════════════ -->
+  â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
   <section class="allied">
     <div class="allied-header rv">
       <span class="eyebrow">The Group</span>
@@ -839,7 +849,7 @@
           </div>
           <button class="acc-btn" aria-label="More about Mindaro" aria-expanded="false">+</button>
         </div>
-        <p class="allied-desc">Design engineering arm — For-Construction Drawings, Connection Applications, Bills of Materials for C&amp;I solar projects.</p>
+        <p class="allied-desc">Design engineering arm â€” For-Construction Drawings, Connection Applications, Bills of Materials for C&amp;I solar projects.</p>
         <div class="acc-body">
           <p class="allied-expand">Previously the GSES Design Team, now standalone. Handles solar, battery and EV charger projects from 30kW to megawatt scale.</p>
         </div>
@@ -869,7 +879,7 @@
           </div>
           <button class="acc-btn" aria-label="More about GSES International" aria-expanded="false">+</button>
         </div>
-        <p class="allied-desc">International training arm — Australia's most rigorous solar and battery accreditation.</p>
+        <p class="allied-desc">International training arm â€” Australia's most rigorous solar and battery accreditation.</p>
         <div class="acc-body">
           <p class="allied-expand">Delivering courses to 10,000+ students across 40+ countries.</p>
         </div>
@@ -878,9 +888,9 @@
     </div>
   </section>
 
-  <!-- ════════════════════════════════════════
+  <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
        SECTION 8: COMMUNITY
-  ════════════════════════════════════════ -->
+  â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
   <section class="community">
     <div class="community-inner rv">
       <span class="eyebrow">Community</span>
@@ -899,9 +909,9 @@
     </div>
   </section>
 
-  <!-- ════════════════════════════════════════
+  <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
        SECTION 9: CTA
-  ════════════════════════════════════════ -->
+  â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
   <section class="cta-section">
     <div class="cta-glow"></div>
     <div class="container">
@@ -913,9 +923,9 @@
     </div>
   </section>
 
-  <!-- ════════════════════════════════════════
+  <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
        FOOTER
-  ════════════════════════════════════════ -->
+  â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
   <footer style="background:#E2E2DE;padding:34px clamp(20px,5vw,72px);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;border-top:1px solid rgba(24,24,30,.08)">
     <a href="index.html" style="display:flex;align-items:center"><img src="assets/gses-logo.png" alt="GSES" style="height:26px;width:auto"></a>
     <nav style="display:flex;gap:24px;flex-wrap:wrap">
@@ -927,7 +937,7 @@
     <span style="font-size:12px;color:rgba(24,24,30,.42)">&copy; 2026 Global Sustainable Energy Solutions &middot; Independent renewable energy engineering</span>
   </footer>
 
-  <!-- ── SCRIPTS ── -->
+  <!-- â”€â”€ SCRIPTS â”€â”€ -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.4/dist/lenis.min.js"></script>
   <script>
@@ -935,9 +945,11 @@
 'use strict';
 var touch = !window.matchMedia('(hover:hover) and (pointer:fine)').matches;
 
-/* Lenis smooth scroll */
-var lenis = new Lenis({ duration: 1.15, lerp: .085 });
-gsap.ticker.add(function(t){ lenis.raf(t * 1000); });
+/* Lenis smooth scroll â€” desktop only */
+if (!touch) {
+  var lenis = new Lenis({ duration: 1.15, lerp: .085 });
+  gsap.ticker.add(function(t){ lenis.raf(t * 1000); });
+}
 
 /* Cursor */
 if (!touch) {
@@ -978,7 +990,7 @@ window.addEventListener('DOMContentLoaded', function(){
   if (heroStats.length) tl.to(heroStats, { opacity: 1, y: 0, duration: .6, ease: 'power3.out', stagger: .1 }, '-=0.3');
 });
 
-/* Scroll reveal — IntersectionObserver */
+/* Scroll reveal â€” IntersectionObserver */
 var revealObs = new IntersectionObserver(function(entries){
   entries.forEach(function(e){
     if (e.isIntersecting) {
@@ -989,7 +1001,7 @@ var revealObs = new IntersectionObserver(function(entries){
 }, { threshold: 0.12 });
 document.querySelectorAll('.rv').forEach(function(el){ revealObs.observe(el); });
 
-/* Accordion — milestones, leadership bios, allied brands */
+/* Accordion â€” milestones, leadership bios, allied brands */
 document.querySelectorAll('.acc-btn').forEach(function(btn){
   var wrapper = btn.closest('[class]');
   /* find the nearest sibling .acc-body */
@@ -1022,3 +1034,4 @@ document.querySelectorAll('.acc-btn').forEach(function(btn){
   </script>
 </body>
 </html>
+

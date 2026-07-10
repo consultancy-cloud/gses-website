@@ -150,26 +150,21 @@ button{font-family:inherit;border:none;background:none;cursor:pointer}
 /* ══════════════════════════════════
    GLOBAL REACH / WORLD MAP
 ══════════════════════════════════ */
-.reach{padding:80px 0 0;background:#1a2e4a;position:relative;overflow:hidden}
-.reach::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 55% 60% at 78% 65%,rgba(0,107,53,.06) 0%,transparent 70%);pointer-events:none}
-.reach-inner{max-width:var(--cmax);margin:0 auto;padding:0 var(--cpad)}
-.reach-hdr{text-align:center;max-width:680px;margin:0 auto 52px}
-.reach-eyebrow{display:block;font-size:11px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--ac-md);margin-bottom:14px}
-.reach-ttl{font-size:clamp(2rem,3.6vw,3rem);font-weight:900;letter-spacing:-.05em;color:#fff;line-height:1.08;margin:0 0 16px}
-.reach-ttl em{font-style:normal;color:var(--ac-md)}
-.reach-sub{font-size:15px;line-height:1.74;color:rgba(255,255,255,.42);max-width:560px;margin:0 auto}
-.reach-map-wrap{position:relative;margin-bottom:0}
-.reach-map{width:100%;height:auto;display:block;max-height:440px}
-@keyframes reachPulse{0%,100%{opacity:1;r:5}50%{opacity:.5;r:8}}
-.reach-dot-ring{animation:reachPulse 2.8s ease-in-out infinite}
-.reach-dot-ring2{animation:reachPulse 2.8s ease-in-out infinite;animation-delay:.9s}
-.reach-dot-ring3{animation:reachPulse 2.8s ease-in-out infinite;animation-delay:1.8s}
-.reach-regions{display:flex;border-top:1px solid rgba(255,255,255,.06);margin-top:0}
-.reach-region{flex:1;padding:22px 20px;text-align:center;border-right:1px solid rgba(255,255,255,.06)}
+.reach{padding:clamp(60px,8vw,110px) 0 0;background:var(--bg-mid);position:relative;overflow:hidden}
+.reach-inner{max-width:1400px;margin:0 auto;padding:0 var(--cpad)}
+.reach-hdr{text-align:center;max-width:680px;margin:0 auto 48px}
+.reach-eyebrow{display:block;font-size:11px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--ac);margin-bottom:14px}
+.reach-ttl{font-size:clamp(2rem,3.6vw,3rem);font-weight:900;letter-spacing:-.05em;color:var(--t1);line-height:1.08;margin:0 0 16px}
+.reach-ttl em{font-style:normal;color:var(--ac)}
+.reach-sub{font-size:15px;line-height:1.74;color:var(--t2);max-width:560px;margin:0 auto}
+.reach-map-wrap{position:relative;border-radius:20px;overflow:hidden;box-shadow:0 2px 40px rgba(44,74,115,.1)}
+#worldMap{width:100%;display:block;border-radius:20px}
+.reach-regions{display:flex;border-top:1px solid var(--bdr);margin-top:0;background:rgba(255,255,255,.4);backdrop-filter:blur(10px)}
+.reach-region{flex:1;padding:22px 20px;text-align:center;border-right:1px solid var(--bdr)}
 .reach-region:last-child{border-right:none}
-.reach-region-n{font-size:1.1rem;font-weight:800;letter-spacing:-.03em;color:#fff}
-.reach-region-l{font-size:10.5px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-top:4px}
-@media(max-width:760px){.reach-regions{flex-wrap:wrap}.reach-region{flex:1 1 50%;border-bottom:1px solid rgba(255,255,255,.06)}.reach-region:nth-child(2){border-right:none}.reach-region:nth-child(3){border-right:none}.reach-region:nth-child(4){border-right:none}}
+.reach-region-n{font-size:1.1rem;font-weight:800;letter-spacing:-.03em;color:var(--t1)}
+.reach-region-l{font-size:10.5px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--t2);margin-top:4px}
+@media(max-width:760px){.reach-regions{flex-wrap:wrap}.reach-region{flex:1 1 50%;border-bottom:1px solid var(--bdr)}.reach-region:nth-child(2){border-right:none}}
 @media(max-width:480px){.reach-region{flex:1 1 100%;border-right:none}}
 
 /* ══════════════════════════════════
@@ -258,6 +253,42 @@ button{font-family:inherit;border:none;background:none;cursor:pointer}
       <div class="hero-stats">
         <div class="hero-stat-item">12,000+ CER Inspections</div>
         <div class="hero-stat-item">40+ Countries</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ GLOBAL REACH / WORLD MAP ══ -->
+<section class="reach">
+  <div class="reach-inner">
+    <div class="reach-hdr rv">
+      <span class="reach-eyebrow">Global Reach</span>
+      <h2 class="reach-ttl">40+ Countries.<br><em>One standard of rigour.</em></h2>
+      <p class="reach-sub">From Australia's national inspection program to renewable energy development across the Pacific, Africa and Asia — GSES brings the same independent standard wherever the engagement demands it.</p>
+    </div>
+    <div class="reach-map-wrap rv">
+      <canvas id="worldMap" role="img" aria-label="World map showing GSES project locations across 40+ countries"></canvas>
+    </div>
+    <div class="reach-regions">
+      <div class="reach-region rv">
+        <div class="reach-region-n">Australia</div>
+        <div class="reach-region-l">National HQ</div>
+      </div>
+      <div class="reach-region rv">
+        <div class="reach-region-n">Pacific</div>
+        <div class="reach-region-l">Tuvalu · Vanuatu · PNG</div>
+      </div>
+      <div class="reach-region rv">
+        <div class="reach-region-n">SE Asia</div>
+        <div class="reach-region-l">Indonesia · Philippines</div>
+      </div>
+      <div class="reach-region rv">
+        <div class="reach-region-n">Africa</div>
+        <div class="reach-region-l">Gambia · Uganda</div>
+      </div>
+      <div class="reach-region rv">
+        <div class="reach-region-n">South Asia</div>
+        <div class="reach-region-l">India · Sri Lanka</div>
       </div>
     </div>
   </div>
@@ -560,153 +591,7 @@ button{font-family:inherit;border:none;background:none;cursor:pointer}
   </div>
 </section>
 
-<!-- ══ GLOBAL REACH / WORLD MAP ══ -->
-<section class="reach">
-  <div class="reach-inner">
-    <div class="reach-hdr rv">
-      <span class="reach-eyebrow">Global Reach</span>
-      <h2 class="reach-ttl">40+ Countries.<br><em>One standard of rigour.</em></h2>
-      <p class="reach-sub">From Australia's national inspection program to renewable energy development across the Pacific, Africa and Asia — GSES brings the same independent standard wherever the engagement demands it.</p>
-    </div>
-    <div class="reach-map-wrap rv">
-      <svg viewBox="0 0 960 480" fill="none" xmlns="http://www.w3.org/2000/svg" class="reach-map" role="img" aria-label="World map showing GSES project locations across 40+ countries">
-        <defs>
-          <pattern id="mapGrid" x="0" y="0" width="48" height="48" patternUnits="userSpaceOnUse">
-            <path d="M48 0L0 0 0 48" fill="none" stroke="rgba(255,255,255,0.025)" stroke-width="0.5"/>
-          </pattern>
-          <radialGradient id="ausGlow" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stop-color="rgba(0,133,63,0.22)"/>
-            <stop offset="100%" stop-color="rgba(0,133,63,0)"/>
-          </radialGradient>
-          <filter id="dotGlow">
-            <feGaussianBlur stdDeviation="2" result="blur"/>
-            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-          </filter>
-        </defs>
-
-        <!-- Grid background -->
-        <rect width="960" height="480" fill="url(#mapGrid)"/>
-
-        <!-- Latitude reference lines -->
-        <line x1="0" y1="222" x2="960" y2="222" stroke="rgba(255,255,255,0.035)" stroke-width="0.5" stroke-dasharray="6,14"/>
-        <line x1="0" y1="162" x2="960" y2="162" stroke="rgba(255,255,255,0.02)" stroke-width="0.4" stroke-dasharray="3,18"/>
-        <line x1="0" y1="282" x2="960" y2="282" stroke="rgba(255,255,255,0.02)" stroke-width="0.4" stroke-dasharray="3,18"/>
-
-        <!-- Australia glow (primary base) -->
-        <ellipse cx="798" cy="348" rx="130" ry="75" fill="url(#ausGlow)"/>
-
-        <!-- CONTINENTS — simplified outlines -->
-        <!-- North America -->
-        <path d="M68,72 L232,56 L278,90 L292,148 L275,202 L225,238 L166,246 L98,226 L58,176 Z" fill="rgba(255,255,255,0.045)" stroke="rgba(255,255,255,0.1)" stroke-width="0.7"/>
-        <!-- Greenland -->
-        <path d="M192,32 L268,26 L288,56 L252,70 L196,65 Z" fill="rgba(255,255,255,0.035)" stroke="rgba(255,255,255,0.07)" stroke-width="0.5"/>
-        <!-- South America -->
-        <path d="M198,255 L292,248 L326,310 L312,406 L252,426 L192,396 L172,330 Z" fill="rgba(255,255,255,0.045)" stroke="rgba(255,255,255,0.1)" stroke-width="0.7"/>
-        <!-- Europe -->
-        <path d="M430,55 L528,50 L558,82 L544,122 L492,136 L436,126 L424,90 Z" fill="rgba(255,255,255,0.045)" stroke="rgba(255,255,255,0.1)" stroke-width="0.7"/>
-        <!-- Africa -->
-        <path d="M446,136 L576,130 L608,216 L590,346 L520,376 L448,346 L420,256 Z" fill="rgba(255,255,255,0.045)" stroke="rgba(255,255,255,0.1)" stroke-width="0.7"/>
-        <!-- Middle East -->
-        <path d="M548,116 L636,100 L666,112 L676,160 L626,170 L548,155 Z" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.09)" stroke-width="0.6"/>
-        <!-- South Asia -->
-        <path d="M636,108 L706,96 L730,126 L720,186 L676,196 L638,170 L630,140 Z" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.09)" stroke-width="0.6"/>
-        <!-- SE Asia mainland -->
-        <path d="M718,122 L788,112 L810,140 L806,176 L776,186 L730,170 L714,148 Z" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.09)" stroke-width="0.6"/>
-        <!-- East Asia -->
-        <path d="M702,76 L816,66 L846,100 L846,146 L806,148 L740,130 L700,110 Z" fill="rgba(255,255,255,0.045)" stroke="rgba(255,255,255,0.1)" stroke-width="0.7"/>
-        <!-- SE Asia islands (Indonesia/Malay) -->
-        <path d="M746,180 L850,166 L890,182 L880,212 L836,216 L780,206 L746,198 Z" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.09)" stroke-width="0.6"/>
-        <!-- PNG -->
-        <path d="M830,272 L870,265 L882,285 L860,300 L832,296 Z" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)" stroke-width="0.5"/>
-        <!-- Australia (highlighted — primary base) -->
-        <path d="M740,293 L850,275 L893,310 L888,373 L820,400 L746,378 L718,346 Z" fill="rgba(0,107,53,0.14)" stroke="rgba(0,133,63,0.45)" stroke-width="1.2"/>
-        <!-- New Zealand -->
-        <path d="M898,356 L913,340 L920,363 L904,377 L897,368 Z" fill="rgba(255,255,255,0.035)" stroke="rgba(255,255,255,0.07)" stroke-width="0.5"/>
-
-        <!-- PROJECT LOCATION DOTS -->
-
-        <!-- Australia HQ (largest — triple ring) -->
-        <circle cx="798" cy="348" r="20" fill="rgba(0,133,63,0.06)" class="reach-dot-ring"/>
-        <circle cx="798" cy="348" r="13" fill="rgba(0,133,63,0.15)"/>
-        <circle cx="798" cy="348" r="7" fill="#00853F" filter="url(#dotGlow)"/>
-        <!-- Northern QLD / Townsville -->
-        <circle cx="818" cy="308" r="5" fill="#00853F" opacity="0.75"/>
-        <!-- Perth WA -->
-        <circle cx="742" cy="348" r="4" fill="#00853F" opacity="0.65"/>
-
-        <!-- The Gambia, West Africa -->
-        <circle cx="440" cy="244" r="12" fill="rgba(0,133,63,0.1)" class="reach-dot-ring2"/>
-        <circle cx="440" cy="244" r="5" fill="#00853F" filter="url(#dotGlow)"/>
-
-        <!-- Pacific — Tuvalu -->
-        <circle cx="878" cy="326" r="4" fill="#00853F" opacity="0.78"/>
-        <!-- Pacific — Vanuatu -->
-        <circle cx="858" cy="344" r="4" fill="#00853F" opacity="0.78"/>
-        <!-- PNG -->
-        <circle cx="854" cy="284" r="5" fill="#00853F" opacity="0.75"/>
-
-        <!-- Indonesia / SE Asia -->
-        <circle cx="800" cy="198" r="12" fill="rgba(0,133,63,0.1)" class="reach-dot-ring3"/>
-        <circle cx="800" cy="198" r="5" fill="#00853F" filter="url(#dotGlow)"/>
-        <!-- Thailand -->
-        <circle cx="758" cy="214" r="4" fill="#00853F" opacity="0.72"/>
-        <!-- Philippines -->
-        <circle cx="820" cy="228" r="4" fill="#00853F" opacity="0.72"/>
-        <!-- Sri Lanka -->
-        <circle cx="672" cy="244" r="4" fill="#00853F" opacity="0.68"/>
-
-        <!-- India -->
-        <circle cx="676" cy="210" r="5" fill="#00853F" opacity="0.74"/>
-
-        <!-- Jordan / Middle East -->
-        <circle cx="572" cy="210" r="4" fill="#00853F" opacity="0.65"/>
-
-        <!-- LOCATION LABELS -->
-        <text x="814" y="344" fill="rgba(255,255,255,0.72)" font-size="8.5" font-family="Inter,system-ui,sans-serif" font-weight="700" letter-spacing="0.6">AUSTRALIA</text>
-        <text x="814" y="356" fill="rgba(255,255,255,0.3)" font-size="6.5" font-family="Inter,system-ui,sans-serif">National HQ &amp; Inspection Base</text>
-
-        <text x="452" y="241" fill="rgba(255,255,255,0.62)" font-size="8" font-family="Inter,system-ui,sans-serif" font-weight="700" letter-spacing="0.5">W. AFRICA</text>
-        <text x="452" y="252" fill="rgba(255,255,255,0.28)" font-size="6.5" font-family="Inter,system-ui,sans-serif">UNIDO / The Gambia</text>
-
-        <text x="812" y="275" fill="rgba(255,255,255,0.5)" font-size="7.5" font-family="Inter,system-ui,sans-serif" font-weight="600">PNG</text>
-
-        <text x="863" y="322" fill="rgba(255,255,255,0.45)" font-size="7" font-family="Inter,system-ui,sans-serif" font-weight="600">Tuvalu</text>
-        <text x="862" y="341" fill="rgba(255,255,255,0.42)" font-size="7" font-family="Inter,system-ui,sans-serif">Vanuatu</text>
-
-        <text x="815" y="196" fill="rgba(255,255,255,0.55)" font-size="7.5" font-family="Inter,system-ui,sans-serif" font-weight="600">SE ASIA</text>
-        <text x="815" y="207" fill="rgba(255,255,255,0.28)" font-size="6.5" font-family="Inter,system-ui,sans-serif">Indonesia · Thailand · Philippines</text>
-
-        <text x="684" y="208" fill="rgba(255,255,255,0.48)" font-size="7" font-family="Inter,system-ui,sans-serif" font-weight="600">India</text>
-
-        <!-- Dot count badge -->
-        <rect x="12" y="12" width="86" height="28" rx="6" fill="rgba(0,107,53,0.25)" stroke="rgba(0,133,63,0.3)" stroke-width="0.8"/>
-        <text x="56" y="30" fill="rgba(255,255,255,0.85)" font-size="10.5" font-family="Inter,system-ui,sans-serif" font-weight="700" text-anchor="middle" letter-spacing="0.2">40+ Countries</text>
-      </svg>
-    </div>
-    <div class="reach-regions">
-      <div class="reach-region rv">
-        <div class="reach-region-n">Australia</div>
-        <div class="reach-region-l">National HQ</div>
-      </div>
-      <div class="reach-region rv">
-        <div class="reach-region-n">Pacific</div>
-        <div class="reach-region-l">Tuvalu · Vanuatu · PNG</div>
-      </div>
-      <div class="reach-region rv">
-        <div class="reach-region-n">SE Asia</div>
-        <div class="reach-region-l">Indonesia · Thailand · Philippines</div>
-      </div>
-      <div class="reach-region rv">
-        <div class="reach-region-n">Africa</div>
-        <div class="reach-region-l">Gambia · UNIDO programs</div>
-      </div>
-      <div class="reach-region rv">
-        <div class="reach-region-n">South Asia</div>
-        <div class="reach-region-l">India · Sri Lanka</div>
-      </div>
-    </div>
-  </div>
-</section>
+<!-- ══ CTA (old reach removed, moved to top) ══ -->
 
 <!-- ══ CTA ══ -->
 <section class="cta-sec" aria-label="Work with us">
@@ -735,6 +620,123 @@ button{font-family:inherit;border:none;background:none;cursor:pointer}
 </footer>
 
 <!-- ══ SCRIPTS ══ -->
+<script>
+/* ── Canvas World Map ── */
+(function(){
+  var canvas = document.getElementById('worldMap');
+  if(!canvas) return;
+  var dpr = Math.min(window.devicePixelRatio||1, 2);
+  var animId;
+
+  function lon2x(lon,W){ return (lon+180)/360*W; }
+  function lat2y(lat,H){ return (90-lat)/180*H; }
+
+  function path(ctx,coords,W,H){
+    ctx.beginPath();
+    ctx.moveTo(lon2x(coords[0][0],W), lat2y(coords[0][1],H));
+    for(var i=1;i<coords.length;i++) ctx.lineTo(lon2x(coords[i][0],W), lat2y(coords[i][1],H));
+    ctx.closePath();
+  }
+
+  var LAND = [
+    /* Australia */ [[130.8,-12.5],[136,-12],[138.5,-13.5],[139,-16],[139,-17.5],[141.5,-17],[143,-17],[145.8,-10.7],[149,-21],[153,-27.5],[153.3,-28],[151.2,-33.9],[150.5,-35.5],[149,-37],[146,-38.5],[143.5,-38.8],[141.5,-38.5],[140,-36],[138.5,-35.5],[136.5,-36],[135.5,-34.7],[131,-32],[124,-34],[119,-34],[116,-32],[114.2,-22],[114,-22],[118.5,-20.5],[122,-18],[128,-15],[130.8,-12.5]],
+    /* Africa */ [[-5.3,35.9],[-3,30],[-8,27.5],[-13.2,27.5],[-17,21],[-17.5,14.7],[-15,10.7],[-10.5,6.5],[-7.5,4.8],[-2.5,4.8],[2.7,6.2],[9,4],[8.7,-0.7],[8.6,-1.8],[12.3,-6],[12.3,-17.3],[11.8,-24],[15,-28],[17.9,-29],[17.1,-32.1],[19,-34.8],[26.5,-34],[32.5,-26],[35.5,-17],[40.1,-10.4],[40.5,-2],[41.5,11.5],[51.3,12],[44.5,11.2],[43,14.5],[38.3,22],[32.5,31],[25,31.5],[13,32.9],[9,37.2],[4.7,36.9],[-2,35.5],[-5.3,35.9]],
+    /* South America */ [[-77,8.5],[-60,11],[-52,5],[-34.8,-7.2],[-37,-11],[-39.2,-22.9],[-48.6,-26.4],[-52.3,-33.8],[-56,-34.9],[-57.8,-38],[-62,-51],[-65.5,-55.9],[-71,-53],[-73.5,-42],[-75,-37],[-71.5,-30],[-77.2,-2],[-80,0.5],[-77,8.5]],
+    /* North America */ [[-168,65.5],[-141,60],[-135,59.5],[-123.5,48.4],[-117,32.5],[-110,23],[-105,20],[-90,15.5],[-83.4,9.5],[-77.2,8],[-83,10],[-90,16],[-87.1,21.5],[-97,25],[-97.2,28],[-97.5,30],[-89,30],[-85.5,30],[-80.2,25.8],[-81,31],[-75.5,35.5],[-70,41.5],[-69.9,44],[-64.5,44.6],[-53,46.9],[-55,51],[-60,57],[-65,63],[-78,65],[-95,73],[-85,78],[-100,80],[-130,70],[-168,65.5]],
+    /* Eurasia */ [[-9.3,38.7],[-1.8,43.4],[3.5,43.5],[7.8,43.8],[13,44.5],[18,40.5],[22,37.7],[28,41],[36,36.7],[36.5,37],[42,37],[48.5,30.5],[56.5,24.5],[58,23],[63,25],[66.5,25],[72.7,22],[77.5,8.1],[80.3,9.5],[80,13],[85,20],[88,22],[92,22.5],[98.5,9],[103.8,1.3],[108,10.5],[109.5,16],[108,21],[110,20],[117,24],[121.5,25],[122,31],[121,37],[121.5,41],[128.5,38],[130.5,42],[134,44],[140,48],[142,52],[144,59],[150,62],[160,63],[163,60],[170,62.5],[170,66],[162,70],[150,73],[130,75],[100,76],[80,73.5],[68,72],[60,69],[52,64],[40,67],[30,60],[28,71],[25,71.2],[14.5,65.5],[5.3,62.5],[10,57.7],[13.5,53.5],[10,55.8],[8.5,55.5],[5,61.5],[4.5,52.5],[2.5,51],[-2.5,49],[-4.8,48],[-5,44],[-8.9,38.5],[-9.3,38.7]],
+    /* Greenland */ [[-44,83],[-15,77],[-18,70],[-24,65],[-44,60],[-52,65],[-57,75],[-44,83]],
+    /* Japan */ [[130,31],[131.5,31],[133,33.5],[135,34.5],[137,35],[137.5,37],[141,40],[141.5,41.5],[141,43],[142.5,44.5],[141,45.5],[141,40],[137,35],[136,34],[130,33.5],[130,31]],
+    /* Borneo */ [[108,-4],[117.5,-4.5],[119,-1.5],[117.5,1],[115.5,4],[114,4.5],[115.5,5],[117.5,5.5],[116.5,2],[115,-0.5],[116,-4],[108,-4]],
+    /* Sumatra */ [[95.5,5.5],[98.5,4],[104,2],[106,-2],[106.5,-5.5],[104.5,-6],[103.5,-5],[101,-3],[99,-3],[96,-3],[95,1],[95.5,5.5]],
+    /* New Guinea */ [[131,-0.5],[140,-2],[145,-5],[147,-6],[148,-5.5],[145,-2],[141,-2],[136,0],[131,-0.5]],
+    /* New Zealand N */ [[172,-34],[175,-37],[178,-38],[178,-41],[175,-41.5],[174,-41],[172,-40],[172,-34]],
+    /* New Zealand S */ [[166,-46],[170,-46],[171.5,-44],[172.5,-43],[172,-42],[170,-42.5],[168,-46],[166,-46]],
+    /* Madagascar */ [[44,-12.5],[50,-16],[50,-25],[47,-25],[44,-25],[43,-18],[44,-12.5]],
+    /* Sri Lanka */ [[79.8,9.8],[81.9,9],[81.9,7],[80.5,6],[80,7.5],[79.8,9.8]],
+    /* Philippines */ [[118,8],[122,7],[126,8],[124.5,12],[122,18],[120,18],[119.5,17],[120,14],[121,12],[122,11],[121.5,10],[122.5,9],[123,8.5],[120.5,7],[118.5,6],[118,8]],
+    /* Taiwan */ [[121.5,22],[121,25],[121.5,25.5],[122,25],[122,22.5],[121.5,22]],
+    /* Iceland */ [[-24,64],[-13,63.5],[-13,66],[-19,67],[-24,65.5],[-24,64]]
+  ];
+
+  var DOTS = [
+    {lng:151.2,lat:-33.9,r:6,primary:true,label:'Sydney, Australia'},
+    {lng:130.8,lat:-12.5,r:4,primary:false,label:'Darwin'},
+    {lng:115.9,lat:-32,r:3.5,primary:false,label:'Perth'},
+    {lng:-15.5,lat:13.5,r:5,primary:false,label:'The Gambia, W. Africa'},
+    {lng:32.5,lat:0.5,r:4,primary:false,label:'Uganda'},
+    {lng:147,lat:-9,r:4,primary:false,label:'Papua New Guinea'},
+    {lng:168,lat:-15.5,r:3.5,primary:false,label:'Vanuatu'},
+    {lng:179.2,lat:-8.5,r:3.5,primary:false,label:'Tuvalu'},
+    {lng:113.5,lat:0,r:4,primary:false,label:'Borneo / SE Asia'},
+    {lng:122,lat:12,r:3.5,primary:false,label:'Philippines'},
+    {lng:100.5,lat:13.5,r:3.5,primary:false,label:'Thailand'},
+    {lng:80,lat:20,r:4,primary:false,label:'India'},
+    {lng:80.8,lat:7.5,r:3,primary:false,label:'Sri Lanka'},
+    {lng:36,lat:31,r:3.5,primary:false,label:'Jordan / Middle East'}
+  ];
+
+  function draw(){
+    cancelAnimationFrame(animId);
+    var W = canvas.parentElement.offsetWidth;
+    var H = Math.round(W * 0.48);
+    canvas.width = W * dpr;
+    canvas.height = H * dpr;
+    canvas.style.width = W+'px';
+    canvas.style.height = H+'px';
+    var ctx = canvas.getContext('2d');
+    ctx.scale(dpr, dpr);
+
+    /* Background */
+    ctx.fillStyle = '#1e2e45';
+    ctx.fillRect(0,0,W,H);
+
+    /* Subtle grid lines */
+    ctx.strokeStyle = 'rgba(255,255,255,0.04)';
+    ctx.lineWidth = 0.5;
+    ctx.setLineDash([4,10]);
+    [-60,-30,0,30,60].forEach(function(lat){
+      var y = lat2y(lat,H);
+      ctx.beginPath(); ctx.moveTo(0,y); ctx.lineTo(W,y); ctx.stroke();
+    });
+    ctx.setLineDash([]);
+
+    /* Land masses */
+    ctx.fillStyle = 'rgba(44,74,115,0.55)';
+    ctx.strokeStyle = 'rgba(100,145,200,0.6)';
+    ctx.lineWidth = 0.8;
+    LAND.forEach(function(coords){
+      path(ctx,coords,W,H);
+      ctx.fill();
+      ctx.stroke();
+    });
+
+    /* Animated dots */
+    var t = Date.now()/1000;
+    DOTS.forEach(function(d,i){
+      var x = lon2x(d.lng,W);
+      var y = lat2y(d.lat,H);
+      var phase = ((t*0.7)+(i*0.4))%1;
+      var ringR = d.r*2.5 + phase*d.r*4;
+      var alpha = (1-phase)*(d.primary?0.55:0.35);
+      ctx.beginPath();
+      ctx.arc(x,y,ringR,0,Math.PI*2);
+      ctx.strokeStyle = d.primary?'rgba(172,59,52,'+alpha+')':'rgba(150,200,255,'+alpha+')';
+      ctx.lineWidth = 1.2;
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.arc(x,y,d.r,0,Math.PI*2);
+      ctx.fillStyle = d.primary?'#AC3B34':'rgba(180,215,255,0.9)';
+      ctx.fill();
+    });
+
+    animId = requestAnimationFrame(draw);
+  }
+
+  var resizeTimer;
+  window.addEventListener('resize',function(){ clearTimeout(resizeTimer); resizeTimer=setTimeout(draw,120); });
+  draw();
+})();
+</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.4/dist/lenis.min.js"></script>

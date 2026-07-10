@@ -294,6 +294,12 @@
       font-size: 16px; font-weight: 800; flex-shrink: 0;
       display: flex; align-items: center; justify-content: center;
     }
+    .leader-photo {
+      width: 72px; height: 72px; border-radius: 50%; flex-shrink: 0;
+      object-fit: cover; object-position: top center;
+      mask-image: radial-gradient(ellipse 85% 85% at 50% 45%, black 55%, transparent 100%);
+      -webkit-mask-image: radial-gradient(ellipse 85% 85% at 50% 45%, black 55%, transparent 100%);
+    }
     .leader-info { flex: 1; }
     .leader-name { font-size: 17px; font-weight: 700; color: var(--t1); letter-spacing: -.3px; }
     .leader-role { font-size: 13px; font-weight: 500; color: var(--t2); margin-top: 2px; }
@@ -684,7 +690,7 @@
       <!-- Christopher Martell -->
       <div class="leader-card rv">
         <div class="leader-card-head">
-          <div class="leader-initials">CM</div>
+          <img src="assets/chris-martell.jpg" alt="Christopher Martell" class="leader-photo">
           <div class="leader-info">
             <div class="leader-name">Christopher Martell</div>
             <div class="leader-role">Managing Director</div>
@@ -704,7 +710,7 @@
       <!-- Geoff Stapleton -->
       <div class="leader-card rv">
         <div class="leader-card-head">
-          <div class="leader-initials">GS</div>
+          <img src="assets/geoff-stapleton.png" alt="Geoff Stapleton" class="leader-photo">
           <div class="leader-info">
             <div class="leader-name">Geoff Stapleton</div>
             <div class="leader-role">Director — International</div>

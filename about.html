@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About GSES — 27 Years Building Australia's Clean Energy Industry</title>
+  <meta name="description" content="GSES has been at the foundation of Australia's renewable energy industry since 1992. Independent engineering, assurance, and training specialists." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #F2F2F0;
+      --bg-off: #EDEDEA;
+      --bg-mid: #E8ECF1;
+      --t1: #15151B;
+      --t2: rgba(24,24,30,.6);
+      --t3: rgba(24,24,30,.42);
+      --ac: #2C4A73;
+      --ac-lt: rgba(44,74,115,.1);
+      --bdr: rgba(24,24,30,.08);
+      --font: 'Inter', system-ui, sans-serif;
+      --sec: clamp(80px,11vw,150px);
+      --cmax: 1180px;
+      --cpad: clamp(20px,5vw,72px);
+      --e1: cubic-bezier(.16,1,.3,1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: auto; }
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--t1);
+      overflow-x: hidden;
+    }
+
+    /* ── Cursor ── */
+    @media (hover: hover) and (pointer: fine) { body { cursor: none; } }
+    .cur-dot {
+      position: fixed; top: 0; left: 0;
+      width: 8px; height: 8px;
+      background: #fff; border-radius: 50%;
+      pointer-events: none; z-index: 99999;
+      margin-left: -4px; margin-top: -4px;
+      box-shadow: 0 0 0 1px rgba(34,55,90,.4), 0 2px 7px rgba(0,0,0,.18);
+    }
+    .cur-ring {
+      position: fixed; top: 0; left: 0;
+      width: 38px; height: 38px;
+      border: 1.5px solid rgba(255,255,255,.95); border-radius: 50%;
+      pointer-events: none; z-index: 99998;
+      margin-left: -19px; margin-top: -19px;
+      box-shadow: 0 0 0 1px rgba(34,55,90,.28);
+      transition: width .22s, height .22s, margin .22s, background .22s;
+    }
+
+    /* ── Container ── */
+    .container {
+      max-width: var(--cmax);
+      margin: 0 auto;
+      padding: 0 var(--cpad);
+    }
+
+    /* ── Nav ── */
+    body { padding-top: 0; }
+    .nav {
+      position: fixed; top: 16px; left: 50%; transform: translateX(-50%);
+      z-index: 900; display: flex; align-items: center; gap: 6px;
+      padding: 7px 7px 7px 20px; border-radius: 100px;
+      background: rgba(244,244,242,.88);
+      backdrop-filter: blur(24px) saturate(1.6);
+      -webkit-backdrop-filter: blur(24px) saturate(1.6);
+      border: 1px solid rgba(24,24,30,.08);
+      box-shadow: 0 12px 40px rgba(20,20,30,.12);
+      white-space: nowrap; transition: background .3s;
+      max-width: calc(100vw - 20px);
+    }
+    .nav-logo { display: flex; align-items: center; flex-shrink: 0; }
+    .nav-logo img { height: 22px; width: auto; }
+    .nav-links { display: flex; align-items: center; gap: 20px; margin-left: 16px; }
+    .nav-link { font-size: 13.5px; font-weight: 500; color: rgba(24,24,30,.64); text-decoration: none; }
+    .nav-link:hover { color: #15151B; }
+    .nav-link.active { color: #2C4A73; font-weight: 600; }
+    .nav-cta-pill {
+      display: inline-flex; align-items: center; white-space: nowrap;
+      margin-left: 12px; padding: 11px 22px; border-radius: 100px;
+      background: #AC3B34; color: #fff; font-weight: 600; font-size: 13.5px;
+      box-shadow: 0 6px 22px rgba(172,59,52,.3); flex-shrink: 0; text-decoration: none;
+    }
+    .nav-cta-pill:hover { color: #fff; background: #c0443c; }
+    @media (max-width: 700px) {
+      .nav-links { display: none; }
+      .nav-cta-pill { padding: 9px 16px; font-size: 12.5px; }
+    }
+
+    /* ── Eyebrow ── */
+    .eyebrow {
+      display: inline-block; font-size: 11px; font-weight: 700;
+      letter-spacing: 1.8px; text-transform: uppercase;
+      color: var(--ac); margin-bottom: 18px;
+    }
+
+    /* ── Reveal ── */
+    .rv {
+      opacity: 0; transform: translateY(26px);
+      transition: opacity .7s var(--e1), transform .7s var(--e1);
+    }
+    .rv.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── Accordion shared ── */
+    .acc-body {
+      max-height: 0; overflow: hidden;
+      transition: max-height .5s cubic-bezier(.16,1,.3,1), opacity .4s ease;
+      opacity: 0;
+    }
+    .acc-body.open { max-height: 600px; opacity: 1; }
+    .acc-btn {
+      background: none; border: 1px solid rgba(44,74,115,.3);
+      width: 32px; height: 32px; border-radius: 50%;
+      color: #2C4A73; font-size: 18px; line-height: 1;
+      cursor: pointer; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      transition: background .2s, transform .3s;
+    }
+    .acc-btn.open { background: #2C4A73; color: #fff; transform: rotate(45deg); }
+
+    /* ════════════════════════════════════════
+       SECTION 1: HERO
+    ════════════════════════════════════════ */
+    .hero {
+      background: var(--bg-mid);
+      padding: 160px var(--cpad) 100px;
+      position: relative; overflow: hidden;
+    }
+    .hero-inner {
+      max-width: var(--cmax); margin: 0 auto;
+      position: relative; z-index: 2;
+    }
+    .hero-eyebrow {
+      font-size: 11px; font-weight: 700; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--ac);
+      margin-bottom: 28px; opacity: 0; transform: translateY(20px);
+    }
+    .hero h1 {
+      font-size: clamp(2.8rem, 5.5vw, 5.5rem);
+      font-weight: 900; line-height: 1.04; letter-spacing: -2.5px;
+      color: var(--t1); max-width: 860px; margin-bottom: 60px;
+      overflow: hidden;
+    }
+    .hero h1 .h1-line { display: block; overflow: hidden; }
+    .hero h1 .h1-line-inner { display: block; transform: translateY(110%); }
+    .hero-stats {
+      display: flex; flex-wrap: wrap; gap: 0;
+      border-top: 1px solid var(--bdr); padding-top: 40px;
+    }
+    .hero-stat {
+      padding: 0 48px 0 0; border-right: 1px solid var(--bdr);
+      margin-right: 48px; opacity: 0; transform: translateY(20px);
+    }
+    .hero-stat:last-child { border-right: none; margin-right: 0; padding-right: 0; }
+    .hero-stat-num {
+      font-size: clamp(26px, 3.2vw, 40px); font-weight: 800;
+      color: var(--t1); letter-spacing: -1px; line-height: 1;
+    }
+    .hero-stat-label {
+      font-size: 13px; font-weight: 500;
+      color: var(--t2); margin-top: 6px; letter-spacing: .2px;
+    }
+    @media (max-width: 600px) {
+      .hero-stats { gap: 28px; }
+      .hero-stat { border-right: none; margin-right: 0; padding-right: 0; }
+      .hero { padding: 130px var(--cpad) 80px; }
+    }
+
+    /* ════════════════════════════════════════
+       SECTION 2: STORY
+    ════════════════════════════════════════ */
+    .story { padding: var(--sec) var(--cpad); background: var(--bg); }
+    .story-inner {
+      max-width: var(--cmax); margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start;
+    }
+    .story h2 {
+      font-size: clamp(28px, 3.5vw, 48px); font-weight: 800;
+      letter-spacing: -1.5px; line-height: 1.1; color: var(--t1); margin-bottom: 24px;
+    }
+    .story-body { font-size: 16px; line-height: 1.8; color: var(--t2); }
+    .story-body p + p { margin-top: 16px; }
+    .story-highlight {
+      background: rgba(255,255,255,.5);
+      border: 1px solid rgba(255,255,255,.7);
+      border-radius: 22px; backdrop-filter: blur(14px);
+      padding: 36px; display: grid;
+      grid-template-columns: 1fr 1fr; gap: 28px;
+    }
+    .story-stat-item {}
+    .story-stat-val {
+      font-size: clamp(22px, 2.5vw, 30px); font-weight: 800;
+      color: var(--ac); letter-spacing: -1px; line-height: 1; margin-bottom: 6px;
+    }
+    .story-stat-lbl { font-size: 13px; font-weight: 500; color: var(--t2); line-height: 1.4; }
+    @media (max-width: 860px) {
+      .story-inner { grid-template-columns: 1fr; gap: 48px; }
+      .story-highlight { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 480px) {
+      .story-highlight { grid-template-columns: 1fr; }
+    }
+
+    /* ════════════════════════════════════════
+       SECTION 3: MILESTONES
+    ════════════════════════════════════════ */
+    /* ── Timeline ── */
+    .milestones { padding: var(--sec) var(--cpad); background: var(--bg-off); }
+    .milestones-header { max-width: var(--cmax); margin: 0 auto 72px; text-align:center; }
+    .milestones-header h2 {
+      font-size: clamp(26px, 3.5vw, 46px); font-weight: 800;
+      letter-spacing: -1.2px; color: var(--t1);
+    }
+    .timeline { max-width: 960px; margin: 0 auto; position: relative; }
+    .tl-spine {
+      position: absolute; left: 50%; top: 0; bottom: 0;
+      width: 2px; background: var(--bdr); transform: translateX(-50%);
+    }
+    .tl-item {
+      display: grid; grid-template-columns: 1fr 60px 1fr;
+      align-items: start; margin-bottom: 52px; position: relative;
+    }
+    .tl-item:last-child { margin-bottom: 0; }
+    .tl-left  { grid-column: 1; text-align: right; padding-right: 36px; }
+    .tl-center { grid-column: 2; display: flex; align-items: flex-start; justify-content: center; padding-top: 4px; }
+    .tl-right { grid-column: 3; padding-left: 36px; }
+    .tl-dot {
+      width: 14px; height: 14px; border-radius: 50%;
+      background: var(--ac); border: 3px solid var(--bg-off);
+      box-shadow: 0 0 0 2px var(--ac); flex-shrink: 0;
+      position: relative; z-index: 2;
+    }
+    .tl-year {
+      font-size: 12px; font-weight: 700; letter-spacing: 1px;
+      color: var(--ac); text-transform: uppercase; margin-bottom: 6px;
+    }
+    .tl-title {
+      font-size: 16px; font-weight: 700; color: var(--t1);
+      line-height: 1.3; margin-bottom: 8px;
+    }
+    .tl-body { font-size: 14px; line-height: 1.7; color: var(--t2); }
+    /* Even items: content left */
+    .tl-item.tl-l .tl-left { grid-column: 1; }
+    .tl-item.tl-l .tl-center { grid-column: 2; }
+    .tl-item.tl-l .tl-right { grid-column: 3; visibility: hidden; }
+    /* Odd items: content right */
+    .tl-item.tl-r .tl-left { grid-column: 1; visibility: hidden; }
+    .tl-item.tl-r .tl-center { grid-column: 2; }
+    .tl-item.tl-r .tl-right { grid-column: 3; }
+    @media (max-width: 680px) {
+      .tl-spine { left: 20px; }
+      .tl-item { grid-template-columns: 40px 1fr; }
+      .tl-item.tl-l .tl-right,
+      .tl-item.tl-r .tl-left { display: none; }
+      .tl-item.tl-l .tl-right { visibility: visible; display: block; }
+      .tl-center { grid-column: 1; justify-content: center; }
+      .tl-left, .tl-right { grid-column: 2; text-align: left; padding-left: 20px; padding-right: 0; }
+      .tl-item.tl-l .tl-right { grid-column: 2; }
+      .tl-item.tl-r .tl-right { grid-column: 2; }
+    }
+
+    /* ════════════════════════════════════════
+       SECTION 4: LEADERSHIP
+    ════════════════════════════════════════ */
+    .leadership { padding: var(--sec) var(--cpad); background: var(--bg-mid); }
+    .leadership-header { max-width: var(--cmax); margin: 0 auto 52px; }
+    .leadership-header h2 {
+      font-size: clamp(26px, 3.5vw, 46px); font-weight: 800;
+      letter-spacing: -1.2px; color: var(--t1);
+    }
+    .leadership-grid {
+      max-width: var(--cmax); margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 28px;
+    }
+    .leader-card {
+      background: rgba(255,255,255,.55);
+      border: 1px solid rgba(255,255,255,.7);
+      border-radius: 26px; backdrop-filter: blur(14px);
+      padding: 36px; overflow: hidden;
+    }
+    .leader-card-head {
+      display: flex; align-items: center; gap: 16px; margin-bottom: 0;
+    }
+    .leader-initials {
+      width: 48px; height: 48px; border-radius: 50%;
+      background: rgba(44,74,115,.1); color: var(--ac);
+      font-size: 16px; font-weight: 800; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .leader-info { flex: 1; }
+    .leader-name { font-size: 17px; font-weight: 700; color: var(--t1); letter-spacing: -.3px; }
+    .leader-role { font-size: 13px; font-weight: 500; color: var(--t2); margin-top: 2px; }
+    .leader-card-actions {
+      display: flex; align-items: center; gap: 10px; flex-shrink: 0;
+    }
+    .leader-li {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 32px; height: 32px; border-radius: 50%;
+      border: 1px solid rgba(44,74,115,.3); color: var(--ac);
+      text-decoration: none; transition: background .2s, color .2s;
+    }
+    .leader-li:hover { background: var(--ac); color: #fff; }
+    .leader-li svg { width: 14px; height: 14px; }
+    .leader-bio-body {
+      font-size: 14px; line-height: 1.75; color: var(--t2);
+      padding-top: 18px;
+    }
+    @media (max-width: 700px) {
+      .leadership-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ════════════════════════════════════════
+       SECTION 5: WHY GSES
+    ════════════════════════════════════════ */
+    .why-gses { padding: var(--sec) var(--cpad); background: var(--bg); }
+    .why-gses-header { max-width: var(--cmax); margin: 0 auto 52px; }
+    .why-gses-header h2 {
+      font-size: clamp(26px, 3.5vw, 46px); font-weight: 800;
+      letter-spacing: -1.2px; color: var(--t1);
+    }
+    .why-grid {
+      max-width: var(--cmax); margin: 0 auto;
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px;
+    }
+    .why-item {
+      padding: 32px 28px 28px;
+      background: rgba(255,255,255,.5);
+      border: 1px solid rgba(255,255,255,.7);
+      border-radius: 22px; backdrop-filter: blur(14px);
+    }
+    .why-num {
+      font-size: 40px; font-weight: 900; letter-spacing: -.05em;
+      color: rgba(44,74,115,.15); line-height: 1; margin-bottom: 16px;
+    }
+    .why-title {
+      font-size: 16px; font-weight: 700; color: var(--t1);
+      margin-bottom: 8px; letter-spacing: -.3px;
+    }
+    .why-body { font-size: 14px; line-height: 1.7; color: var(--t2); }
+    @media (max-width: 860px) {
+      .why-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 540px) {
+      .why-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ════════════════════════════════════════
+       SECTION 6: CREDENTIALS
+    ════════════════════════════════════════ */
+    .credentials { padding: var(--sec) var(--cpad); background: var(--bg-off); }
+    .credentials-inner { max-width: var(--cmax); margin: 0 auto; }
+    .credentials-inner h2 {
+      font-size: clamp(26px, 3.5vw, 46px); font-weight: 800;
+      letter-spacing: -1.2px; color: var(--t1); margin-bottom: 48px;
+    }
+    .cred-row {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 16px 0; border-top: 1px solid rgba(24,24,30,.08);
+      font-size: 15px; font-weight: 500; color: var(--t1);
+      gap: 20px;
+    }
+    .cred-row:last-child { border-bottom: 1px solid rgba(24,24,30,.08); }
+    .cred-detail {
+      font-size: 13px; font-weight: 400; color: var(--t3);
+      text-align: right; white-space: nowrap;
+    }
+    @media (max-width: 560px) {
+      .cred-row { flex-direction: column; align-items: flex-start; gap: 4px; }
+      .cred-detail { text-align: left; }
+    }
+
+    /* ════════════════════════════════════════
+       SECTION 7: ALLIED BRANDS
+    ════════════════════════════════════════ */
+    .allied { padding: var(--sec) var(--cpad); background: var(--bg-mid); }
+    .allied-header { max-width: var(--cmax); margin: 0 auto 52px; }
+    .allied-header h2 {
+      font-size: clamp(26px, 3.5vw, 46px); font-weight: 800;
+      letter-spacing: -1.2px; color: var(--t1);
+    }
+    .allied-grid {
+      max-width: var(--cmax); margin: 0 auto;
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px;
+    }
+    .allied-card {
+      background: rgba(255,255,255,.55);
+      border: 1px solid rgba(255,255,255,.7);
+      border-radius: 22px; backdrop-filter: blur(14px);
+      padding: 32px; overflow: hidden;
+    }
+    .allied-card-head {
+      display: flex; align-items: flex-start; justify-content: space-between;
+      gap: 12px; margin-bottom: 0;
+    }
+    .allied-brand { font-size: 20px; font-weight: 800; color: var(--t1); letter-spacing: -.4px; }
+    .allied-url {
+      font-size: 12px; font-weight: 500; color: var(--t3); margin-top: 3px;
+      text-decoration: none;
+    }
+    .allied-desc {
+      font-size: 14px; line-height: 1.7; color: var(--t2);
+      padding-top: 18px;
+    }
+    .allied-expand {
+      font-size: 13.5px; line-height: 1.65; color: var(--t2);
+      padding-top: 10px;
+    }
+    @media (max-width: 860px) { .allied-grid { grid-template-columns: 1fr; max-width: 540px; } }
+
+    /* ════════════════════════════════════════
+       SECTION 8: COMMUNITY
+    ════════════════════════════════════════ */
+    .community { padding: var(--sec) var(--cpad); background: var(--bg); }
+    .community-inner { max-width: var(--cmax); margin: 0 auto; }
+    .community-inner h2 {
+      font-size: clamp(26px, 3.5vw, 46px); font-weight: 800;
+      letter-spacing: -1.2px; color: var(--t1); margin-bottom: 32px;
+    }
+    .community-row {
+      font-size: 17px; font-weight: 500; color: var(--t2); line-height: 1.8;
+      letter-spacing: .1px;
+    }
+    .community-sep { color: var(--ac); margin: 0 12px; font-weight: 300; }
+
+    /* ════════════════════════════════════════
+       SECTION 9: CTA
+    ════════════════════════════════════════ */
+    .cta-section {
+      padding: var(--sec) var(--cpad);
+      background: var(--bg-off); text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .cta-glow {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%,-50%);
+      width: 700px; height: 400px;
+      background: radial-gradient(ellipse, rgba(44,74,115,.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .cta-section .container { position: relative; z-index: 2; }
+    .cta-section h2 {
+      font-size: clamp(28px, 4.5vw, 54px); font-weight: 800;
+      letter-spacing: -1.5px; color: var(--t1); margin-bottom: 40px; line-height: 1.1;
+    }
+    .cta-buttons {
+      display: flex; align-items: center; justify-content: center;
+      gap: 16px; flex-wrap: wrap;
+    }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 16px 32px; background: var(--ac); color: #fff;
+      font-size: 15px; font-weight: 700; text-decoration: none;
+      border-radius: 10px; transition: background .2s, transform .2s;
+    }
+    .btn-primary:hover { background: #3A5C88; transform: translateY(-2px); }
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 16px 32px; background: rgba(255,255,255,.5); color: var(--t1);
+      font-size: 15px; font-weight: 600; text-decoration: none;
+      border-radius: 10px; border: 1.5px solid var(--bdr);
+      transition: background .2s, border-color .2s, transform .2s;
+    }
+    .btn-outline:hover {
+      background: rgba(255,255,255,.8); border-color: var(--ac);
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="cur-dot" id="curDot"></div>
+  <div class="cur-ring" id="curRing"></div>
+
+  <!-- ── NAV ── -->
+  <nav class="nav" id="nav">
+    <a href="index.html" class="nav-logo"><img src="assets/gses-logo.png" alt="GSES"></a>
+    <div class="nav-links">
+      <a href="index.html#audiences" class="nav-link">Who we help</a>
+      <a href="index.html#why" class="nav-link">Why GSES</a>
+      <a href="projects.html" class="nav-link">Our work</a>
+      <a href="about.html" class="nav-link active">About</a>
+      <a href="insights.html" class="nav-link">Insights</a>
+    </div>
+    <a href="mailto:consultancy@gses.com.au" class="nav-cta-pill">Get in touch</a>
+  </nav>
+
+  <!-- ════════════════════════════════════════
+       SECTION 1: HERO
+  ════════════════════════════════════════ -->
+  <section class="hero">
+    <div class="hero-inner">
+      <p class="hero-eyebrow" id="heroEyebrow">Est. 1998 &middot; Global Sustainable Energy Solutions</p>
+      <h1 id="heroH1">
+        <span class="h1-line"><span class="h1-line-inner">27 Years Building</span></span>
+        <span class="h1-line"><span class="h1-line-inner">Australia's Clean</span></span>
+        <span class="h1-line"><span class="h1-line-inner">Energy Industry</span></span>
+      </h1>
+      <div class="hero-stats">
+        <div class="hero-stat" data-delay="0">
+          <div class="hero-stat-num">1992</div>
+          <div class="hero-stat-label">First solar trainers in Australia</div>
+        </div>
+        <div class="hero-stat" data-delay="1">
+          <div class="hero-stat-num">50+</div>
+          <div class="hero-stat-label">Years combined director experience</div>
+        </div>
+        <div class="hero-stat" data-delay="2">
+          <div class="hero-stat-num">40+</div>
+          <div class="hero-stat-label">Countries worked in</div>
+        </div>
+        <div class="hero-stat" data-delay="3">
+          <div class="hero-stat-num">500+</div>
+          <div class="hero-stat-label">Expert assessments delivered</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════
+       SECTION 2: STORY
+  ════════════════════════════════════════ -->
+  <section class="story">
+    <div class="story-inner">
+      <div class="rv">
+        <span class="eyebrow">Our Story</span>
+        <h2>We Helped Write the Rules</h2>
+        <div class="story-body">
+          <p>GSES was founded in 1998 by engineers who had been building Australia's solar industry since 1992 — before there were standards, before accreditation, before most Australians had seen a solar panel.</p>
+          <p>We worked with regulators to create the national inspection scheme still in use today, chaired the Industry Reference Group that shaped Australia's electrical training packages, and took our frameworks to ASEAN — the model NABCEP later adapted for the United States.</p>
+        </div>
+      </div>
+      <div class="story-highlight rv">
+        <div class="story-stat-item">
+          <div class="story-stat-val">12,000+</div>
+          <div class="story-stat-lbl">CER inspections delivered</div>
+        </div>
+        <div class="story-stat-item">
+          <div class="story-stat-val">AS/NZS 5139</div>
+          <div class="story-stat-lbl">Principal author of battery standard</div>
+        </div>
+        <div class="story-stat-item">
+          <div class="story-stat-val">2011</div>
+          <div class="story-stat-lbl">CER preferred provider since</div>
+        </div>
+        <div class="story-stat-item">
+          <div class="story-stat-val">40+</div>
+          <div class="story-stat-lbl">Countries worked in</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════
+       SECTION 3: MILESTONES
+  ════════════════════════════════════════ -->
+  <section class="milestones">
+    <div class="milestones-header rv">
+      <span class="eyebrow">Since 1992</span>
+      <h2>A Record of Industry Building</h2>
+    </div>
+    <div class="timeline">
+      <div class="tl-spine"></div>
+
+      <div class="tl-item tl-l rv">
+        <div class="tl-left">
+          <div class="tl-year">1992</div>
+          <div class="tl-title">First Solar Trainers in Australia</div>
+          <div class="tl-body">GSES founders deliver the first technician-level solar training in Australia. No accreditation scheme exists yet — they are building the foundations of an industry.</div>
+        </div>
+        <div class="tl-center"><div class="tl-dot"></div></div>
+        <div class="tl-right"></div>
+      </div>
+
+      <div class="tl-item tl-r rv">
+        <div class="tl-left"></div>
+        <div class="tl-center"><div class="tl-dot"></div></div>
+        <div class="tl-right">
+          <div class="tl-year">1998</div>
+          <div class="tl-title">GSES Formally Established</div>
+          <div class="tl-body">Incorporated. Immediately works with industry associations to develop the installer accreditation framework still in use today under Solar Accreditation Australia.</div>
+        </div>
+      </div>
+
+      <div class="tl-item tl-l rv">
+        <div class="tl-left">
+          <div class="tl-year">2000</div>
+          <div class="tl-title">ASEAN &amp; International Expansion</div>
+          <div class="tl-body">Joins the Institute for Sustainable Power; develops quality training frameworks for the ASEAN region. This work is later adapted by NABCEP as the foundation for US solar training.</div>
+        </div>
+        <div class="tl-center"><div class="tl-dot"></div></div>
+        <div class="tl-right"></div>
+      </div>
+
+      <div class="tl-item tl-r rv">
+        <div class="tl-left"></div>
+        <div class="tl-center"><div class="tl-dot"></div></div>
+        <div class="tl-right">
+          <div class="tl-year">2008</div>
+          <div class="tl-title">National Training Packages</div>
+          <div class="tl-body">Joins the ASQA Industry Reference Group developing national electrical training packages. GSES chairs the committee for six years.</div>
+        </div>
+      </div>
+
+      <div class="tl-item tl-l rv">
+        <div class="tl-left">
+          <div class="tl-year">2010</div>
+          <div class="tl-title">Pacific Islands Leadership</div>
+          <div class="tl-body">Helps Pacific Island Countries form SEIAPI, acting as its Secretariat. Assists ECOWAS (West Africa) in creating a technician certification program.</div>
+        </div>
+        <div class="tl-center"><div class="tl-dot"></div></div>
+        <div class="tl-right"></div>
+      </div>
+
+      <div class="tl-item tl-r rv">
+        <div class="tl-left"></div>
+        <div class="tl-center"><div class="tl-dot"></div></div>
+        <div class="tl-right">
+          <div class="tl-year">2011</div>
+          <div class="tl-title">CER Partnership Begins</div>
+          <div class="tl-body">Appointed preferred service provider to the Clean Energy Regulator. Begins what will become a 12,000+ inspection national program over 15 years.</div>
+        </div>
+      </div>
+
+      <div class="tl-item tl-l rv">
+        <div class="tl-left">
+          <div class="tl-year">2015–2020</div>
+          <div class="tl-title">Standards Authorship</div>
+          <div class="tl-body">Principal author of AS/NZS 5139:2019, Australia's battery storage systems standard. Appointed to Standards Australia Committee EL42 and IEA PVPS Task 9 and Task 18.</div>
+        </div>
+        <div class="tl-center"><div class="tl-dot"></div></div>
+        <div class="tl-right"></div>
+      </div>
+
+      <div class="tl-item tl-r rv">
+        <div class="tl-left"></div>
+        <div class="tl-center"><div class="tl-dot"></div></div>
+        <div class="tl-right">
+          <div class="tl-year">2020</div>
+          <div class="tl-title">Uganda &amp; Africa</div>
+          <div class="tl-body">Develops Quality Assurance Framework for Uganda's Rural Electrification Agency solar home systems program.</div>
+        </div>
+      </div>
+
+      <div class="tl-item tl-l rv">
+        <div class="tl-left">
+          <div class="tl-year">May 2024</div>
+          <div class="tl-title">Queensland Battery Booster</div>
+          <div class="tl-body">Appointed official inspectorate for the Queensland Government Battery Booster Program (3,000+ home battery systems). Also appointed to SSFR and QCHEU programs.</div>
+        </div>
+        <div class="tl-center"><div class="tl-dot"></div></div>
+        <div class="tl-right"></div>
+      </div>
+
+      <div class="tl-item tl-r rv">
+        <div class="tl-left"></div>
+        <div class="tl-center"><div class="tl-dot"></div></div>
+        <div class="tl-right">
+          <div class="tl-year">2025–2026</div>
+          <div class="tl-title">Industry at Scale</div>
+          <div class="tl-body">12,000+ CER inspections delivered. 3.8 MW fire investigation for Noumi. 48-site program for Property NSW. National O&amp;M for Sigma Healthcare across 5 states.</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════
+       SECTION 4: LEADERSHIP
+  ════════════════════════════════════════ -->
+  <section class="leadership">
+    <div class="leadership-header rv">
+      <span class="eyebrow">The Team</span>
+      <h2>Our Directors</h2>
+    </div>
+    <div class="leadership-grid">
+
+      <!-- Christopher Martell -->
+      <div class="leader-card rv">
+        <div class="leader-card-head">
+          <div class="leader-initials">CM</div>
+          <div class="leader-info">
+            <div class="leader-name">Christopher Martell</div>
+            <div class="leader-role">Managing Director</div>
+          </div>
+          <div class="leader-card-actions">
+            <a href="https://www.linkedin.com/in/christopher-martell" target="_blank" rel="noopener noreferrer" class="leader-li" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+            </a>
+            <button class="acc-btn" aria-label="Show bio" aria-expanded="false">+</button>
+          </div>
+        </div>
+        <div class="acc-body">
+          <p class="leader-bio-body">Leads GSES's consultancy, inspection, and engineering programs. Expert in renewable energy technical assurance, regulatory compliance, and large-scale inspection programs for government and tier-1 clients.</p>
+        </div>
+      </div>
+
+      <!-- Geoff Stapleton -->
+      <div class="leader-card rv">
+        <div class="leader-card-head">
+          <div class="leader-initials">GS</div>
+          <div class="leader-info">
+            <div class="leader-name">Geoff Stapleton</div>
+            <div class="leader-role">Director — International</div>
+          </div>
+          <div class="leader-card-actions">
+            <a href="https://www.linkedin.com/in/geoff-stapleton" target="_blank" rel="noopener noreferrer" class="leader-li" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+            </a>
+            <button class="acc-btn" aria-label="Show bio" aria-expanded="false">+</button>
+          </div>
+        </div>
+        <div class="acc-body">
+          <p class="leader-bio-body">Pioneer of Australian solar industry training. Led GSES's 30+ year international capacity building portfolio across 40+ countries. Co-authored GSES's foundational solar publications — 30,000+ copies sold worldwide.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════
+       SECTION 5: WHY GSES
+  ════════════════════════════════════════ -->
+  <section class="why-gses">
+    <div class="why-gses-header rv">
+      <span class="eyebrow">Why GSES</span>
+      <h2>Independent means we only answer to you.</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-item rv">
+        <div class="why-num">01</div>
+        <div class="why-title">Independent</div>
+        <p class="why-body">No product sales. No installation arm. Our advice is yours alone.</p>
+      </div>
+      <div class="why-item rv">
+        <div class="why-num">02</div>
+        <div class="why-title">Specialist</div>
+        <p class="why-body">Renewable energy is not a division — it is our entire business.</p>
+      </div>
+      <div class="why-item rv">
+        <div class="why-num">03</div>
+        <div class="why-title">National</div>
+        <p class="why-body">Operations across all states and territories, at scale, without compromising quality.</p>
+      </div>
+      <div class="why-item rv">
+        <div class="why-num">04</div>
+        <div class="why-title">Experienced</div>
+        <p class="why-body">Active since before the industry existed. That depth shows in every report.</p>
+      </div>
+      <div class="why-item rv">
+        <div class="why-num">05</div>
+        <div class="why-title">Trusted</div>
+        <p class="why-body">CER preferred provider. NSW Government LGP and CM3 approved.</p>
+      </div>
+      <div class="why-item rv">
+        <div class="why-num">06</div>
+        <div class="why-title">Outcome-Driven</div>
+        <p class="why-body">Every report is written to help the client make a better decision.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════
+       SECTION 6: CREDENTIALS
+  ════════════════════════════════════════ -->
+  <section class="credentials">
+    <div class="credentials-inner">
+      <span class="eyebrow rv">Accreditations</span>
+      <h2 class="rv">Credentials &amp; Procurement Approvals</h2>
+
+      <div class="cred-row rv">
+        <span>CER Approved Contractor</span>
+        <span class="cred-detail">Since 2011</span>
+      </div>
+      <div class="cred-row rv">
+        <span>NSW Electrical Contractors Licence</span>
+        <span class="cred-detail">219787C</span>
+      </div>
+      <div class="cred-row rv">
+        <span>DISP Embedded Status</span>
+        <span class="cred-detail">Defence Industry Security Program</span>
+      </div>
+      <div class="cred-row rv">
+        <span>NSW Government SCM0005 Procurement Panel</span>
+        <span class="cred-detail">Approved Supplier</span>
+      </div>
+      <div class="cred-row rv">
+        <span>Local Government Procurement (LGP)</span>
+        <span class="cred-detail">Approved Supplier</span>
+      </div>
+      <div class="cred-row rv">
+        <span>CM3</span>
+        <span class="cred-detail">Approved</span>
+      </div>
+      <div class="cred-row rv">
+        <span>Victorian Fair Jobs Code</span>
+        <span class="cred-detail">FJC-260122-9048</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════
+       SECTION 7: ALLIED BRANDS
+  ════════════════════════════════════════ -->
+  <section class="allied">
+    <div class="allied-header rv">
+      <span class="eyebrow">The Group</span>
+      <h2>Allied Brands</h2>
+    </div>
+    <div class="allied-grid">
+
+      <!-- Mindaro -->
+      <div class="allied-card rv">
+        <div class="allied-card-head">
+          <div>
+            <div class="allied-brand">Mindaro</div>
+            <a href="https://mindaro.energy" target="_blank" rel="noopener noreferrer" class="allied-url">mindaro.energy</a>
+          </div>
+          <button class="acc-btn" aria-label="More about Mindaro" aria-expanded="false">+</button>
+        </div>
+        <p class="allied-desc">Design engineering arm — For-Construction Drawings, Connection Applications, Bills of Materials for C&amp;I solar projects.</p>
+        <div class="acc-body">
+          <p class="allied-expand">Previously the GSES Design Team, now standalone. Handles solar, battery and EV charger projects from 30kW to megawatt scale.</p>
+        </div>
+      </div>
+
+      <!-- Diagno -->
+      <div class="allied-card rv">
+        <div class="allied-card-head">
+          <div>
+            <div class="allied-brand">Diagno</div>
+            <a href="https://diagno.energy" target="_blank" rel="noopener noreferrer" class="allied-url">diagno.energy</a>
+          </div>
+          <button class="acc-btn" aria-label="More about Diagno" aria-expanded="false">+</button>
+        </div>
+        <p class="allied-desc">Asset intelligence platform. ~150 MW under management across 45+ partners.</p>
+        <div class="acc-body">
+          <p class="allied-expand">Automated real-time solar monitoring using machine learning and AI, reviewed by independent engineers.</p>
+        </div>
+      </div>
+
+      <!-- GSES International -->
+      <div class="allied-card rv">
+        <div class="allied-card-head">
+          <div>
+            <div class="allied-brand">GSES International</div>
+            <a href="https://gsesinternational.com" target="_blank" rel="noopener noreferrer" class="allied-url">gsesinternational.com</a>
+          </div>
+          <button class="acc-btn" aria-label="More about GSES International" aria-expanded="false">+</button>
+        </div>
+        <p class="allied-desc">International training arm — Australia's most rigorous solar and battery accreditation.</p>
+        <div class="acc-body">
+          <p class="allied-expand">Delivering courses to 10,000+ students across 40+ countries.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════
+       SECTION 8: COMMUNITY
+  ════════════════════════════════════════ -->
+  <section class="community">
+    <div class="community-inner rv">
+      <span class="eyebrow">Community</span>
+      <h2>We Give Back</h2>
+      <p class="community-row">
+        One Child One Light
+        <span class="community-sep">&middot;</span>
+        Greyhound Adoption Program
+        <span class="community-sep">&middot;</span>
+        Elouera Boardriders Club
+        <span class="community-sep">&middot;</span>
+        The Smith Family
+        <span class="community-sep">&middot;</span>
+        Bicycles for Humanity
+      </p>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════
+       SECTION 9: CTA
+  ════════════════════════════════════════ -->
+  <section class="cta-section">
+    <div class="cta-glow"></div>
+    <div class="container">
+      <h2 class="rv">Independent. On Your Side.</h2>
+      <div class="cta-buttons rv">
+        <a href="mailto:consultancy@gses.com.au" class="btn-primary">Talk to an expert &rarr;</a>
+        <a href="projects.html" class="btn-outline">View Our Projects</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════
+       FOOTER
+  ════════════════════════════════════════ -->
+  <footer style="background:#E2E2DE;padding:34px clamp(20px,5vw,72px);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;border-top:1px solid rgba(24,24,30,.08)">
+    <a href="index.html" style="display:flex;align-items:center"><img src="assets/gses-logo.png" alt="GSES" style="height:26px;width:auto"></a>
+    <nav style="display:flex;gap:24px;flex-wrap:wrap">
+      <a href="about.html" style="font-size:12.5px;color:rgba(24,24,30,.5);text-decoration:none">About</a>
+      <a href="projects.html" style="font-size:12.5px;color:rgba(24,24,30,.5);text-decoration:none">Projects</a>
+      <a href="insights.html" style="font-size:12.5px;color:rgba(24,24,30,.5);text-decoration:none">Insights</a>
+      <a href="mailto:consultancy@gses.com.au" style="font-size:12.5px;color:rgba(24,24,30,.5);text-decoration:none">Contact</a>
+    </nav>
+    <span style="font-size:12px;color:rgba(24,24,30,.42)">&copy; 2026 Global Sustainable Energy Solutions &middot; Independent renewable energy engineering</span>
+  </footer>
+
+  <!-- ── SCRIPTS ── -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.4/dist/lenis.min.js"></script>
+  <script>
+(function(){
+'use strict';
+var touch = !window.matchMedia('(hover:hover) and (pointer:fine)').matches;
+
+/* Lenis smooth scroll */
+var lenis = new Lenis({ duration: 1.15, lerp: .085 });
+gsap.ticker.add(function(t){ lenis.raf(t * 1000); });
+
+/* Cursor */
+if (!touch) {
+  var dot  = document.getElementById('curDot');
+  var ring = document.getElementById('curRing');
+  if (dot && ring) {
+    var dxQ = gsap.quickTo(dot,  'x', { duration: .07, ease: 'none' });
+    var dyQ = gsap.quickTo(dot,  'y', { duration: .07, ease: 'none' });
+    var rxQ = gsap.quickTo(ring, 'x', { duration: .4,  ease: 'power3.out' });
+    var ryQ = gsap.quickTo(ring, 'y', { duration: .4,  ease: 'power3.out' });
+    window.addEventListener('mousemove', function(e){
+      dxQ(e.clientX); dyQ(e.clientY);
+      rxQ(e.clientX); ryQ(e.clientY);
+    });
+    document.querySelectorAll('a, button').forEach(function(el){
+      el.addEventListener('mouseenter', function(){
+        ring.style.width  = '58px'; ring.style.height = '58px';
+        ring.style.marginLeft = '-29px'; ring.style.marginTop = '-29px';
+        ring.style.background = 'rgba(255,255,255,.18)';
+      });
+      el.addEventListener('mouseleave', function(){
+        ring.style.width  = '38px'; ring.style.height = '38px';
+        ring.style.marginLeft = '-19px'; ring.style.marginTop = '-19px';
+        ring.style.background = 'transparent';
+      });
+    });
+  }
+}
+
+/* Hero entrance */
+window.addEventListener('DOMContentLoaded', function(){
+  var heroEyebrow  = document.getElementById('heroEyebrow');
+  var heroStats    = document.querySelectorAll('.hero-stat');
+  var h1LineInners = document.querySelectorAll('.h1-line-inner');
+  var tl = gsap.timeline({ delay: 0.25 });
+  if (heroEyebrow) tl.to(heroEyebrow, { opacity: 1, y: 0, duration: .7, ease: 'power3.out' });
+  if (h1LineInners.length) tl.to(h1LineInners, { y: '0%', duration: .9, ease: 'power4.out', stagger: .12 }, '-=0.3');
+  if (heroStats.length) tl.to(heroStats, { opacity: 1, y: 0, duration: .6, ease: 'power3.out', stagger: .1 }, '-=0.3');
+});
+
+/* Scroll reveal — IntersectionObserver */
+var revealObs = new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      revealObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12 });
+document.querySelectorAll('.rv').forEach(function(el){ revealObs.observe(el); });
+
+/* Accordion — milestones, leadership bios, allied brands */
+document.querySelectorAll('.acc-btn').forEach(function(btn){
+  var wrapper = btn.closest('[class]');
+  /* find the nearest sibling .acc-body */
+  var body = null;
+  /* For milestone rows: btn is inside .ms-row, body is next sibling */
+  var msRow = btn.closest('.ms-row');
+  if (msRow) {
+    body = msRow.parentElement.querySelector('.acc-body');
+  }
+  /* For leader card: btn is in .leader-card-head, body is in same .leader-card */
+  var leaderCard = btn.closest('.leader-card');
+  if (leaderCard) {
+    body = leaderCard.querySelector('.acc-body');
+  }
+  /* For allied card: btn is in .allied-card-head, body is in same .allied-card */
+  var alliedCard = btn.closest('.allied-card');
+  if (alliedCard) {
+    body = alliedCard.querySelector('.acc-body');
+  }
+  if (!body) return;
+  btn.addEventListener('click', function(){
+    var isOpen = btn.classList.contains('open');
+    btn.classList.toggle('open');
+    body.classList.toggle('open');
+    btn.setAttribute('aria-expanded', !isOpen);
+  });
+});
+
+})();
+  </script>
+</body>
+</html>

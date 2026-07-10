@@ -1,0 +1,831 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projects &amp; Case Studies — GSES Engineering &amp; Assurance</title>
+<meta name="description" content="27 years of independent renewable energy engineering. Explore GSES case studies: NSW Health, Clean Energy Regulator, Queensland Government, international development, and more.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   DESIGN TOKENS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+:root {
+  --bg:      #F2F2F0;
+  --bg-off:  #EDEDEA;
+  --bg-mid:  #E8ECF1;
+  --bg-dark: #15151B;
+  --ac:      #2C4A73;
+  --ac-dk:   #1e3455;
+  --ac-md:   #3A5C88;
+  --ac-lt:   rgba(44,74,115,0.1);
+  --t1:      #15151B;
+  --t2:      rgba(24,24,30,0.6);
+  --t3:      rgba(24,24,30,0.45);
+  --t4:      rgba(24,24,30,0.5);
+  --bdr:     rgba(24,24,30,0.08);
+  --bdr2:    rgba(24,24,30,0.16);
+  --card-bg: rgba(255,255,255,0.5);
+  --card-bd: rgba(255,255,255,0.7);
+  --font:    'Inter', system-ui, -apple-system, sans-serif;
+  --sec:     clamp(80px,11vw,150px);
+  --cmax:    1180px;
+  --cpad:    clamp(20px,5vw,72px);
+  --r:       22px;
+  --e1:      cubic-bezier(0.25,0.46,0.45,0.94);
+  --e2:      cubic-bezier(0.16,1,0.3,1);
+  --e3:      cubic-bezier(0.19,1,0.22,1);
+}
+
+/* ━━━━━ RESET ━━━━━ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;scroll-behavior:auto}
+body{font-family:var(--font);background:var(--bg);color:var(--t1);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+button{font-family:inherit;border:none;background:none;cursor:pointer}
+
+/* ━━━━━ CURSOR ━━━━━ */
+@media(hover:hover) and (pointer:fine){body{cursor:none}}
+#curDot{position:fixed;top:0;left:0;width:8px;height:8px;background:#fff;border-radius:50%;pointer-events:none;z-index:99999;margin-left:-4px;margin-top:-4px;box-shadow:0 0 0 1px rgba(34,55,90,.4),0 2px 7px rgba(0,0,0,.18)}
+#curRing{position:fixed;top:0;left:0;width:38px;height:38px;border:1.5px solid rgba(255,255,255,.95);border-radius:50%;pointer-events:none;z-index:99998;margin-left:-19px;margin-top:-19px;box-shadow:0 0 0 1px rgba(34,55,90,.28);transition:width .22s,height .22s,margin .22s,background .22s}
+
+/* ━━━━━ LAYOUT ━━━━━ */
+.wrap{max-width:var(--cmax);margin:0 auto;padding:0 var(--cpad)}
+
+/* ━━━━━ EYEBROW ━━━━━ */
+.eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:11px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--ac)}
+.eyebrow::before{content:'';display:block;width:20px;height:2px;background:var(--ac);border-radius:1px;flex-shrink:0}
+
+/* ━━━━━ REVEAL ━━━━━ */
+.rv{opacity:0;transform:translateY(28px)}
+
+/* ══════════════════════════════════
+   NAV
+══════════════════════════════════ */
+.nav{position:fixed;top:16px;left:50%;transform:translateX(-50%);z-index:900;display:flex;align-items:center;gap:6px;padding:7px 7px 7px 20px;border-radius:100px;background:rgba(244,244,242,.88);backdrop-filter:blur(24px) saturate(1.6);-webkit-backdrop-filter:blur(24px) saturate(1.6);border:1px solid rgba(24,24,30,.08);box-shadow:0 12px 40px rgba(20,20,30,.12);white-space:nowrap;transition:background .3s;max-width:calc(100vw - 20px)}
+.nav-logo{display:flex;align-items:center;flex-shrink:0}
+.nav-logo img{height:22px;width:auto;display:block}
+.nav-links{display:flex;align-items:center;gap:20px;margin-left:16px}
+.nav-link{font-size:13.5px;font-weight:500;color:rgba(24,24,30,.64)}
+.nav-link:hover,.nav-link.active{color:#15151B}
+.nav-cta{display:inline-flex;align-items:center;white-space:nowrap;margin-left:12px;padding:11px 22px;border-radius:100px;background:#AC3B34;color:#fff;font-weight:600;font-size:13.5px;box-shadow:0 6px 22px rgba(172,59,52,.3);flex-shrink:0;transition:background .2s}
+.nav-cta:hover{background:#c0443c;color:#fff}
+@media(max-width:700px){.nav-links{display:none}.nav-cta{padding:9px 16px;font-size:12.5px}}
+
+/* ══════════════════════════════════
+   HERO
+══════════════════════════════════ */
+.hero{position:relative;background:var(--bg-mid);overflow:hidden;padding:160px 0 100px}
+.hero-texture{position:absolute;inset:0;pointer-events:none;z-index:0;
+  background-image:linear-gradient(rgba(44,74,115,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(44,74,115,0.04) 1px,transparent 1px);
+  background-size:52px 52px;
+  mask-image:radial-gradient(ellipse 80% 100% at 60% 50%,black 0%,transparent 80%);
+  -webkit-mask-image:radial-gradient(ellipse 80% 100% at 60% 50%,black 0%,transparent 80%)}
+.hero-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:700px;height:500px;background:radial-gradient(ellipse,rgba(44,74,115,0.08) 0%,transparent 65%);pointer-events:none;z-index:0}
+.hero-inner{position:relative;z-index:1;max-width:740px}
+.hero-eye{margin-bottom:22px;opacity:0;transform:translateY(12px)}
+.hero-h1{font-size:clamp(2.8rem,5.5vw,5.5rem);font-weight:900;line-height:1.04;letter-spacing:-.05em;color:var(--t1);margin-bottom:20px;opacity:0;transform:translateY(18px)}
+.hero-sub{font-size:clamp(.95rem,1.3vw,1.07rem);line-height:1.77;color:var(--t2);max-width:560px;opacity:0;transform:translateY(16px);margin-bottom:32px}
+.hero-stats{display:flex;gap:32px;flex-wrap:wrap;opacity:0}
+.hero-stat-item{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--t2)}
+.hero-stat-item::before{content:'';display:block;width:5px;height:5px;border-radius:50%;background:var(--ac);flex-shrink:0}
+
+/* ══════════════════════════════════
+   STATS BAR
+══════════════════════════════════ */
+.stats-bar{background:var(--bg-dark);border-top:1px solid rgba(255,255,255,0.05)}
+.stats-bar-grid{display:grid;grid-template-columns:repeat(4,1fr)}
+.sb-stat{padding:44px 36px;border-right:1px solid rgba(255,255,255,0.07);position:relative;overflow:hidden}
+.sb-stat:last-child{border-right:none}
+.sb-stat::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--ac);transform:scaleX(0);transform-origin:left;transition:transform .7s var(--e2)}
+.sb-stat.lit::before{transform:scaleX(1)}
+.sb-n{font-size:clamp(2.2rem,3.5vw,3.2rem);font-weight:800;letter-spacing:-.055em;color:#fff;line-height:1}
+.sb-n em{font-style:normal;color:var(--ac-md)}
+.sb-lbl{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-top:8px}
+.sb-sub{font-size:12px;color:rgba(255,255,255,0.22);margin-top:4px;line-height:1.4}
+@media(max-width:1024px){.stats-bar-grid{grid-template-columns:repeat(2,1fr)}.sb-stat:nth-child(2){border-right:none}.sb-stat:nth-child(3){border-top:1px solid rgba(255,255,255,0.07)}.sb-stat:nth-child(4){border-top:1px solid rgba(255,255,255,0.07);border-right:none}}
+@media(max-width:480px){.stats-bar-grid{grid-template-columns:1fr}.sb-stat{border-right:none;border-bottom:1px solid rgba(255,255,255,0.07)}.sb-stat:last-child{border-bottom:none}}
+
+/* ══════════════════════════════════
+   PROJECTS SECTION
+══════════════════════════════════ */
+.projects-sec{padding:var(--sec) 0;background:var(--bg)}
+.projects-hdr{margin-bottom:48px}
+.projects-hdr .eyebrow{margin-bottom:14px}
+.projects-h2{font-size:clamp(1.8rem,3.2vw,2.8rem);font-weight:800;letter-spacing:-.04em;line-height:1.12;color:var(--t1)}
+
+/* 2-col grid */
+.proj-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+@media(max-width:768px){.proj-grid{grid-template-columns:1fr}}
+
+/* ━━━━ CARD ━━━━ */
+.proj-card{background:var(--card-bg);border:1px solid var(--card-bd);border-radius:var(--r);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);padding:28px 28px 24px;transition:box-shadow .25s var(--e1),transform .25s var(--e1)}
+.proj-card:hover{box-shadow:0 8px 32px rgba(44,74,115,0.1);transform:translateY(-2px)}
+
+/* Category pill */
+.proj-cat{display:inline-flex;align-items:center;padding:4px 12px;border-radius:100px;font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;background:var(--ac-lt);color:var(--ac);margin-bottom:14px}
+
+/* Card header (always visible) */
+.proj-title{font-size:1.25rem;font-weight:700;letter-spacing:-.025em;line-height:1.28;color:var(--t1);margin-bottom:6px}
+.proj-client{font-size:13px;color:var(--t4);font-weight:500}
+.proj-divider{margin:16px 0 0;border:none;border-top:1px solid var(--bdr)}
+
+/* Toggle button */
+.proj-toggle{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--ac);background:none;border:none;cursor:pointer;padding:14px 0 0;font-family:inherit;transition:color .2s}
+.proj-toggle:hover{color:var(--ac-dk)}
+.proj-toggle-icon{width:26px;height:26px;border:1px solid rgba(44,74,115,.3);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;line-height:1;transition:background .2s,transform .3s,border-color .2s;flex-shrink:0}
+.proj-toggle.open .proj-toggle-icon{background:var(--ac);color:#fff;border-color:var(--ac);transform:rotate(45deg)}
+
+/* Expandable body */
+.proj-body{max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.16,1,.3,1),opacity .35s ease;opacity:0}
+.proj-body.open{max-height:400px;opacity:1}
+.proj-body-inner{padding:16px 0 4px}
+.proj-desc{font-size:14px;line-height:1.75;color:var(--t2);margin-bottom:16px}
+
+
+/* ══════════════════════════════════
+   GLOBAL REACH / WORLD MAP
+══════════════════════════════════ */
+.reach{padding:80px 0 0;background:#1a2e4a;position:relative;overflow:hidden}
+.reach::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 55% 60% at 78% 65%,rgba(0,107,53,.06) 0%,transparent 70%);pointer-events:none}
+.reach-inner{max-width:var(--cmax);margin:0 auto;padding:0 var(--cpad)}
+.reach-hdr{text-align:center;max-width:680px;margin:0 auto 52px}
+.reach-eyebrow{display:block;font-size:11px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--ac-md);margin-bottom:14px}
+.reach-ttl{font-size:clamp(2rem,3.6vw,3rem);font-weight:900;letter-spacing:-.05em;color:#fff;line-height:1.08;margin:0 0 16px}
+.reach-ttl em{font-style:normal;color:var(--ac-md)}
+.reach-sub{font-size:15px;line-height:1.74;color:rgba(255,255,255,.42);max-width:560px;margin:0 auto}
+.reach-map-wrap{position:relative;margin-bottom:0}
+.reach-map{width:100%;height:auto;display:block;max-height:440px}
+@keyframes reachPulse{0%,100%{opacity:1;r:5}50%{opacity:.5;r:8}}
+.reach-dot-ring{animation:reachPulse 2.8s ease-in-out infinite}
+.reach-dot-ring2{animation:reachPulse 2.8s ease-in-out infinite;animation-delay:.9s}
+.reach-dot-ring3{animation:reachPulse 2.8s ease-in-out infinite;animation-delay:1.8s}
+.reach-regions{display:flex;border-top:1px solid rgba(255,255,255,.06);margin-top:0}
+.reach-region{flex:1;padding:22px 20px;text-align:center;border-right:1px solid rgba(255,255,255,.06)}
+.reach-region:last-child{border-right:none}
+.reach-region-n{font-size:1.1rem;font-weight:800;letter-spacing:-.03em;color:#fff}
+.reach-region-l{font-size:10.5px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-top:4px}
+@media(max-width:760px){.reach-regions{flex-wrap:wrap}.reach-region{flex:1 1 50%;border-bottom:1px solid rgba(255,255,255,.06)}.reach-region:nth-child(2){border-right:none}.reach-region:nth-child(3){border-right:none}.reach-region:nth-child(4){border-right:none}}
+@media(max-width:480px){.reach-region{flex:1 1 100%;border-right:none}}
+
+/* ══════════════════════════════════
+   CTA
+══════════════════════════════════ */
+.cta-sec{padding:var(--sec) 0;background:var(--bg)}
+.cta-inner{text-align:center}
+.cta-inner .eyebrow{justify-content:center;margin-bottom:14px}
+.cta-h2{font-size:clamp(1.9rem,3.2vw,2.8rem);font-weight:800;letter-spacing:-.04em;line-height:1.12;color:var(--t1);margin-bottom:32px}
+.cta-btns{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;padding:14px 30px;background:var(--ac);color:#fff;font-size:14px;font-weight:600;border-radius:100px;font-family:inherit;transition:background .22s var(--e1),box-shadow .22s}
+.btn-primary:hover{background:var(--ac-dk);box-shadow:0 8px 24px rgba(44,74,115,0.28)}
+.btn-glass{display:inline-flex;align-items:center;gap:8px;padding:13px 30px;background:rgba(255,255,255,.5);color:var(--t1);font-size:14px;font-weight:600;border-radius:100px;border:1px solid var(--card-bd);font-family:inherit;backdrop-filter:blur(8px);transition:background .22s var(--e1),border-color .22s}
+.btn-glass:hover{background:rgba(255,255,255,.75);border-color:rgba(255,255,255,.9)}
+
+/* ══════════════════════════════════
+   FOOTER
+══════════════════════════════════ */
+.footer{background:#E2E2DE;padding:34px var(--cpad);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;border-top:1px solid rgba(24,24,30,.08)}
+.footer-nav{display:flex;gap:24px;flex-wrap:wrap}
+.footer-nav a{font-size:12.5px;color:rgba(24,24,30,.5)}
+.footer-nav a:hover{color:rgba(24,24,30,.8)}
+.footer-copy{font-size:12px;color:rgba(24,24,30,.42)}
+</style>
+</head>
+<body>
+
+<div id="curDot"></div>
+<div id="curRing"></div>
+
+<!-- ══ NAV ══ -->
+<nav class="nav" id="nav">
+  <a href="index.html" class="nav-logo"><img src="assets/gses-logo.png" alt="GSES"></a>
+  <div class="nav-links">
+    <a href="index.html#audiences" class="nav-link">Who we help</a>
+    <a href="index.html#why" class="nav-link">Why GSES</a>
+    <a href="projects.html" class="nav-link active">Our work</a>
+    <a href="about.html" class="nav-link">About</a>
+    <a href="insights.html" class="nav-link">Insights</a>
+  </div>
+  <a href="mailto:consultancy@gses.com.au" class="nav-cta">Get in touch</a>
+</nav>
+
+<!-- ══ HERO ══ -->
+<section class="hero" aria-label="Projects hero">
+  <div class="hero-texture" aria-hidden="true"></div>
+  <div class="hero-glow" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="hero-inner">
+      <div class="hero-eye">
+        <span class="eyebrow">Our Work</span>
+      </div>
+      <h1 class="hero-h1">Projects &amp;<br>Case Studies</h1>
+      <p class="hero-sub">27 years of independent renewable energy engineering across Australia and 40+ countries.</p>
+      <div class="hero-stats">
+        <div class="hero-stat-item">12,000+ CER Inspections</div>
+        <div class="hero-stat-item">40+ Countries</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ STATS BAR ══ -->
+<section class="stats-bar" aria-label="Program statistics">
+  <div class="wrap" style="max-width:none;padding:0">
+    <div class="stats-bar-grid">
+      <div class="sb-stat">
+        <div class="sb-n">15<em>+</em></div>
+        <div class="sb-lbl">MW Solar as Owners Engineer</div>
+        <div class="sb-sub">NSW Health, CSIRO, and major infrastructure programs</div>
+      </div>
+      <div class="sb-stat">
+        <div class="sb-n">48</div>
+        <div class="sb-lbl">Sites in a Single NSW Engagement</div>
+        <div class="sb-sub">Property NSW / DPIE statewide QA program</div>
+      </div>
+      <div class="sb-stat">
+        <div class="sb-n">12<em>k+</em></div>
+        <div class="sb-lbl">CER Inspections Delivered</div>
+        <div class="sb-sub">National inspection agent since 2011</div>
+      </div>
+      <div class="sb-stat">
+        <div class="sb-n">14<em>+</em></div>
+        <div class="sb-lbl">Countries</div>
+        <div class="sb-sub">Gambia, Tuvalu, Vanuatu, PNG, Indonesia and beyond</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PROJECTS GRID ══ -->
+<section class="projects-sec" aria-label="Case studies">
+  <div class="wrap">
+    <div class="projects-hdr rv">
+      <span class="eyebrow">Case Studies</span>
+      <h2 class="projects-h2">Selected Work</h2>
+    </div>
+
+    <div class="proj-grid">
+
+      <!-- 1. NSW Health Solar & Storage -->
+      <div class="proj-card rv">
+        <div class="proj-cat">Owners Engineer</div>
+        <h3 class="proj-title">NSW Health Solar &amp; Storage Program</h3>
+        <p class="proj-client">NSW Health / Health Infrastructure NSW</p>
+        <hr class="proj-divider">
+        <button class="proj-toggle" aria-expanded="false">
+          <span class="proj-toggle-label">Read more</span>
+          <span class="proj-toggle-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="proj-body" aria-hidden="true">
+          <div class="proj-body-inner">
+            <p class="proj-desc">GSES delivered Owners Engineering, independent technical due diligence, and treasury-grade financial modelling to enable funding through the NSW Treasury Loan Fund. The John Hunter Hospital rooftop solar installation was the largest on any hospital globally at commissioning. The broader program spans 15+ sites including Gosford Hospital (1.6 MWp preliminary design) and feasibility assessments for 30+ NSW hospital PV systems.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. Noumi Fire Investigation -->
+      <div class="proj-card rv">
+        <div class="proj-cat">Inspection</div>
+        <h3 class="proj-title">3.8 MW Fire Investigation &amp; Safety Audit</h3>
+        <p class="proj-client">Noumi Ltd (ASX) — formerly Freedom Foods</p>
+        <hr class="proj-divider">
+        <button class="proj-toggle" aria-expanded="false">
+          <span class="proj-toggle-label">Read more</span>
+          <span class="proj-toggle-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="proj-body" aria-hidden="true">
+          <div class="proj-body-inner">
+            <p class="proj-desc">Root cause investigation across four systems (Boiler 215 kW, UHT 1,064 kW, Protein 1,282 kW, Warehouse 1,217 kW) — full FLIR thermal imaging of all DC terminations and 18 ABB PVS-175-TL inverters, with remediation recommendations.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. Property NSW 48 Sites -->
+      <div class="proj-card rv">
+        <div class="proj-cat">Inspection</div>
+        <h3 class="proj-title">48-Site Statewide QA Inspection Program</h3>
+        <p class="proj-client">Property NSW / Department of Planning, Industry &amp; Environment</p>
+        <hr class="proj-divider">
+        <button class="proj-toggle" aria-expanded="false">
+          <span class="proj-toggle-label">Read more</span>
+          <span class="proj-toggle-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="proj-body" aria-hidden="true">
+          <div class="proj-body-inner">
+            <p class="proj-desc">QA compliance inspections across 46 sites and 48 PV systems statewide — four coordinated inspection trips, 4 CEC-accredited multi-state inspectors, and data uploaded to Diagno. A separate engagement also covered 16-battery-system inspections.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. CBRE Fujifilm O&M -->
+      <div class="proj-card rv">
+        <div class="proj-cat">O&amp;M</div>
+        <h3 class="proj-title">525 kW Commercial O&amp;M Tullamarine</h3>
+        <p class="proj-client">CBRE (Fujifilm / CSL Seqirus Tenancy)</p>
+        <hr class="proj-divider">
+        <button class="proj-toggle" aria-expanded="false">
+          <span class="proj-toggle-label">Read more</span>
+          <span class="proj-toggle-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="proj-body" aria-hidden="true">
+          <div class="proj-body-inner">
+            <p class="proj-desc">Full O&amp;M for CBRE managing the Fujifilm and CSL Seqirus tenancy — Diagno monitoring, preventive and reactive maintenance, rectification, warranty management and performance reporting.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. Sigma Healthcare National O&M -->
+      <div class="proj-card rv">
+        <div class="proj-cat">O&amp;M</div>
+        <h3 class="proj-title">National Multi-State O&amp;M Portfolio</h3>
+        <p class="proj-client">Sigma Healthcare</p>
+        <hr class="proj-divider">
+        <button class="proj-toggle" aria-expanded="false">
+          <span class="proj-toggle-label">Read more</span>
+          <span class="proj-toggle-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="proj-body" aria-hidden="true">
+          <div class="proj-body-inner">
+            <p class="proj-desc">Ongoing O&amp;M across three distribution centres — Berrinba QLD (250 kWp / 200 kVA Sungrow, non-export), Kemps Creek NSW, and Pooraka SA — covering Diagno monitoring, fault remediation, warranty management and engineering review.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6. Byron Central Hospital -->
+      <div class="proj-card rv">
+        <div class="proj-cat">Inspection / O&amp;M</div>
+        <h3 class="proj-title">Byron Central Hospital 720 kWp Performance Recovery</h3>
+        <p class="proj-client">Northern NSW Local Health District</p>
+        <hr class="proj-divider">
+        <button class="proj-toggle" aria-expanded="false">
+          <span class="proj-toggle-label">Read more</span>
+          <span class="proj-toggle-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="proj-body" aria-hidden="true">
+          <div class="proj-body-inner">
+            <p class="proj-desc">Ongoing inverter remediation for a 720 kWp system with 4 &times; SolarEdge SE100K units experiencing zero-generation faults — FLIR diagnostics, OEM coordination and structured performance recovery.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 7. CSIRO Black Mountain -->
+      <div class="proj-card rv">
+        <div class="proj-cat">Owners Engineer</div>
+        <h3 class="proj-title">CSIRO Black Mountain 85 kW Health Check</h3>
+        <p class="proj-client">CSIRO — Australia's National Science Agency</p>
+        <hr class="proj-divider">
+        <button class="proj-toggle" aria-expanded="false">
+          <span class="proj-toggle-label">Read more</span>
+          <span class="proj-toggle-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="proj-body" aria-hidden="true">
+          <div class="proj-body-inner">
+            <p class="proj-desc">20-point inspection covering hail damage, signage compliance, isolation and inverter condition across 4 Fronius Eco 25.0-3-S units.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 8. Queensland Government Battery Booster / SSFR -->
+      <div class="proj-card rv">
+        <div class="proj-cat">Government Program</div>
+        <h3 class="proj-title">SSFR + QCHEU Energy Programs Inspectorate</h3>
+        <p class="proj-client">Queensland Government</p>
+        <hr class="proj-divider">
+        <button class="proj-toggle" aria-expanded="false">
+          <span class="proj-toggle-label">Read more</span>
+          <span class="proj-toggle-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="proj-body" aria-hidden="true">
+          <div class="proj-body-inner">
+            <p class="proj-desc">Appointed inspectorate for Queensland's SSFR and QCHEU programs — end-to-end inspection delivery, subcontractor management and Power BI reporting dashboard.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 9. CER National Inspection Program -->
+      <div class="proj-card rv">
+        <div class="proj-cat">Government Program</div>
+        <h3 class="proj-title">National CER Inspection Program — 12,000+ Inspections Since 2011</h3>
+        <p class="proj-client">Clean Energy Regulator (Federal)</p>
+        <hr class="proj-divider">
+        <button class="proj-toggle" aria-expanded="false">
+          <span class="proj-toggle-label">Read more</span>
+          <span class="proj-toggle-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="proj-body" aria-hidden="true">
+          <div class="proj-body-inner">
+            <p class="proj-desc">CER-appointed national inspection agent since 2011 — full lifecycle from scheduling and field inspection through right-of-reply to structured regulatory submission. 500 ActewAGL inspections delivered in under two months.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 10. University of Sydney -->
+      <div class="proj-card rv">
+        <div class="proj-cat">Inspection</div>
+        <h3 class="proj-title">248 kWp QA Inspections — 4 Sites, 10 Buildings</h3>
+        <p class="proj-client">University of Sydney via Lendlease</p>
+        <hr class="proj-divider">
+        <button class="proj-toggle" aria-expanded="false">
+          <span class="proj-toggle-label">Read more</span>
+          <span class="proj-toggle-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="proj-body" aria-hidden="true">
+          <div class="proj-body-inner">
+            <p class="proj-desc">QA inspections across 4 sites and 10 campus buildings via Lendlease — standards compliance, installation quality and independent asset assurance.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 11. NSW Department of Education -->
+      <div class="proj-card rv">
+        <div class="proj-cat">Inspection</div>
+        <h3 class="proj-title">30 kWp Government School Inspection</h3>
+        <p class="proj-client">NSW Department of Education and Communities</p>
+        <hr class="proj-divider">
+        <button class="proj-toggle" aria-expanded="false">
+          <span class="proj-toggle-label">Read more</span>
+          <span class="proj-toggle-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="proj-body" aria-hidden="true">
+          <div class="proj-body-inner">
+            <p class="proj-desc">QA inspection on a 30 kWp school rooftop — compliance verification and independent findings for the department's energy asset management program.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 12. UNIDO The Gambia -->
+      <div class="proj-card rv">
+        <div class="proj-cat">International</div>
+        <h3 class="proj-title">Owners Engineer Services — The Gambia</h3>
+        <p class="proj-client">UNIDO — United Nations Industrial Development Organisation</p>
+        <hr class="proj-divider">
+        <button class="proj-toggle" aria-expanded="false">
+          <span class="proj-toggle-label">Read more</span>
+          <span class="proj-toggle-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="proj-body" aria-hidden="true">
+          <div class="proj-body-inner">
+            <p class="proj-desc">Owners Engineer for UNIDO-funded renewable energy development in West Africa — Australian-standard technical rigour applied within the UN development framework.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 13. Tuvalu + Vanuatu -->
+      <div class="proj-card rv">
+        <div class="proj-cat">International</div>
+        <h3 class="proj-title">Tuvalu + Vanuatu Owners Engineer &amp; Compliance</h3>
+        <p class="proj-client">MASDAR / Pacific Island Governments</p>
+        <hr class="proj-divider">
+        <button class="proj-toggle" aria-expanded="false">
+          <span class="proj-toggle-label">Read more</span>
+          <span class="proj-toggle-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="proj-body" aria-hidden="true">
+          <div class="proj-body-inner">
+            <p class="proj-desc">Independent compliance inspection for MASDAR-funded installations under the Vanuatu Rural Electrification Project (VREP) across two Pacific Island nations.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 14. Papua New Guinea -->
+      <div class="proj-card rv">
+        <div class="proj-cat">International</div>
+        <h3 class="proj-title">PNG Tender Design, Site Assessment &amp; Evaluation</h3>
+        <p class="proj-client">Papua New Guinea</p>
+        <hr class="proj-divider">
+        <button class="proj-toggle" aria-expanded="false">
+          <span class="proj-toggle-label">Read more</span>
+          <span class="proj-toggle-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="proj-body" aria-hidden="true">
+          <div class="proj-body-inner">
+            <p class="proj-desc">Tender design, site assessment and evaluation for Papua New Guinea — building local procurement capacity and renewable energy frameworks.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 15. DANIDA Karimunjawa -->
+      <div class="proj-card rv">
+        <div class="proj-cat">International</div>
+        <h3 class="proj-title">Karimunjawa Renewable Energy Project Indonesia</h3>
+        <p class="proj-client">DANIDA — Danish International Development Agency</p>
+        <hr class="proj-divider">
+        <button class="proj-toggle" aria-expanded="false">
+          <span class="proj-toggle-label">Read more</span>
+          <span class="proj-toggle-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="proj-body" aria-hidden="true">
+          <div class="proj-body-inner">
+            <p class="proj-desc">Technical advisory for DANIDA on the Karimunjawa islands, Indonesia — supporting sustainable energy access for remote island communities within the international development framework.</p>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /proj-grid -->
+  </div>
+</section>
+
+<!-- ══ GLOBAL REACH / WORLD MAP ══ -->
+<section class="reach">
+  <div class="reach-inner">
+    <div class="reach-hdr rv">
+      <span class="reach-eyebrow">Global Reach</span>
+      <h2 class="reach-ttl">40+ Countries.<br><em>One standard of rigour.</em></h2>
+      <p class="reach-sub">From Australia's national inspection program to renewable energy development across the Pacific, Africa and Asia — GSES brings the same independent standard wherever the engagement demands it.</p>
+    </div>
+    <div class="reach-map-wrap rv">
+      <svg viewBox="0 0 960 480" fill="none" xmlns="http://www.w3.org/2000/svg" class="reach-map" role="img" aria-label="World map showing GSES project locations across 40+ countries">
+        <defs>
+          <pattern id="mapGrid" x="0" y="0" width="48" height="48" patternUnits="userSpaceOnUse">
+            <path d="M48 0L0 0 0 48" fill="none" stroke="rgba(255,255,255,0.025)" stroke-width="0.5"/>
+          </pattern>
+          <radialGradient id="ausGlow" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="rgba(0,133,63,0.22)"/>
+            <stop offset="100%" stop-color="rgba(0,133,63,0)"/>
+          </radialGradient>
+          <filter id="dotGlow">
+            <feGaussianBlur stdDeviation="2" result="blur"/>
+            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+        </defs>
+
+        <!-- Grid background -->
+        <rect width="960" height="480" fill="url(#mapGrid)"/>
+
+        <!-- Latitude reference lines -->
+        <line x1="0" y1="222" x2="960" y2="222" stroke="rgba(255,255,255,0.035)" stroke-width="0.5" stroke-dasharray="6,14"/>
+        <line x1="0" y1="162" x2="960" y2="162" stroke="rgba(255,255,255,0.02)" stroke-width="0.4" stroke-dasharray="3,18"/>
+        <line x1="0" y1="282" x2="960" y2="282" stroke="rgba(255,255,255,0.02)" stroke-width="0.4" stroke-dasharray="3,18"/>
+
+        <!-- Australia glow (primary base) -->
+        <ellipse cx="798" cy="348" rx="130" ry="75" fill="url(#ausGlow)"/>
+
+        <!-- CONTINENTS — simplified outlines -->
+        <!-- North America -->
+        <path d="M68,72 L232,56 L278,90 L292,148 L275,202 L225,238 L166,246 L98,226 L58,176 Z" fill="rgba(255,255,255,0.045)" stroke="rgba(255,255,255,0.1)" stroke-width="0.7"/>
+        <!-- Greenland -->
+        <path d="M192,32 L268,26 L288,56 L252,70 L196,65 Z" fill="rgba(255,255,255,0.035)" stroke="rgba(255,255,255,0.07)" stroke-width="0.5"/>
+        <!-- South America -->
+        <path d="M198,255 L292,248 L326,310 L312,406 L252,426 L192,396 L172,330 Z" fill="rgba(255,255,255,0.045)" stroke="rgba(255,255,255,0.1)" stroke-width="0.7"/>
+        <!-- Europe -->
+        <path d="M430,55 L528,50 L558,82 L544,122 L492,136 L436,126 L424,90 Z" fill="rgba(255,255,255,0.045)" stroke="rgba(255,255,255,0.1)" stroke-width="0.7"/>
+        <!-- Africa -->
+        <path d="M446,136 L576,130 L608,216 L590,346 L520,376 L448,346 L420,256 Z" fill="rgba(255,255,255,0.045)" stroke="rgba(255,255,255,0.1)" stroke-width="0.7"/>
+        <!-- Middle East -->
+        <path d="M548,116 L636,100 L666,112 L676,160 L626,170 L548,155 Z" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.09)" stroke-width="0.6"/>
+        <!-- South Asia -->
+        <path d="M636,108 L706,96 L730,126 L720,186 L676,196 L638,170 L630,140 Z" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.09)" stroke-width="0.6"/>
+        <!-- SE Asia mainland -->
+        <path d="M718,122 L788,112 L810,140 L806,176 L776,186 L730,170 L714,148 Z" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.09)" stroke-width="0.6"/>
+        <!-- East Asia -->
+        <path d="M702,76 L816,66 L846,100 L846,146 L806,148 L740,130 L700,110 Z" fill="rgba(255,255,255,0.045)" stroke="rgba(255,255,255,0.1)" stroke-width="0.7"/>
+        <!-- SE Asia islands (Indonesia/Malay) -->
+        <path d="M746,180 L850,166 L890,182 L880,212 L836,216 L780,206 L746,198 Z" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.09)" stroke-width="0.6"/>
+        <!-- PNG -->
+        <path d="M830,272 L870,265 L882,285 L860,300 L832,296 Z" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)" stroke-width="0.5"/>
+        <!-- Australia (highlighted — primary base) -->
+        <path d="M740,293 L850,275 L893,310 L888,373 L820,400 L746,378 L718,346 Z" fill="rgba(0,107,53,0.14)" stroke="rgba(0,133,63,0.45)" stroke-width="1.2"/>
+        <!-- New Zealand -->
+        <path d="M898,356 L913,340 L920,363 L904,377 L897,368 Z" fill="rgba(255,255,255,0.035)" stroke="rgba(255,255,255,0.07)" stroke-width="0.5"/>
+
+        <!-- PROJECT LOCATION DOTS -->
+
+        <!-- Australia HQ (largest — triple ring) -->
+        <circle cx="798" cy="348" r="20" fill="rgba(0,133,63,0.06)" class="reach-dot-ring"/>
+        <circle cx="798" cy="348" r="13" fill="rgba(0,133,63,0.15)"/>
+        <circle cx="798" cy="348" r="7" fill="#00853F" filter="url(#dotGlow)"/>
+        <!-- Northern QLD / Townsville -->
+        <circle cx="818" cy="308" r="5" fill="#00853F" opacity="0.75"/>
+        <!-- Perth WA -->
+        <circle cx="742" cy="348" r="4" fill="#00853F" opacity="0.65"/>
+
+        <!-- The Gambia, West Africa -->
+        <circle cx="440" cy="244" r="12" fill="rgba(0,133,63,0.1)" class="reach-dot-ring2"/>
+        <circle cx="440" cy="244" r="5" fill="#00853F" filter="url(#dotGlow)"/>
+
+        <!-- Pacific — Tuvalu -->
+        <circle cx="878" cy="326" r="4" fill="#00853F" opacity="0.78"/>
+        <!-- Pacific — Vanuatu -->
+        <circle cx="858" cy="344" r="4" fill="#00853F" opacity="0.78"/>
+        <!-- PNG -->
+        <circle cx="854" cy="284" r="5" fill="#00853F" opacity="0.75"/>
+
+        <!-- Indonesia / SE Asia -->
+        <circle cx="800" cy="198" r="12" fill="rgba(0,133,63,0.1)" class="reach-dot-ring3"/>
+        <circle cx="800" cy="198" r="5" fill="#00853F" filter="url(#dotGlow)"/>
+        <!-- Thailand -->
+        <circle cx="758" cy="214" r="4" fill="#00853F" opacity="0.72"/>
+        <!-- Philippines -->
+        <circle cx="820" cy="228" r="4" fill="#00853F" opacity="0.72"/>
+        <!-- Sri Lanka -->
+        <circle cx="672" cy="244" r="4" fill="#00853F" opacity="0.68"/>
+
+        <!-- India -->
+        <circle cx="676" cy="210" r="5" fill="#00853F" opacity="0.74"/>
+
+        <!-- Jordan / Middle East -->
+        <circle cx="572" cy="210" r="4" fill="#00853F" opacity="0.65"/>
+
+        <!-- LOCATION LABELS -->
+        <text x="814" y="344" fill="rgba(255,255,255,0.72)" font-size="8.5" font-family="Inter,system-ui,sans-serif" font-weight="700" letter-spacing="0.6">AUSTRALIA</text>
+        <text x="814" y="356" fill="rgba(255,255,255,0.3)" font-size="6.5" font-family="Inter,system-ui,sans-serif">National HQ &amp; Inspection Base</text>
+
+        <text x="452" y="241" fill="rgba(255,255,255,0.62)" font-size="8" font-family="Inter,system-ui,sans-serif" font-weight="700" letter-spacing="0.5">W. AFRICA</text>
+        <text x="452" y="252" fill="rgba(255,255,255,0.28)" font-size="6.5" font-family="Inter,system-ui,sans-serif">UNIDO / The Gambia</text>
+
+        <text x="812" y="275" fill="rgba(255,255,255,0.5)" font-size="7.5" font-family="Inter,system-ui,sans-serif" font-weight="600">PNG</text>
+
+        <text x="863" y="322" fill="rgba(255,255,255,0.45)" font-size="7" font-family="Inter,system-ui,sans-serif" font-weight="600">Tuvalu</text>
+        <text x="862" y="341" fill="rgba(255,255,255,0.42)" font-size="7" font-family="Inter,system-ui,sans-serif">Vanuatu</text>
+
+        <text x="815" y="196" fill="rgba(255,255,255,0.55)" font-size="7.5" font-family="Inter,system-ui,sans-serif" font-weight="600">SE ASIA</text>
+        <text x="815" y="207" fill="rgba(255,255,255,0.28)" font-size="6.5" font-family="Inter,system-ui,sans-serif">Indonesia · Thailand · Philippines</text>
+
+        <text x="684" y="208" fill="rgba(255,255,255,0.48)" font-size="7" font-family="Inter,system-ui,sans-serif" font-weight="600">India</text>
+
+        <!-- Dot count badge -->
+        <rect x="12" y="12" width="86" height="28" rx="6" fill="rgba(0,107,53,0.25)" stroke="rgba(0,133,63,0.3)" stroke-width="0.8"/>
+        <text x="56" y="30" fill="rgba(255,255,255,0.85)" font-size="10.5" font-family="Inter,system-ui,sans-serif" font-weight="700" text-anchor="middle" letter-spacing="0.2">40+ Countries</text>
+      </svg>
+    </div>
+    <div class="reach-regions">
+      <div class="reach-region rv">
+        <div class="reach-region-n">Australia</div>
+        <div class="reach-region-l">National HQ</div>
+      </div>
+      <div class="reach-region rv">
+        <div class="reach-region-n">Pacific</div>
+        <div class="reach-region-l">Tuvalu · Vanuatu · PNG</div>
+      </div>
+      <div class="reach-region rv">
+        <div class="reach-region-n">SE Asia</div>
+        <div class="reach-region-l">Indonesia · Thailand · Philippines</div>
+      </div>
+      <div class="reach-region rv">
+        <div class="reach-region-n">Africa</div>
+        <div class="reach-region-l">Gambia · UNIDO programs</div>
+      </div>
+      <div class="reach-region rv">
+        <div class="reach-region-n">South Asia</div>
+        <div class="reach-region-l">India · Sri Lanka</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CTA ══ -->
+<section class="cta-sec" aria-label="Work with us">
+  <div class="wrap">
+    <div class="cta-inner rv">
+      <span class="eyebrow" style="justify-content:center;margin-bottom:14px">Work With Us</span>
+      <h2 class="cta-h2">Bring independent eyes to your next project.</h2>
+      <div class="cta-btns">
+        <a href="mailto:consultancy@gses.com.au" class="btn-primary">Talk to an expert &rarr;</a>
+        <a href="about.html" class="btn-glass">Learn about GSES</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer class="footer">
+  <a href="index.html"><img src="assets/gses-logo.png" alt="GSES" style="height:26px;width:auto"></a>
+  <nav class="footer-nav">
+    <a href="about.html">About</a>
+    <a href="projects.html">Projects</a>
+    <a href="insights.html">Insights</a>
+    <a href="mailto:consultancy@gses.com.au">Contact</a>
+  </nav>
+  <span class="footer-copy">&copy; 2026 Global Sustainable Energy Solutions &middot; Independent renewable energy engineering</span>
+</footer>
+
+<!-- ══ SCRIPTS ══ -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.3.4/dist/lenis.min.js"></script>
+
+<script>
+/* ── Cursor ── */
+(function(){
+  var touch = !window.matchMedia('(hover:hover) and (pointer:fine)').matches;
+  if(touch) return;
+  var dot = document.getElementById('curDot');
+  var ring = document.getElementById('curRing');
+  if(!dot || !ring) return;
+  var dxQ = gsap.quickTo(dot,'x',{duration:.07,ease:'none'});
+  var dyQ = gsap.quickTo(dot,'y',{duration:.07,ease:'none'});
+  var rxQ = gsap.quickTo(ring,'x',{duration:.4,ease:'power3.out'});
+  var ryQ = gsap.quickTo(ring,'y',{duration:.4,ease:'power3.out'});
+  window.addEventListener('mousemove',function(e){
+    dxQ(e.clientX); dyQ(e.clientY); rxQ(e.clientX); ryQ(e.clientY);
+  });
+  document.querySelectorAll('a,button').forEach(function(el){
+    el.addEventListener('mouseenter',function(){
+      ring.style.width='58px'; ring.style.height='58px';
+      ring.style.marginLeft='-29px'; ring.style.marginTop='-29px';
+      ring.style.background='rgba(255,255,255,.18)';
+    });
+    el.addEventListener('mouseleave',function(){
+      ring.style.width='38px'; ring.style.height='38px';
+      ring.style.marginLeft='-19px'; ring.style.marginTop='-19px';
+      ring.style.background='transparent';
+    });
+  });
+})();
+
+/* ── Main ── */
+(function(){
+  'use strict';
+  var rm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  gsap.registerPlugin(ScrollTrigger);
+
+  /* Lenis smooth scroll */
+  var lenis = new Lenis({ duration:1.12, lerp:0.08, smoothWheel:true, autoRaf:false });
+  lenis.on('scroll', ScrollTrigger.update);
+  gsap.ticker.add(function(t){ lenis.raf(t * 1000); });
+  gsap.ticker.lagSmoothing(0);
+
+  /* Hero entrance */
+  window.addEventListener('load', function(){
+    if(rm){
+      gsap.set(['.hero-eye','.hero-h1','.hero-sub','.hero-stats'], {opacity:1, y:0});
+      return;
+    }
+    var tl = gsap.timeline({defaults:{ease:'power3.out'}});
+    tl.to('.hero-eye',   {opacity:1, y:0, duration:.6}, 0.15);
+    tl.to('.hero-h1',    {opacity:1, y:0, duration:.7}, 0.35);
+    tl.to('.hero-sub',   {opacity:1, y:0, duration:.65}, 0.6);
+    tl.to('.hero-stats', {opacity:1, duration:.5}, 0.9);
+    ScrollTrigger.refresh();
+  });
+
+  /* IntersectionObserver reveals for .rv */
+  if(!rm){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          gsap.to(e.target,{opacity:1,y:0,duration:.7,ease:'power2.out'});
+          io.unobserve(e.target);
+        }
+      });
+    },{rootMargin:'0px 0px -8% 0px'});
+    document.querySelectorAll('.rv').forEach(function(el){ io.observe(el); });
+
+    /* Card stagger reveals */
+    var cardIO = new IntersectionObserver(function(entries){
+      var visible = entries.filter(function(e){ return e.isIntersecting; });
+      if(!visible.length) return;
+      visible.forEach(function(e,i){
+        gsap.to(e.target,{opacity:1,y:0,duration:.65,delay:i*0.07,ease:'power2.out'});
+        cardIO.unobserve(e.target);
+      });
+    },{rootMargin:'0px 0px -6% 0px',threshold:0.05});
+    document.querySelectorAll('.proj-card').forEach(function(el){ cardIO.observe(el); });
+
+    /* Stats bar lit */
+    var sbIO = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('lit'); sbIO.unobserve(e.target); }
+      });
+    },{rootMargin:'0px 0px -10% 0px'});
+    document.querySelectorAll('.sb-stat').forEach(function(el){ sbIO.observe(el); });
+  } else {
+    /* Reduced motion: show everything immediately */
+    document.querySelectorAll('.rv,.proj-card').forEach(function(el){
+      el.style.opacity='1'; el.style.transform='none';
+    });
+    document.querySelectorAll('.sb-stat').forEach(function(el){ el.classList.add('lit'); });
+  }
+
+  /* Expand / collapse */
+  document.querySelectorAll('.proj-toggle').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var card = btn.closest('.proj-card');
+      var body = card.querySelector('.proj-body');
+      var label = btn.querySelector('.proj-toggle-label');
+      var isOpen = body.classList.contains('open');
+
+      if(isOpen){
+        body.classList.remove('open');
+        body.setAttribute('aria-hidden','true');
+        btn.classList.remove('open');
+        btn.setAttribute('aria-expanded','false');
+        if(label) label.textContent = 'Read more';
+      } else {
+        body.classList.add('open');
+        body.setAttribute('aria-hidden','false');
+        btn.classList.add('open');
+        btn.setAttribute('aria-expanded','true');
+        if(label) label.textContent = 'Close';
+      }
+    });
+  });
+
+})();
+</script>
+</body>
+</html>

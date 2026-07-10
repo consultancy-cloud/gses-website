@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GSES — Independent Renewable Energy Engineering</title>
+<meta name="description" content="Australia's independent renewable energy engineering and assurance firm. CER inspections, Owners Engineering, technical due diligence and expert witness — since 1998.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/SplitText.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.3.4/dist/lenis.min.js"></script>
+
+<style>
+/* ─────────────────────────────────────────────
+   GSES — Glassy Pill Design System
+   Surface:   #F2F2F0  Accent: #2C4A73  Red: #AC3B34  Ink: #15151B
+───────────────────────────────────────────── */
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:#F2F2F0;font-family:'Inter',system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased;color:#15151B;overflow-x:hidden}
+a{color:#2C4A73;text-decoration:none}
+a:hover{color:#3A5C88}
+img{display:block;max-width:100%}
+::selection{background:#2C4A73;color:#fff}
+@media(hover:hover) and (pointer:fine){body{cursor:none}}
+
+/* ── Keyframes ── */
+@keyframes gsesScroll{0%,100%{opacity:1;transform:scaleY(1)}50%{opacity:.25;transform:scaleY(.45)}}
+@keyframes gsesMarq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes gsesSpin{to{transform:rotate(360deg)}}
+
+/* ── Custom Cursor ── */
+.cur-dot{position:fixed;top:0;left:0;width:8px;height:8px;background:#fff;border-radius:50%;pointer-events:none;z-index:99999;margin-left:-4px;margin-top:-4px;box-shadow:0 0 0 1px rgba(34,55,90,.4),0 2px 7px rgba(0,0,0,.18)}
+.cur-ring{position:fixed;top:0;left:0;width:38px;height:38px;border:1.5px solid rgba(255,255,255,.95);border-radius:50%;pointer-events:none;z-index:99998;margin-left:-19px;margin-top:-19px;box-shadow:0 0 0 1px rgba(34,55,90,.28),0 4px 14px rgba(0,0,0,.14);transition:width .22s,height .22s,margin .22s,background .22s}
+
+/* ── Floating glass pill nav ── */
+.nav{position:fixed;top:16px;left:50%;transform:translateX(-50%);z-index:900;display:flex;align-items:center;gap:6px;padding:7px 7px 7px 20px;border-radius:100px;background:rgba(244,244,242,.3);backdrop-filter:blur(24px) saturate(1.6);-webkit-backdrop-filter:blur(24px) saturate(1.6);border:1px solid rgba(24,24,30,.08);box-shadow:0 12px 40px rgba(20,20,30,.12);white-space:nowrap;transition:background .3s}
+.nav-logo{display:flex;align-items:center;flex-shrink:0}
+.nav-logo img{height:22px;width:auto}
+.nav-links{display:flex;align-items:center;gap:20px;overflow:hidden;max-width:0;opacity:0;margin-left:0;transition:max-width .7s cubic-bezier(.16,1,.3,1),opacity .55s ease,margin .55s ease}
+.nav-links.open{max-width:480px;opacity:1;margin-left:16px}
+.nav-link{font-size:13.5px;font-weight:500;color:rgba(24,24,30,.64);position:relative}
+.nav-link:hover{color:#15151B}
+.nav-cta{display:inline-flex;align-items:center;white-space:nowrap;margin-left:12px;padding:11px 22px;border-radius:100px;background:#AC3B34;color:#fff;font-weight:600;font-size:13.5px;box-shadow:0 6px 22px rgba(172,59,52,.3);flex-shrink:0}
+.nav-cta:hover{color:#fff;background:#c0443c}
+
+/* ── Hero ── */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;background:#F2F2F0;padding:120px 0 90px}
+.hero-canvas{position:absolute;inset:0;width:100%;height:100%;display:block;opacity:0;transition:opacity 1.1s ease}
+.hero-vignette{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 60% 55% at 50% 44%,transparent 40%,rgba(242,242,240,.72))}
+/* Sunrise overlay */
+.hero-sunwrap{position:absolute;top:44%;left:50%;transform:translate(-50%,-50%);pointer-events:none;z-index:3}
+.hero-sun{position:relative;width:min(44vmin,380px);height:min(44vmin,380px);transform:scale(1.35);opacity:1;transform-origin:center;will-change:transform,opacity}
+.hero-sun-rays{position:absolute;inset:-42%;background:repeating-conic-gradient(from 0deg,rgba(172,59,52,.26) 0deg,transparent 2.6deg,transparent 9deg,rgba(172,59,52,.26) 11.6deg);-webkit-mask-image:radial-gradient(circle,transparent 32%,#000 46%,transparent 66%);mask-image:radial-gradient(circle,transparent 32%,#000 46%,transparent 66%);animation:gsesSpin 30s linear infinite}
+.hero-sun-core{position:absolute;inset:22%;border-radius:50%;background:radial-gradient(circle,rgba(216,120,112,.4),rgba(172,59,52,.24) 58%,transparent 80%);box-shadow:0 0 44px rgba(172,59,52,.2)}
+.hero-sun-ring{position:absolute;inset:22%;border-radius:50%;border:1px solid rgba(172,59,52,.28)}
+.hero-logo-intro{position:absolute;top:44%;left:50%;transform:translate(-50%,-50%) scale(.72);width:min(300px,58vw);opacity:0;z-index:3;will-change:transform,opacity}
+/* Hero foreground */
+.hero-fg{position:relative;max-width:1080px;padding:0 clamp(20px,5vw,72px);z-index:2}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:11px;padding:8px 18px;border-radius:100px;background:rgba(255,255,255,.5);border:1px solid rgba(44,74,115,.28);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#2C4A73;margin-bottom:32px;opacity:0}
+.hero-dot{width:6px;height:6px;border-radius:50%;background:#2C4A73;flex-shrink:0}
+.hero-h1{font-size:clamp(2.7rem,7vw,6rem);font-weight:900;letter-spacing:-.05em;line-height:1.02;color:#15151B;margin:0 auto;max-width:16ch;opacity:0}
+.hero-h1 span{color:#2C4A73}
+.hero-sub{margin:32px auto 0;max-width:620px;font-size:clamp(15px,1.6vw,18px);line-height:1.7;color:rgba(24,24,30,.6);opacity:0}
+.hero-btns{display:flex;flex-wrap:wrap;gap:14px;margin-top:42px;justify-content:center;opacity:0}
+.btn-primary{display:inline-flex;align-items:center;gap:10px;padding:16px 30px;background:#2C4A73;color:#fff;font-weight:600;font-size:14.5px;border-radius:100px;box-shadow:0 10px 34px rgba(44,74,115,.3)}
+.btn-primary:hover{color:#fff;background:#3a5c8a}
+.btn-glass{display:inline-flex;align-items:center;gap:10px;padding:16px 30px;background:rgba(255,255,255,.5);color:#15151B;font-weight:600;font-size:14.5px;border-radius:100px;border:1px solid rgba(24,24,30,.14);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.btn-glass:hover{border-color:rgba(44,74,115,.5);background:rgba(255,255,255,.75);color:#15151B}
+.hero-scrollcue{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);width:1px;height:46px;background:linear-gradient(to bottom,#2C4A73,transparent);animation:gsesScroll 2.2s ease-in-out infinite;transform-origin:top;opacity:0;transition:opacity .6s ease}
+
+/* ── Trust Marquee ── */
+.marquee-wrap{background:#F2F2F0;padding:26px 0;border-top:1px solid rgba(24,24,30,.08);border-bottom:1px solid rgba(24,24,30,.08);overflow:hidden}
+.marquee-label{max-width:1180px;margin:0 auto 18px;padding:0 clamp(20px,5vw,72px);font-size:10.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:rgba(24,24,30,.42)}
+.marquee-track-wrap{position:relative;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.marquee-track{display:flex;width:max-content;animation:gsesMarq 34s linear infinite}
+.marquee-inner{display:flex;align-items:center;gap:clamp(34px,5vw,64px);padding-right:clamp(34px,5vw,64px);font-size:clamp(1.1rem,2vw,1.5rem);font-weight:700;letter-spacing:-.01em;color:rgba(24,24,30,.36);white-space:nowrap}
+.marquee-sep{color:#2C4A73}
+
+/* ── Stats ── */
+.stats{background:#F2F2F0;padding:clamp(70px,9vw,120px) 0}
+.stats-grid{max-width:1120px;margin:0 auto;padding:0 clamp(20px,5vw,72px);display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.stat-card{padding:clamp(26px,3vw,40px) clamp(18px,2vw,30px);border-radius:22px;background:rgba(255,255,255,.5);border:1px solid rgba(255,255,255,.7);box-shadow:0 12px 34px rgba(20,20,30,.06);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);text-align:center;opacity:0}
+.stat-num-row{display:flex;align-items:baseline;justify-content:center}
+.stat-num{font-size:clamp(2.2rem,4.4vw,3.6rem);font-weight:900;color:#15151B;letter-spacing:-.05em;line-height:1;font-variant-numeric:tabular-nums}
+.stat-sfx{font-size:clamp(1.3rem,2vw,1.9rem);font-weight:800;color:#2C4A73}
+.stat-lbl{margin-top:12px;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(24,24,30,.52)}
+
+/* ── Audiences ── */
+.audiences{background:#EDEDEA;padding:clamp(80px,11vw,150px) 0;position:relative;overflow:hidden}
+.audiences-glow{position:absolute;top:16%;left:-8%;width:40vw;height:40vw;max-width:520px;max-height:520px;background:radial-gradient(circle,rgba(44,74,115,.1),transparent 64%);pointer-events:none}
+.audiences-inner{position:relative;max-width:1180px;margin:0 auto;padding:0 clamp(20px,5vw,72px)}
+.eyebrow{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#2C4A73;margin-bottom:20px;opacity:0;display:block}
+.sec-h2{font-size:clamp(2rem,4.4vw,3.4rem);font-weight:900;letter-spacing:-.045em;line-height:1.05;color:#15151B;margin:0 0 clamp(40px,5vw,64px);max-width:20ch}
+.aud-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.aud-card{padding:clamp(28px,3vw,40px);border-radius:26px;background:rgba(255,255,255,.55);border:1px solid rgba(255,255,255,.75);box-shadow:0 16px 40px rgba(20,20,30,.06);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);transition:transform .4s cubic-bezier(.16,1,.3,1),border-color .4s,box-shadow .4s;opacity:0;cursor:default}
+.aud-card:hover{transform:translateY(-6px);border-color:rgba(44,74,115,.4);box-shadow:0 30px 60px rgba(20,30,50,.14)}
+.aud-card-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:26px}
+.aud-num{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#2C4A73}
+.aud-chip{width:40px;height:40px;border-radius:50%;background:rgba(44,74,115,.1);border:1px solid rgba(44,74,115,.3);display:flex;align-items:center;justify-content:center;color:#2C4A73;font-size:16px;flex-shrink:0}
+.aud-h3{font-size:clamp(1.35rem,2.2vw,1.7rem);font-weight:800;letter-spacing:-.02em;color:#15151B;margin:0 0 14px}
+.aud-p{font-size:15px;line-height:1.7;color:rgba(24,24,30,.6);margin:0}
+
+/* ── Why GSES ── */
+.why{background:#E8ECF1;padding:clamp(80px,11vw,150px) 0}
+.why-inner{max-width:1180px;margin:0 auto;padding:0 clamp(20px,5vw,72px)}
+.why-h2{font-size:clamp(2rem,4.6vw,3.6rem);font-weight:900;letter-spacing:-.045em;line-height:1.06;color:#15151B;margin:0 0 clamp(44px,6vw,72px);max-width:20ch}
+.why-h2 span{color:#2C4A73}
+.why-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(24px,4vw,54px)}
+.why-item{opacity:0}
+.why-n{font-size:clamp(2.4rem,4vw,3.2rem);font-weight:900;color:#2C4A73;letter-spacing:-.04em;line-height:1;margin-bottom:20px}
+.why-item-h3{font-size:1.25rem;font-weight:800;letter-spacing:-.02em;color:#15151B;margin:0 0 12px}
+.why-item-p{font-size:15px;line-height:1.72;color:rgba(24,24,30,.6);margin:0}
+
+/* ── Featured Work ── */
+.work{background:#F2F2F0;padding:clamp(80px,11vw,150px) 0;overflow:hidden}
+.work-inner{max-width:1180px;margin:0 auto;padding:0 clamp(20px,5vw,72px)}
+.work-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.12fr);gap:clamp(30px,5vw,64px);align-items:center}
+.work-meta{font-size:12.5px;font-weight:600;color:rgba(24,24,30,.5);margin-bottom:16px;opacity:0}
+.work-h2{font-size:clamp(1.8rem,3.6vw,2.9rem);font-weight:900;letter-spacing:-.04em;line-height:1.08;color:#15151B;margin:0 0 22px}
+.work-p{font-size:15.5px;line-height:1.72;color:rgba(24,24,30,.6);margin:0 0 34px;max-width:520px;opacity:0}
+.work-stats{display:grid;grid-template-columns:repeat(3,auto);gap:clamp(22px,4vw,50px);margin-bottom:38px}
+.work-stat-n{font-size:clamp(1.7rem,2.8vw,2.4rem);font-weight:900;color:#2C4A73;letter-spacing:-.04em}
+.work-stat-l{font-size:10.5px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:rgba(24,24,30,.45);margin-top:6px}
+.work-stat-item{opacity:0}
+.work-link{display:inline-flex;align-items:center;gap:10px;font-size:14.5px;font-weight:600;color:#2C4A73;padding-bottom:4px;position:relative}
+.work-link:hover{color:#3A5C88}
+.work-img{position:relative;width:100%;aspect-ratio:16/11;border-radius:28px;overflow:hidden;border:1px solid rgba(24,24,30,.1);clip-path:inset(0 100% 0 0);transform:scale(1.05);transition:clip-path 1.1s cubic-bezier(.16,1,.3,1),transform 1.3s cubic-bezier(.16,1,.3,1)}
+.work-img.revealed{clip-path:inset(0 0% 0 0);transform:scale(1)}
+.work-img-inner{position:absolute;inset:0;background:linear-gradient(135deg,#1a2e4a 0%,#2C4A73 40%,#1e3a5f 100%);display:flex;align-items:center;justify-content:center}
+.work-img-svg{width:70%;height:70%;opacity:.18}
+
+/* ── CTA ── */
+.cta{background:#E7E7E4;padding:clamp(100px,14vw,190px) 0;text-align:center;position:relative;overflow:hidden}
+.cta-glow{position:absolute;top:50%;left:50%;translate:-50% -50%;width:min(700px,90vw);height:min(700px,90vw);background:radial-gradient(circle,rgba(44,74,115,.12),transparent 60%);pointer-events:none}
+.cta-inner{position:relative;max-width:880px;margin:0 auto;padding:0 clamp(20px,5vw,72px)}
+.cta-h2{font-size:clamp(2.4rem,6vw,4.6rem);font-weight:900;letter-spacing:-.05em;line-height:1.03;color:#15151B;margin:0}
+.cta-h2 span{color:#2C4A73}
+.cta-p{font-size:clamp(15px,1.6vw,18px);color:rgba(24,24,30,.6);margin:26px auto 42px;max-width:560px;line-height:1.7;opacity:0}
+.cta-btns{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;opacity:0}
+.cta-contact{margin-top:40px;font-size:12.5px;color:rgba(24,24,30,.45);display:flex;gap:16px;justify-content:center;flex-wrap:wrap;opacity:0}
+.cta-contact a{color:rgba(24,24,30,.55)}
+.cta-contact a:hover{color:#2C4A73}
+.cta-sep{color:rgba(24,24,30,.28)}
+
+/* ── Footer ── */
+.footer{background:#E2E2DE;padding:34px clamp(20px,5vw,72px);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;border-top:1px solid rgba(24,24,30,.08)}
+.footer-logo img{height:26px;width:auto}
+.footer-copy{font-size:12px;color:rgba(24,24,30,.42)}
+.footer-links{display:flex;gap:24px;flex-wrap:wrap}
+.footer-links a{font-size:12.5px;color:rgba(24,24,30,.5)}
+.footer-links a:hover{color:#2C4A73}
+
+/* ── Responsive ── */
+@media(max-width:900px){
+  .stats-grid{grid-template-columns:repeat(2,1fr)}
+  .aud-grid{grid-template-columns:1fr}
+  .why-cols{grid-template-columns:1fr;gap:40px}
+  .work-grid{grid-template-columns:1fr}
+  .work-img{aspect-ratio:16/9}
+}
+@media(max-width:600px){
+  .stats-grid{grid-template-columns:1fr 1fr}
+  .hero-btns,.cta-btns{flex-direction:column;align-items:center}
+  .btn-primary,.btn-glass{width:100%;justify-content:center;max-width:320px}
+  .footer{flex-direction:column;align-items:flex-start;gap:20px}
+  .footer-links{order:-1}
+}
+</style>
+</head>
+<body>
+
+<!-- Custom cursor (desktop only) -->
+<div class="cur-dot" id="curDot"></div>
+<div class="cur-ring" id="curRing"></div>
+
+<!-- ═══ FLOATING NAV ═══ -->
+<nav class="nav" id="nav" aria-label="Main navigation">
+  <a href="#top" class="nav-logo"><img src="assets/gses-logo.png" alt="GSES"></a>
+  <div class="nav-links" id="navLinks">
+    <a href="#audiences" class="nav-link">Who we help</a>
+    <a href="#why" class="nav-link">Why GSES</a>
+    <a href="projects.html" class="nav-link">Our work</a>
+    <a href="about.html" class="nav-link">About</a>
+    <a href="insights.html" class="nav-link">Insights</a>
+  </div>
+  <a href="mailto:consultancy@gses.com.au" class="nav-cta" id="navCta">Get in touch</a>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero" id="top">
+  <canvas class="hero-canvas" id="heroCanvas"></canvas>
+  <div class="hero-vignette"></div>
+
+  <!-- Sunrise intro overlays -->
+  <div class="hero-sunwrap">
+    <div class="hero-sun" id="heroSun">
+      <div class="hero-sun-rays"></div>
+      <div class="hero-sun-core"></div>
+      <div class="hero-sun-ring"></div>
+    </div>
+  </div>
+  <img class="hero-logo-intro" id="heroLogoIntro" src="assets/gses-logo.png" alt="GSES">
+
+  <!-- Foreground content -->
+  <div class="hero-fg" id="heroFg">
+    <div class="hero-eyebrow" data-in><span class="hero-dot"></span>Independent · Since 1998</div>
+    <h1 class="hero-h1" data-in data-lines>Solar &amp; battery, done right and <span>independently proven.</span></h1>
+    <p class="hero-sub" data-in>From a home rooftop to a national grid, GSES is the independent engineering team that checks, tests and signs off renewable energy — so you know it's safe, compliant and built to last.</p>
+    <div class="hero-btns" data-in>
+      <a href="#audiences" class="btn-primary" id="btn1">Find your fit →</a>
+      <a href="mailto:consultancy@gses.com.au" class="btn-glass">Talk to an expert</a>
+    </div>
+  </div>
+  <div class="hero-scrollcue" id="heroScrollCue"></div>
+</section>
+
+<!-- ═══ TRUST MARQUEE ═══ -->
+<section class="marquee-wrap" aria-label="Clients">
+  <div class="marquee-label">Trusted by</div>
+  <div class="marquee-track-wrap">
+    <div class="marquee-track">
+      <div class="marquee-inner" aria-hidden="false">
+        <span>NSW Health</span><span class="marquee-sep">/</span>
+        <span>CSIRO</span><span class="marquee-sep">/</span>
+        <span>Property NSW</span><span class="marquee-sep">/</span>
+        <span>CBRE</span><span class="marquee-sep">/</span>
+        <span>Sigma Healthcare</span><span class="marquee-sep">/</span>
+        <span>Byron Bay Hospital</span><span class="marquee-sep">/</span>
+        <span>UNIDO</span><span class="marquee-sep">/</span>
+        <span>QLD Government</span><span class="marquee-sep">/</span>
+        <span>University of Sydney</span><span class="marquee-sep">/</span>
+      </div>
+      <div class="marquee-inner" aria-hidden="true">
+        <span>NSW Health</span><span class="marquee-sep">/</span>
+        <span>CSIRO</span><span class="marquee-sep">/</span>
+        <span>Property NSW</span><span class="marquee-sep">/</span>
+        <span>CBRE</span><span class="marquee-sep">/</span>
+        <span>Sigma Healthcare</span><span class="marquee-sep">/</span>
+        <span>Byron Bay Hospital</span><span class="marquee-sep">/</span>
+        <span>UNIDO</span><span class="marquee-sep">/</span>
+        <span>QLD Government</span><span class="marquee-sep">/</span>
+        <span>University of Sydney</span><span class="marquee-sep">/</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ STATS ═══ -->
+<section class="stats">
+  <div class="stats-grid" id="statsGrid">
+    <div class="stat-card">
+      <div class="stat-num-row"><span class="stat-num" data-target="27">0</span><span class="stat-sfx">+</span></div>
+      <div class="stat-lbl">Years independent</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num-row"><span class="stat-num" data-target="12000" data-format="k">0</span><span class="stat-sfx">+</span></div>
+      <div class="stat-lbl">Systems inspected</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num-row"><span class="stat-num" data-target="40">0</span><span class="stat-sfx">+</span></div>
+      <div class="stat-lbl">Countries worked in</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num-row"><span class="stat-num" data-target="15">0</span><span class="stat-sfx">+MW</span></div>
+      <div class="stat-lbl">Deployed as owners engineer</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ AUDIENCES ═══ -->
+<section class="audiences" id="audiences">
+  <div class="audiences-glow"></div>
+  <div class="audiences-inner">
+    <span class="eyebrow" id="audEyebrow">Who we help</span>
+    <h2 class="sec-h2" data-lines>Whoever you are, the standard doesn't change.</h2>
+    <div class="aud-grid" id="audGrid">
+      <div class="aud-card">
+        <div class="aud-card-head">
+          <span class="aud-num">01</span>
+          <span class="aud-chip">↗</span>
+        </div>
+        <h3 class="aud-h3">Homeowners</h3>
+        <p class="aud-p">Is your solar or battery safe and actually working? We inspect, test and investigate faults independently — no sales pitch, just straight answers.</p>
+      </div>
+      <div class="aud-card">
+        <div class="aud-card-head">
+          <span class="aud-num">02</span>
+          <span class="aud-chip">↗</span>
+        </div>
+        <h3 class="aud-h3">Installers &amp; EPCs</h3>
+        <p class="aud-p">Design review, compliance guidance and independent inspection so your systems pass first time — and stand up to any audit that follows.</p>
+      </div>
+      <div class="aud-card">
+        <div class="aud-card-head">
+          <span class="aud-num">03</span>
+          <span class="aud-chip">↗</span>
+        </div>
+        <h3 class="aud-h3">Business &amp; Government</h3>
+        <p class="aud-p">Owners Engineering, technical due diligence and independent assurance on large solar and battery projects — from one site to a national portfolio.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ WHY GSES ═══ -->
+<section class="why" id="why">
+  <div class="why-inner">
+    <span class="eyebrow" id="whyEyebrow">Why GSES</span>
+    <h2 class="why-h2" data-lines>Independent means we only answer to <span>you.</span></h2>
+    <div class="why-cols" id="whyCols">
+      <div class="why-item">
+        <div class="why-n">01</div>
+        <h3 class="why-item-h3">No products, no bias</h3>
+        <p class="why-item-p">We don't sell panels or install systems. Our only job is telling you the truth about the work — which is exactly why people trust it.</p>
+      </div>
+      <div class="why-item">
+        <div class="why-n">02</div>
+        <h3 class="why-item-h3">The standard-setters</h3>
+        <p class="why-item-p">We help write the Australian standards the whole industry follows — AS/NZS 5033, 5139 and 4777 — and we've been Australia's national inspection agent since 2011.</p>
+      </div>
+      <div class="why-item">
+        <div class="why-n">03</div>
+        <h3 class="why-item-h3">From rooftop to grid</h3>
+        <p class="why-item-p">The same rigour behind a 15+ MW government portfolio checks the system on your roof. Big or small, the engineering doesn't cut corners.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FEATURED WORK ═══ -->
+<section class="work" id="work">
+  <div class="work-inner">
+    <span class="eyebrow" id="workEyebrow">Featured work</span>
+    <div class="work-grid">
+      <div>
+        <div class="work-meta" id="workMeta">NSW Government · Property NSW</div>
+        <h2 class="work-h2" data-lines>Owners Engineer on a 48-site solar portfolio</h2>
+        <p class="work-p" id="workP">We set the technical standard, reviewed every design and assured quality across 48 government sites — from contract through to switch-on. Independent at every step.</p>
+        <div class="work-stats" id="workStats">
+          <div class="work-stat-item">
+            <div class="work-stat-n">48</div>
+            <div class="work-stat-l">Sites assured</div>
+          </div>
+          <div class="work-stat-item">
+            <div class="work-stat-n">15+ MW</div>
+            <div class="work-stat-l">Deployed</div>
+          </div>
+          <div class="work-stat-item">
+            <div class="work-stat-n">100%</div>
+            <div class="work-stat-l">Independent</div>
+          </div>
+        </div>
+        <a href="projects.html" class="work-link" id="workLink">See how we work →</a>
+      </div>
+      <div class="work-img" id="workImg">
+        <div class="work-img-inner">
+          <svg class="work-img-svg" viewBox="0 0 400 280" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="10" y="60" width="55" height="38" rx="2" stroke="white" stroke-width="1.2"/>
+            <rect x="10" y="102" width="55" height="38" rx="2" stroke="white" stroke-width="1.2"/>
+            <rect x="10" y="144" width="55" height="38" rx="2" stroke="white" stroke-width="1.2"/>
+            <rect x="70" y="60" width="55" height="38" rx="2" stroke="white" stroke-width="1.2"/>
+            <rect x="70" y="102" width="55" height="38" rx="2" stroke="white" stroke-width="1.2"/>
+            <rect x="70" y="144" width="55" height="38" rx="2" stroke="white" stroke-width="1.2"/>
+            <rect x="130" y="60" width="55" height="38" rx="2" stroke="white" stroke-width="1.2"/>
+            <rect x="130" y="102" width="55" height="38" rx="2" stroke="white" stroke-width="1.2"/>
+            <rect x="130" y="144" width="55" height="38" rx="2" stroke="white" stroke-width="1.2"/>
+            <rect x="190" y="60" width="55" height="38" rx="2" stroke="white" stroke-width="1.2"/>
+            <rect x="190" y="102" width="55" height="38" rx="2" stroke="white" stroke-width="1.2"/>
+            <rect x="190" y="144" width="55" height="38" rx="2" stroke="white" stroke-width="1.2"/>
+            <rect x="250" y="60" width="55" height="38" rx="2" stroke="white" stroke-width="1.2"/>
+            <rect x="250" y="102" width="55" height="38" rx="2" stroke="white" stroke-width="1.2"/>
+            <rect x="250" y="144" width="55" height="38" rx="2" stroke="white" stroke-width="1.2"/>
+            <rect x="310" y="60" width="55" height="38" rx="2" stroke="white" stroke-width="1.2"/>
+            <rect x="310" y="102" width="55" height="38" rx="2" stroke="white" stroke-width="1.2"/>
+            <rect x="310" y="144" width="55" height="38" rx="2" stroke="white" stroke-width="1.2"/>
+            <line x1="10" y1="220" x2="370" y2="220" stroke="white" stroke-width="1" opacity=".4"/>
+            <text x="200" y="248" text-anchor="middle" fill="white" font-family="Inter,sans-serif" font-size="11" font-weight="600" opacity=".5" letter-spacing="2">48-SITE GOVERNMENT PORTFOLIO</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CTA ═══ -->
+<section class="cta" id="contact">
+  <div class="cta-glow"></div>
+  <div class="cta-inner">
+    <h2 class="cta-h2" data-lines>Ready when <span>you</span> are.</h2>
+    <p class="cta-p" id="ctaP">Whether it's the system on your roof or a portfolio worth millions, we'll tell you exactly where it stands.</p>
+    <div class="cta-btns" id="ctaBtns">
+      <a href="mailto:consultancy@gses.com.au" class="btn-primary" id="btn2">Talk to an expert →</a>
+      <a href="tel:+61290245312" class="btn-glass">+61 2 9024 5312</a>
+    </div>
+    <div class="cta-contact" id="ctaContact">
+      <a href="mailto:consultancy@gses.com.au">consultancy@gses.com.au</a>
+      <span class="cta-sep">·</span>
+      <span>Waterloo NSW 2017, Australia</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="footer">
+  <a href="#top" class="footer-logo"><img src="assets/gses-logo.png" alt="GSES"></a>
+  <nav class="footer-links" aria-label="Footer navigation">
+    <a href="about.html">About</a>
+    <a href="projects.html">Projects</a>
+    <a href="insights.html">Insights</a>
+    <a href="mailto:consultancy@gses.com.au">Contact</a>
+  </nav>
+  <span class="footer-copy">© 2026 Global Sustainable Energy Solutions · Independent renewable energy engineering</span>
+</footer>
+
+<script>
+(function(){
+'use strict';
+
+var reduced = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+var touch = !window.matchMedia('(hover:hover) and (pointer:fine)').matches;
+
+/* Hide cursor elements on touch */
+if(touch){
+  ['curDot','curRing'].forEach(function(id){
+    var el = document.getElementById(id);
+    if(el) el.style.display = 'none';
+  });
+}
+
+/* ── Wait for scripts ── */
+function waitAndBoot(n){
+  if(window.gsap && window.Lenis){ boot(); return; }
+  if(n > 80){ showAll(); return; }
+  setTimeout(function(){ waitAndBoot(n+1); }, 70);
+}
+
+function showAll(){
+  document.querySelectorAll('.aud-card,.why-item,.work-stat-item,.stat-card').forEach(function(el){
+    el.style.opacity='1'; el.style.transform='none';
+  });
+  document.querySelectorAll('[data-in],.work-meta,.work-p').forEach(function(el){
+    el.style.opacity='1'; el.style.transform='none';
+  });
+  document.querySelectorAll('.eyebrow,.cta-p,.cta-btns,.cta-contact').forEach(function(el){
+    el.style.opacity='1';
+  });
+  document.querySelectorAll('[data-lines]').forEach(function(el){ el.style.opacity='1'; });
+  document.querySelectorAll('[data-target]').forEach(function(el){
+    var t=parseInt(el.dataset.target);
+    el.textContent = el.dataset.format==='k' ? Math.round(t/1000)+'k' : t;
+  });
+  var wi=document.getElementById('workImg');
+  if(wi){ wi.style.clipPath='none'; wi.style.transform='none'; }
+  var nl=document.getElementById('navLinks');
+  if(nl) nl.classList.add('open');
+  var cv=document.getElementById('heroCanvas');
+  if(cv) cv.style.opacity='1';
+  var sc=document.getElementById('heroScrollCue');
+  if(sc) sc.style.opacity='1';
+}
+
+function boot(){
+  if(window.SplitText) gsap.registerPlugin(SplitText);
+
+  /* Lenis smooth scroll */
+  var lenis = new Lenis({ duration:1.15, lerp:.085, smoothWheel:true, autoRaf:false });
+  gsap.ticker.add(function(t){ lenis.raf(t*1000); });
+  gsap.ticker.lagSmoothing(0);
+  lenis.on('scroll', function(){ updateNav(); });
+
+  function updateNav(){
+    var nav = document.getElementById('nav');
+    if(!nav) return;
+    var y = window.scrollY || document.documentElement.scrollTop || 0;
+    nav.style.background = y > 40
+      ? 'rgba(244,244,242,0.92)'
+      : 'rgba(244,244,242,0.30)';
+  }
+
+  /* ── Custom cursor ── */
+  if(!touch){
+    var dot = document.getElementById('curDot');
+    var ring = document.getElementById('curRing');
+    if(dot && ring){
+      var dxQ = gsap.quickTo(dot,'x',{duration:.07,ease:'none'});
+      var dyQ = gsap.quickTo(dot,'y',{duration:.07,ease:'none'});
+      var rxQ = gsap.quickTo(ring,'x',{duration:.4,ease:'power3.out'});
+      var ryQ = gsap.quickTo(ring,'y',{duration:.4,ease:'power3.out'});
+      window.addEventListener('mousemove',function(e){ dxQ(e.clientX); dyQ(e.clientY); rxQ(e.clientX); ryQ(e.clientY); });
+      document.querySelectorAll('a,button,[data-hover]').forEach(function(el){
+        el.addEventListener('mouseenter',function(){
+          ring.style.width='58px'; ring.style.height='58px';
+          ring.style.marginLeft='-29px'; ring.style.marginTop='-29px';
+          ring.style.background='rgba(255,255,255,.18)';
+        });
+        el.addEventListener('mouseleave',function(){
+          ring.style.width='38px'; ring.style.height='38px';
+          ring.style.marginLeft='-19px'; ring.style.marginTop='-19px';
+          ring.style.background='transparent';
+        });
+      });
+    }
+  }
+
+  /* ── Magnetic buttons ── */
+  if(!touch){
+    ['btn1','btn2','navCta'].forEach(function(id){
+      var el = document.getElementById(id);
+      if(!el) return;
+      var xQ = gsap.quickTo(el,'x',{duration:.4,ease:'power3.out'});
+      var yQ = gsap.quickTo(el,'y',{duration:.4,ease:'power3.out'});
+      el.addEventListener('mousemove',function(e){
+        var r = el.getBoundingClientRect();
+        xQ((e.clientX - r.left - r.width/2) * .3);
+        yQ((e.clientY - r.top - r.height/2) * .3);
+      });
+      el.addEventListener('mouseleave',function(){ xQ(0); yQ(0); });
+    });
+  }
+
+  /* ── Underline animations ── */
+  document.querySelectorAll('.nav-link,.work-link,.footer-links a,.cta-contact a').forEach(function(el){
+    el.style.position = 'relative';
+    var u = document.createElement('span');
+    u.style.cssText = 'position:absolute;left:0;right:0;bottom:-2px;height:1px;background:currentColor;transform:scaleX(0);transform-origin:left center;pointer-events:none';
+    el.appendChild(u);
+    el.addEventListener('mouseenter',function(){
+      u.style.transformOrigin='left center';
+      gsap.to(u,{scaleX:1,duration:.34,ease:'power2.out'});
+    });
+    el.addEventListener('mouseleave',function(){
+      u.style.transformOrigin='right center';
+      gsap.to(u,{scaleX:0,duration:.34,ease:'power2.out'});
+    });
+  });
+
+  /* ── SplitText headings ── */
+  var splitTargets = {};
+  if(!reduced && window.SplitText){
+    document.querySelectorAll('[data-lines]').forEach(function(el){
+      try{
+        var sp = new SplitText(el,{type:'lines',mask:'lines'});
+        splitTargets[el.id || Math.random()] = sp.lines;
+        el._splitLines = sp.lines;
+        gsap.set(sp.lines,{yPercent:110});
+      }catch(e){}
+    });
+  }
+
+  /* ── Canvas particle grid ── */
+  var cv = document.getElementById('heroCanvas');
+  if(cv && !reduced){
+    var ctx = cv.getContext('2d');
+    var dpr = Math.min(window.devicePixelRatio||1,2);
+    function fitCv(){
+      cv.width = Math.max(1, cv.clientWidth * dpr);
+      cv.height = Math.max(1, cv.clientHeight * dpr);
+    }
+    fitCv();
+    window.addEventListener('resize',fitCv);
+
+    var N = Math.max(28, Math.min(120, Math.floor((cv.clientWidth/dpr) / 16)));
+    var pts = [];
+    for(var i=0;i<N;i++) pts.push({
+      x: Math.random()*cv.width,
+      y: Math.random()*cv.height,
+      vx: (Math.random()-.5)*0.24*dpr,
+      vy: (Math.random()-.5)*0.24*dpr
+    });
+    var mouse = {x:-9999,y:-9999};
+    var heroEl = document.querySelector('.hero');
+    if(heroEl){
+      heroEl.addEventListener('mousemove',function(e){
+        var r=cv.getBoundingClientRect();
+        mouse.x=(e.clientX-r.left)*dpr;
+        mouse.y=(e.clientY-r.top)*dpr;
+      });
+      heroEl.addEventListener('mouseleave',function(){ mouse.x=-9999; mouse.y=-9999; });
+    }
+    var maxD=150*dpr, inflD=150*dpr;
+    (function frame(){
+      ctx.clearRect(0,0,cv.width,cv.height);
+      pts.forEach(function(p){
+        p.x+=p.vx; p.y+=p.vy;
+        if(p.x<0||p.x>cv.width) p.vx*=-1;
+        if(p.y<0||p.y>cv.height) p.vy*=-1;
+        var mdx=p.x-mouse.x, mdy=p.y-mouse.y, md=Math.hypot(mdx,mdy);
+        if(md<inflD && md>0.001){ p.x+=mdx/md*0.7; p.y+=mdy/md*0.7; }
+      });
+      for(var a=0;a<pts.length;a++){
+        for(var b=a+1;b<pts.length;b++){
+          var dx=pts[a].x-pts[b].x, dy=pts[a].y-pts[b].y, d=Math.hypot(dx,dy);
+          if(d<maxD){
+            var al=(1-d/maxD)*0.42;
+            ctx.strokeStyle='rgba(44,74,115,'+al.toFixed(3)+')';
+            ctx.lineWidth=dpr;
+            ctx.beginPath(); ctx.moveTo(pts[a].x,pts[a].y); ctx.lineTo(pts[b].x,pts[b].y); ctx.stroke();
+          }
+        }
+      }
+      pts.forEach(function(p){
+        var dm=Math.hypot(p.x-mouse.x,p.y-mouse.y), near=dm<inflD;
+        ctx.fillStyle = near ? 'rgba(172,59,52,0.9)' : 'rgba(44,74,115,0.55)';
+        ctx.beginPath(); ctx.arc(p.x,p.y,(near?2.4:1.6)*dpr,0,Math.PI*2); ctx.fill();
+      });
+      requestAnimationFrame(frame);
+    })();
+  }
+
+  /* ── IntersectionObserver reveals ── */
+  var revealIO = new IntersectionObserver(function(ents){
+    ents.forEach(function(en){
+      if(!en.isIntersecting) return;
+      revealIO.unobserve(en.target);
+      reveal(en.target);
+    });
+  }, {root:null, rootMargin:'0px 0px -7% 0px', threshold:0.06});
+
+  function reveal(el){
+    var id = el.id;
+    if(el._splitLines){
+      gsap.fromTo(el._splitLines,{yPercent:110},{yPercent:0,duration:.9,ease:'power4.out',stagger:.1});
+      el.style.opacity='1';
+      return;
+    }
+    if(id==='statsGrid'){
+      var sc2 = el.querySelectorAll('.stat-card');
+      gsap.fromTo(sc2,{opacity:0,y:28},{opacity:1,y:0,stagger:.09,duration:.7,ease:'power2.out'});
+      return;
+    }
+    if(id==='audGrid'){
+      var ac=el.querySelectorAll('.aud-card');
+      gsap.fromTo(ac,{opacity:0,y:28},{opacity:1,y:0,stagger:.09,duration:.7,ease:'power2.out'});
+      return;
+    }
+    if(id==='whyCols'){
+      var wi2=el.querySelectorAll('.why-item');
+      gsap.fromTo(wi2,{opacity:0,y:28},{opacity:1,y:0,stagger:.09,duration:.7,ease:'power2.out'});
+      return;
+    }
+    if(id==='workStats'){
+      var ws=el.querySelectorAll('.work-stat-item');
+      gsap.fromTo(ws,{opacity:0,y:28},{opacity:1,y:0,stagger:.09,duration:.7,ease:'power2.out'});
+      return;
+    }
+    if(id==='workImg'){
+      el.classList.add('revealed');
+      return;
+    }
+    /* eyebrows and generic fades */
+    gsap.fromTo(el,{opacity:0,y:26},{opacity:1,y:0,duration:.75,ease:'power2.out'});
+  }
+
+  if(!reduced){
+    ['statsGrid','audGrid','whyCols','workStats','workImg'].forEach(function(id){
+      var el=document.getElementById(id); if(el) revealIO.observe(el);
+    });
+    ['audEyebrow','whyEyebrow','workEyebrow','workMeta','workP','ctaP','ctaBtns','ctaContact'].forEach(function(id){
+      var el=document.getElementById(id); if(el) revealIO.observe(el);
+    });
+    document.querySelectorAll('[data-lines]').forEach(function(el){ revealIO.observe(el); });
+  } else {
+    showAll();
+  }
+
+  /* ── Count-up ── */
+  if(!reduced){
+    var countIO = new IntersectionObserver(function(ents){
+      ents.forEach(function(en){
+        if(!en.isIntersecting) return;
+        countIO.unobserve(en.target);
+        var el2=en.target, t=parseInt(el2.dataset.target), isK=el2.dataset.format==='k';
+        var o={v:0};
+        gsap.to(o,{v:t,duration:1.7,ease:'power2.out',onUpdate:function(){
+          var v=Math.round(o.v);
+          el2.textContent = isK && v>=1000 ? (v/1000).toFixed(0)+'k' : v;
+        }});
+      });
+    }, {rootMargin:'0px 0px -7% 0px', threshold:0.1});
+    document.querySelectorAll('.stat-num[data-target]').forEach(function(el){ countIO.observe(el); });
+  } else {
+    document.querySelectorAll('.stat-num[data-target]').forEach(function(el){
+      var t=parseInt(el.dataset.target);
+      el.textContent = el.dataset.format==='k' ? Math.round(t/1000)+'k' : t;
+    });
+  }
+
+  /* ── Sunrise intro ── */
+  runIntro();
+
+  function runIntro(){
+    var sun = document.getElementById('heroSun');
+    var logo = document.getElementById('heroLogoIntro');
+    var fg = document.getElementById('heroFg');
+    var inEls = fg ? Array.from(fg.querySelectorAll('[data-in]')) : [];
+    var nl = document.getElementById('navLinks');
+    var scrollCue = document.getElementById('heroScrollCue');
+    var canvas = document.getElementById('heroCanvas');
+
+    var alreadyPlayed = localStorage.getItem('gsesIntroPlayed');
+
+    if(reduced || alreadyPlayed){
+      if(sun) sun.style.opacity='0';
+      if(logo) logo.style.opacity='0';
+      if(fg) fg.style.opacity='1';
+      inEls.forEach(function(el){ el.style.opacity='1'; el.style.transform='none'; });
+      if(nl) nl.classList.add('open');
+      if(canvas) canvas.style.opacity='1';
+      if(scrollCue) scrollCue.style.opacity='1';
+      return;
+    }
+    localStorage.setItem('gsesIntroPlayed','1');
+
+    /* Initial states */
+    if(sun){ sun.style.transition='none'; sun.style.transform='scale(1.35)'; sun.style.opacity='1'; }
+    if(logo){ logo.style.transition='none'; logo.style.opacity='0'; logo.style.transform='translate(-50%,-50%) scale(.72)'; }
+    if(fg) fg.style.opacity='0';
+    inEls.forEach(function(el){ el.style.transition='none'; el.style.opacity='0'; el.style.transform='translateY(26px)'; });
+    if(nl) nl.style.transition='none';
+
+    /* Step 1 — sun zooms */
+    setTimeout(function(){
+      if(sun){
+        sun.style.transition='transform 1s cubic-bezier(.6,0,.15,1),opacity .4s ease';
+        sun.style.transform='scale(.44) rotate(12deg)';
+      }
+    }, 90);
+
+    /* Step 2 — logo resolves, sun fades */
+    setTimeout(function(){
+      if(logo){
+        logo.style.transition='opacity .55s ease,transform .7s cubic-bezier(.16,1,.3,1)';
+        logo.style.opacity='1';
+        logo.style.transform='translate(-50%,-50%) scale(1)';
+      }
+      if(sun){
+        sun.style.transition='transform .6s ease,opacity .6s ease';
+        sun.style.transform='scale(.26) rotate(18deg)';
+        sun.style.opacity='0';
+      }
+    }, 650);
+
+    /* Step 3 — logo lifts, grid + content enter */
+    setTimeout(function(){
+      if(logo){
+        logo.style.transition='opacity .5s ease,transform .65s cubic-bezier(.16,1,.3,1)';
+        logo.style.opacity='0';
+        logo.style.transform='translate(-50%,calc(-50% - 60px)) scale(.92)';
+      }
+      if(canvas) canvas.style.opacity='1';
+      if(fg){ fg.style.transition='opacity .55s ease'; fg.style.opacity='1'; }
+      inEls.forEach(function(el,i){
+        el.style.transition='opacity .6s cubic-bezier(.16,1,.3,1),transform .6s cubic-bezier(.16,1,.3,1)';
+        el.style.transitionDelay=(i*.07)+'s';
+        el.style.opacity='1';
+        el.style.transform='none';
+      });
+      if(scrollCue) scrollCue.style.opacity='1';
+    }, 1280);
+
+    /* Step 4 — nav expands */
+    setTimeout(function(){
+      if(nl){
+        nl.style.transition='';
+        nl.classList.add('open');
+      }
+    }, 1600);
+  }
+
+}
+
+waitAndBoot(0);
+})();
+</script>
+</body>
+</html>

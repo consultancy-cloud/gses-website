@@ -1,0 +1,149 @@
+/* ─────────────────────────────────────────────
+   GSES — Mobile Navigation
+   Glass pill toggle + full-screen frosted menu.
+   Shared across index / about / projects / insights.
+   Palette: Surface #F2F2F0 · Accent #2C4A73 · Red #AC3B34 · Ink #15151B
+───────────────────────────────────────────── */
+
+/* ── Hamburger toggle (lives inside the pill, mobile only) ── */
+.mnav-toggle{
+  display:none;
+  align-items:center;justify-content:center;
+  width:40px;height:40px;flex-shrink:0;
+  margin-left:10px;padding:0;
+  border-radius:50%;
+  background:rgba(255,255,255,.42);
+  border:1px solid rgba(24,24,30,.1);
+  -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
+  cursor:pointer;
+  -webkit-tap-highlight-color:transparent;
+  transition:background .25s ease,border-color .25s ease;
+}
+.mnav-toggle:active{background:rgba(255,255,255,.65)}
+.mnav-toggle-lines{position:relative;width:17px;height:12px;display:block}
+.mnav-toggle-lines i{
+  position:absolute;left:0;height:1.8px;width:100%;
+  background:#15151B;border-radius:2px;
+  transition:transform .34s cubic-bezier(.5,.05,.2,1),width .34s cubic-bezier(.5,.05,.2,1),top .34s cubic-bezier(.5,.05,.2,1),opacity .2s ease;
+}
+.mnav-toggle-lines i:nth-child(1){top:0}
+.mnav-toggle-lines i:nth-child(2){top:auto;bottom:0}
+/* open → X */
+.mnav-open .mnav-toggle-lines i:nth-child(1){top:5px;transform:rotate(45deg)}
+.mnav-open .mnav-toggle-lines i:nth-child(2){bottom:5px;transform:rotate(-45deg)}
+.mnav-open .mnav-toggle{background:rgba(255,255,255,.7)}
+
+/* ── Full-screen frosted menu ── */
+.mnav{
+  position:fixed;inset:0;z-index:850;
+  display:flex;flex-direction:column;justify-content:center;
+  padding:118px clamp(26px,7vw,52px) max(34px,env(safe-area-inset-bottom));
+  background:rgba(242,242,240,.62);
+  -webkit-backdrop-filter:blur(30px) saturate(1.7);backdrop-filter:blur(30px) saturate(1.7);
+  opacity:0;visibility:hidden;pointer-events:none;
+  transition:opacity .5s ease,visibility .5s ease;
+  overflow-y:auto;overscroll-behavior:contain;
+}
+.mnav-open .mnav{opacity:1;visibility:visible;pointer-events:auto}
+
+/* sunrise glow echoing the hero */
+.mnav-glow{
+  position:absolute;left:50%;bottom:-24%;translate:-50% 0;
+  width:min(150vw,760px);height:min(150vw,760px);
+  background:radial-gradient(circle at 50% 50%,rgba(172,59,52,.16),rgba(44,74,115,.08) 42%,transparent 66%);
+  pointer-events:none;
+}
+.mnav-inner{position:relative;width:100%;max-width:560px;margin:0 auto}
+
+.mnav-eyebrow{
+  font-size:10.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  color:#2C4A73;margin-bottom:22px;
+  opacity:0;transform:translateY(14px);
+}
+
+/* link rows */
+.mnav-links{display:flex;flex-direction:column;border-top:1px solid rgba(24,24,30,.1)}
+.mnav-link{
+  display:flex;align-items:center;gap:16px;
+  padding:19px 4px;
+  border-bottom:1px solid rgba(24,24,30,.1);
+  color:#15151B;text-decoration:none;
+  opacity:0;transform:translateY(18px);
+}
+.mnav-num{
+  font-size:12px;font-weight:700;letter-spacing:.06em;
+  color:#2C4A73;min-width:26px;font-variant-numeric:tabular-nums;
+  opacity:.75;
+}
+.mnav-label{
+  flex:1;font-size:clamp(1.7rem,7.5vw,2.3rem);font-weight:800;
+  letter-spacing:-.035em;line-height:1;
+}
+.mnav-arrow{
+  display:flex;align-items:center;justify-content:center;
+  width:36px;height:36px;flex-shrink:0;border-radius:50%;
+  background:rgba(44,74,115,.14);border:1px solid rgba(44,74,115,.32);
+  color:#2C4A73;font-size:16px;
+  transition:transform .3s cubic-bezier(.16,1,.3,1),background .3s ease;
+}
+.mnav-link:active .mnav-arrow{transform:translate(3px,-3px);background:rgba(44,74,115,.16)}
+.mnav-link.active .mnav-label{color:#2C4A73}
+.mnav-link.active .mnav-num{opacity:1}
+.mnav-link.active .mnav-arrow{background:#2C4A73;border-color:#2C4A73;color:#fff}
+
+/* footer: CTA + contact */
+.mnav-foot{margin-top:34px;opacity:0;transform:translateY(18px)}
+.mnav-cta{
+  display:flex;align-items:center;justify-content:center;gap:9px;
+  width:100%;padding:17px 24px;border-radius:100px;
+  background:#AC3B34;color:#fff;font-weight:600;font-size:15px;text-decoration:none;
+  box-shadow:0 10px 30px rgba(172,59,52,.28);
+}
+.mnav-cta:active{background:#c0443c;color:#fff}
+.mnav-contact{
+  display:flex;flex-wrap:wrap;gap:6px 14px;justify-content:center;
+  margin-top:22px;font-size:12.5px;color:rgba(24,24,30,.5);
+}
+.mnav-contact a{color:rgba(24,24,30,.6);text-decoration:none}
+.mnav-contact .mnav-sep{color:rgba(24,24,30,.28)}
+
+/* ── Staggered reveal when open ── */
+.mnav-open .mnav-eyebrow,
+.mnav-open .mnav-link,
+.mnav-open .mnav-foot{
+  opacity:1;transform:translateY(0);
+  transition:opacity .55s cubic-bezier(.16,1,.3,1),transform .55s cubic-bezier(.16,1,.3,1);
+}
+.mnav-open .mnav-eyebrow{transition-delay:.08s}
+.mnav-open .mnav-link:nth-child(1){transition-delay:.13s}
+.mnav-open .mnav-link:nth-child(2){transition-delay:.19s}
+.mnav-open .mnav-link:nth-child(3){transition-delay:.25s}
+.mnav-open .mnav-link:nth-child(4){transition-delay:.31s}
+.mnav-open .mnav-link:nth-child(5){transition-delay:.37s}
+.mnav-open .mnav-link:nth-child(6){transition-delay:.43s}
+.mnav-open .mnav-foot{transition-delay:.48s}
+
+/* lock scroll behind menu */
+html.mnav-lock,html.mnav-lock body{overflow:hidden}
+
+/* ── Show toggle + unify pill glass on mobile ── */
+@media(max-width:768px){
+  .mnav-toggle{display:inline-flex}
+  /* Hide desktop inline links consistently at this breakpoint */
+  .nav-links,.nav-links-inner{display:none!important}
+  /* Translucent glass pill on mobile (matches the homepage aesthetic).
+     index.html drives its own scroll-based opacity via inline style,
+     which naturally overrides this; the static pages inherit the glass. */
+  .nav{background:rgba(244,244,242,.5)}
+  .mnav-open .nav{background:rgba(244,244,242,.72)}
+}
+
+/* Desktop: never show the mobile menu/toggle */
+@media(min-width:769px){
+  .mnav,.mnav-toggle{display:none!important}
+}
+
+/* Respect reduced motion */
+@media(prefers-reduced-motion:reduce){
+  .mnav,.mnav-eyebrow,.mnav-link,.mnav-foot,.mnav-toggle-lines i{transition-duration:.001s!important}
+}

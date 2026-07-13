@@ -206,6 +206,7 @@ img{display:block;max-width:100%}
   .stats{padding:50px 0}
 }
 </style>
+<link rel="stylesheet" href="css/mobile-nav.css">
 </head>
 <body>
 
@@ -746,7 +747,13 @@ function boot(){
     var scrollCue = document.getElementById('heroScrollCue');
     var canvas = document.getElementById('heroCanvas');
 
-    var alreadyPlayed = localStorage.getItem('gsesIntroPlayed');
+    /* Play the sunrise intro only on the day's first visit (per browser).
+       Note: true per-IP gating needs a server; this static site uses a
+       per-browser, per-day check via localStorage as the practical
+       equivalent. Local date, so it rolls over at the visitor's midnight. */
+    var d = new Date();
+    var today = d.getFullYear() + '-' + (d.getMonth()+1) + '-' + d.getDate();
+    var alreadyPlayed = localStorage.getItem('gsesIntroDate') === today;
 
     if(reduced || alreadyPlayed){
       if(sun) sun.style.opacity='0';
@@ -758,7 +765,7 @@ function boot(){
       if(scrollCue) scrollCue.style.opacity='1';
       return;
     }
-    localStorage.setItem('gsesIntroPlayed','1');
+    localStorage.setItem('gsesIntroDate', today);
 
     /* Initial states */
     if(sun){ sun.style.transition='none'; sun.style.transform='scale(1.35)'; sun.style.opacity='1'; }
@@ -821,5 +828,6 @@ function boot(){
 waitAndBoot(0);
 })();
 </script>
+<script src="js/mobile-nav.js"></script>
 </body>
 </html>

@@ -135,7 +135,7 @@ overlay.querySelectorAll('.mnav-link, .mnav-cta').forEach(function(a){
 });
 
 /* Close if we grow past the mobile breakpoint */
-var mq = window.matchMedia('(min-width:769px)');
+var mq = window.matchMedia('(min-width:941px)');
 var onMq = function(e){ if(e.matches) close(); };
 if(mq.addEventListener) mq.addEventListener('change', onMq);
 else if(mq.addListener) mq.addListener(onMq); /* legacy Safari */

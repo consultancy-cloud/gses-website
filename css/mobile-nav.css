@@ -126,8 +126,11 @@
 /* lock scroll behind menu */
 html.mnav-lock,html.mnav-lock body{overflow:hidden}
 
-/* ── Show toggle + unify pill glass on mobile ── */
-@media(max-width:768px){
+/* ── Show toggle + unify pill glass on mobile ──
+   Breakpoint is 940px (not 768px) because the pill now carries six inline
+   links; below this width they no longer fit inside it, so the hamburger
+   takes over earlier. ── */
+@media(max-width:940px){
   .mnav-toggle{display:inline-flex}
   /* Hide desktop inline links consistently at this breakpoint */
   .nav-links,.nav-links-inner{display:none!important}
@@ -139,7 +142,7 @@ html.mnav-lock,html.mnav-lock body{overflow:hidden}
 }
 
 /* Desktop: never show the mobile menu/toggle */
-@media(min-width:769px){
+@media(min-width:941px){
   .mnav,.mnav-toggle{display:none!important}
 }
 

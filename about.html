@@ -335,6 +335,69 @@
     /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
        SECTION 5: WHY GSES
     â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+    /* ========================================
+       SECTION 4B: THE TEAM
+    ======================================== */
+    .team { padding: 0 var(--cpad) var(--sec); background: var(--bg-mid); }
+    .team-header { max-width: var(--cmax); margin: 0 auto 44px; }
+    .team-header h2 {
+      font-size: clamp(24px, 3vw, 38px); font-weight: 800;
+      letter-spacing: -1.1px; color: var(--t1);
+    }
+    .team-lede {
+      max-width: 640px; margin-top: 16px;
+      font-size: 15.5px; line-height: 1.75; color: var(--t2);
+    }
+    .team-grid {
+      max-width: var(--cmax); margin: 0 auto;
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px;
+    }
+    .team-card {
+      background: rgba(255,255,255,.55);
+      border: 1px solid rgba(255,255,255,.7);
+      border-radius: 24px; backdrop-filter: blur(14px);
+      padding: 28px 26px 26px;
+      display: flex; flex-direction: column;
+    }
+    .team-photo {
+      width: 96px; height: 96px; border-radius: 50%;
+      object-fit: cover; object-position: center top;
+      border: 3px solid rgba(255,255,255,.85);
+      box-shadow: 0 8px 24px rgba(20,20,30,.1);
+      margin-bottom: 18px; display: block;
+    }
+    .team-monogram {
+      width: 96px; height: 96px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      background: linear-gradient(140deg, rgba(44,74,115,.92), rgba(44,74,115,.6));
+      color: #fff; font-size: 29px; font-weight: 800; letter-spacing: -.5px;
+      border: 3px solid rgba(255,255,255,.85);
+      box-shadow: 0 8px 24px rgba(20,20,30,.1);
+      margin-bottom: 18px;
+    }
+    .team-name { font-size: 17px; font-weight: 700; color: var(--t1); letter-spacing: -.3px; line-height: 1.3; }
+    .team-role { font-size: 12.5px; font-weight: 600; color: var(--ac); margin-top: 5px; }
+    .team-meta {
+      font-size: 12.5px; line-height: 1.6; color: var(--t3);
+      margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--bdr);
+    }
+    .team-snap { font-size: 13.5px; line-height: 1.7; color: var(--t2); margin-top: 14px; flex: 1; }
+    .team-foot {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 12px; margin-top: 18px;
+    }
+    .team-more { font-size: 11.5px; font-weight: 700; letter-spacing: .06em; color: var(--ac); text-transform: uppercase; }
+    /* Bios run long -- keep the cap well above the tallest bio so nothing clips. */
+    .team-card .acc-body.open { max-height: 2400px; }
+    /* Closed: .team-snap grows so every "Full bio" row lines up across the row.
+       Open: stop growing, or the shorter cards leave a gap above their bio. */
+    .team-card:has(.acc-body.open) .team-snap { flex: 0 1 auto; }
+    .team-bio { font-size: 13.5px; line-height: 1.75; color: var(--t2); padding-top: 16px; }
+    .team-bio p + p { margin-top: 12px; }
+    .team-bio strong { color: var(--t1); font-weight: 600; }
+    @media (max-width: 1000px) { .team-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 560px) { .team-grid { grid-template-columns: 1fr; } }
+
     .why-gses { padding: var(--sec) var(--cpad); background: var(--bg); }
     .why-gses-header { max-width: var(--cmax); margin: 0 auto 52px; }
     .why-gses-header h2 {
@@ -529,7 +592,8 @@
   <nav class="nav" id="nav">
     <a href="index.html" class="nav-logo"><img src="assets/gses-logo.png" alt="GSES"></a>
     <div class="nav-links">
-      <a href="index.html#audiences" class="nav-link">Who we help</a>
+      <a href="homeowners.html" class="nav-link">Homeowners</a>
+      <a href="installers.html" class="nav-link">Installers</a>
       <a href="index.html#why" class="nav-link">Why GSES</a>
       <a href="projects.html" class="nav-link">Our work</a>
       <a href="about.html" class="nav-link active">About</a>
@@ -783,6 +847,171 @@
   <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
        SECTION 5: WHY GSES
   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+  <!-- ========================================
+       SECTION 4B: THE TEAM
+  ======================================== -->
+  <section class="team">
+    <div class="team-header rv">
+      <span class="eyebrow">The Team</span>
+      <h2>The engineers behind the reports</h2>
+      <p class="team-lede">Every GSES finding is signed off by a degree-qualified engineer. These are
+      the people running the inspection programs, the Owner's Engineer engagements and the technical
+      reviews &mdash; and the ones who pick up the phone when an inspector calls from a roof.</p>
+    </div>
+
+    <div class="team-grid">
+
+      <!-- Fernanda Oliveira -->
+      <div class="team-card rv">
+        <img src="assets/fernanda-oliveira.png" alt="Fernanda Oliveira" class="team-photo">
+        <div class="team-name">Fernanda Oliveira</div>
+        <div class="team-role">Consultancy Operations Lead</div>
+        <div class="team-meta">
+          7 years' industry experience<br>
+          BE (Photovoltaics &amp; Solar Energy), UNSW<br>
+          SAA accredited designer &mdash; grid-connect solar &amp; battery storage
+        </div>
+        <p class="team-snap">Leads the consultancy team and runs GSES's largest inspection and
+        Owner's Engineer programs across Australia and the Pacific.</p>
+        <div class="team-foot">
+          <span class="team-more">Full bio</span>
+          <button class="acc-btn" aria-label="Show bio for Fernanda Oliveira" aria-expanded="false">+</button>
+        </div>
+        <div class="acc-body">
+          <div class="team-bio">
+            <p>Fernanda oversees the delivery of solar, battery, electric vehicle and energy efficiency
+            projects across Australia and the Pacific. She has broad experience as Owner's Engineer,
+            Project Manager and QA lead &mdash; covering site inspections, technical reviews, contractor
+            oversight and commissioning.</p>
+            <p>Since stepping into the Operations Lead role she has grown the team from three to seven
+            engineers in two years, and led significant improvements to internal governance and
+            documentation &mdash; positioning the consultancy team for <strong>DISP and ISO 9001
+            readiness</strong>.</p>
+            <p>She leads the Owner's Engineer engagement for <strong>Health Infrastructure NSW's
+            multi-hospital solar rollout</strong> (Wyong, Bulli, Tweed, Westmead Children's and Dubbo),
+            and managed Queensland's <strong>Battery Booster Program</strong>, which delivered over
+            2,700 residential battery inspections in under a year. She also oversees national MSQA
+            programs, including Green Peak Energy's 100+ commercial sites.</p>
+            <p>Internationally, Fernanda has delivered grid-connected PV and BESS training at the
+            University of the South Pacific in the Solomon Islands, and led the development of Western
+            Power's off-grid technical documentation suite &mdash; inspection templates, QA protocols,
+            commissioning reports and handover documentation.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Gregori Nojnitski -->
+      <div class="team-card rv">
+        <img src="assets/gregori-nojnitski.png" alt="Gregori Nojnitski" class="team-photo">
+        <div class="team-name">Gregori Nojnitski</div>
+        <div class="team-role">Project Engineer</div>
+        <div class="team-meta">
+          7 years' industry experience<br>
+          BE Renewable Energy Engineering (Hons), UNSW<br>
+          SAA Accredited Designer &mdash; grid-connected solar &amp; battery
+        </div>
+        <p class="team-snap">Runs technical review and compliance inspection across national
+        residential rollout programs, plus EV charger inspection delivery.</p>
+        <div class="team-foot">
+          <span class="team-more">Full bio</span>
+          <button class="acc-btn" aria-label="Show bio for Gregori Nojnitski" aria-expanded="false">+</button>
+        </div>
+        <div class="acc-body">
+          <div class="team-bio">
+            <p>Gregori delivers and manages solar, battery energy storage and EV charging projects
+            across Australia. His expertise spans project and quality management, technical design
+            review, compliance inspection and contractor oversight.</p>
+            <p>He manages and conducts technical reviews for large-scale residential rollout programs,
+            including <strong>Clean Energy Regulator inspections</strong> and the <strong>Queensland
+            Battery Booster Program</strong>, and provides Owner's Engineer support across system
+            design, installation oversight, maintenance and rectification for solar and BESS sites. He
+            played a key role in the technical design, coordination and delivery of an EV charger
+            testing and inspection rollout program.</p>
+            <p>Before GSES, Gregori was an Installation Engineer at Origin Energy, personally managing
+            200+ commercial PV projects and several grid-connected battery systems &mdash; designing
+            rooftop, ground-mount and CES configurations, and coordinating DNSPs, structural engineers,
+            installers, metering technicians and safety supervisors across metro and regional sites.</p>
+            <p>He brings well-rounded working knowledge of <strong>AS/NZS 3000, 4777, 5033 and
+            5139</strong>, with extensive stakeholder engagement across government and private-sector
+            programs.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Patric J. Issa -->
+      <div class="team-card rv">
+        <img src="assets/patric-issa.png" alt="Patric J. Issa" class="team-photo">
+        <div class="team-name">Patric J. Issa</div>
+        <div class="team-role">Project Engineer</div>
+        <div class="team-meta">
+          BSc Mechanical Engineering, Lebanese American University<br>
+          Master of Renewable Energy, UNSW<br>
+          SAA PV Design accreditation &mdash; on &amp; off grid
+        </div>
+        <p class="team-snap">Feasibility, technical consultancy and inspection QA across commercial
+        and residential solar and battery systems.</p>
+        <div class="team-foot">
+          <span class="team-more">Full bio</span>
+          <button class="acc-btn" aria-label="Show bio for Patric J. Issa" aria-expanded="false">+</button>
+        </div>
+        <div class="acc-body">
+          <div class="team-bio">
+            <p>Patric applies renewable energy engineering and AS/NZS standards to feasibility studies,
+            consultancy and the management of commercial and residential solar and battery systems.</p>
+            <p>He has provided project management and technical consultancy for inspection and
+            maintenance work on commercial solar systems, and acted as <strong>inspection QA reviewer
+            and technical consultant across thousands of residential solar sites</strong> under the
+            Queensland Battery Booster inspection program.</p>
+            <p>Patric holds a PV installer licence and worked as a PV system consultant and installer on
+            residential hybrid systems before moving into consultancy &mdash; a background that shows in
+            how he reads an installation. His modelling and design toolkit includes PVsyst, System
+            Advisor Model (SAM), HOMER Pro, AutoCAD, MATLAB/Simulink, LabVIEW and SolidWorks.</p>
+            <p>His earlier work includes the design of a hydroelectric gravity-fed water system for
+            Tanna Island, Vanuatu, and the design of residential, commercial and utility-scale PV
+            systems. He works across American and Australian engineering practice, which shapes how he
+            communicates technical findings to non-technical stakeholders.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mariana Gomez -->
+      <div class="team-card rv">
+        <div class="team-monogram" aria-hidden="true">MG</div>
+        <div class="team-name">Mariana Gomez</div>
+        <div class="team-role">Project Engineer</div>
+        <div class="team-meta">
+          3 years' industry experience<br>
+          Master of Engineering (Renewable Energy), UNSW &mdash; in progress<br>
+          BEng Mechatronics Engineering, Anahuac University
+        </div>
+        <p class="team-snap">Technical documentation, inspection checklists and compliance review
+        across solar and battery projects.</p>
+        <div class="team-foot">
+          <span class="team-more">Full bio</span>
+          <button class="acc-btn" aria-label="Show bio for Mariana Gomez" aria-expanded="false">+</button>
+        </div>
+        <div class="acc-body">
+          <div class="team-bio">
+            <p>Mariana supports solar and battery projects through project coordination, technical
+            documentation and compliance activities, drawing on a background in sustainability-focused
+            projects, data analysis and process optimisation.</p>
+            <p>In her current role she assists with internal quality processes, inspection documentation
+            and contractor records, organises site information and contractor onboarding, and supports
+            the wider team with data analysis and reporting.</p>
+            <p>She has contributed to <strong>compliance and inspection reviews for commercial solar
+            installations</strong>, supporting quality assurance activities under programs such as
+            Tempo-ALDI, with upcoming involvement in CER compliance reviews.</p>
+            <p>Before GSES, Mariana led process optimisation and sustainability initiatives in
+            manufacturing operations at Procter &amp; Gamble, contributing to energy efficiency and
+            carbon reduction projects and supporting audits, compliance documentation and team
+            coordination.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
   <section class="why-gses">
     <div class="why-gses-header rv">
       <span class="eyebrow">Why GSES</span>
@@ -960,6 +1189,8 @@
   <footer style="background:#E2E2DE;padding:34px clamp(20px,5vw,72px);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;border-top:1px solid rgba(24,24,30,.08)">
     <a href="index.html" style="display:flex;align-items:center"><img src="assets/gses-logo.png" alt="GSES" style="height:26px;width:auto"></a>
     <nav style="display:flex;gap:24px;flex-wrap:wrap">
+      <a href="homeowners.html" style="font-size:12.5px;color:rgba(24,24,30,.5);text-decoration:none">Homeowners</a>
+      <a href="installers.html" style="font-size:12.5px;color:rgba(24,24,30,.5);text-decoration:none">Installers</a>
       <a href="about.html" style="font-size:12.5px;color:rgba(24,24,30,.5);text-decoration:none">About</a>
       <a href="projects.html" style="font-size:12.5px;color:rgba(24,24,30,.5);text-decoration:none">Projects</a>
       <a href="insights.html" style="font-size:12.5px;color:rgba(24,24,30,.5);text-decoration:none">Insights</a>
@@ -1051,6 +1282,11 @@ document.querySelectorAll('.acc-btn').forEach(function(btn){
   var alliedCard = btn.closest('.allied-card');
   if (alliedCard) {
     body = alliedCard.querySelector('.acc-body');
+  }
+  /* For team card: btn is in .team-foot, body is in same .team-card */
+  var teamCard = btn.closest('.team-card');
+  if (teamCard) {
+    body = teamCard.querySelector('.acc-body');
   }
   if (!body) return;
   btn.addEventListener('click', function(){

@@ -228,6 +228,35 @@
       content: ''; position: absolute; left: 0; top: 8px;
       width: 5px; height: 5px; border-radius: 50%; background: rgba(44,74,115,.4);
     }
+    /* Single-line system schematic — the six numbered nodes map to the scope columns below */
+    .schem {
+      max-width: var(--cmax); margin: 0 auto 40px;
+      background: rgba(255,255,255,.5); border: 1px solid rgba(255,255,255,.7);
+      border-radius: 22px; backdrop-filter: blur(14px); padding: 30px 28px 24px;
+    }
+    .schem-ttl { font-size: 14.5px; font-weight: 700; letter-spacing: -.02em; }
+    .schem-sub { font-size: 12.5px; line-height: 1.55; color: var(--t3); margin-top: 5px; margin-bottom: 18px; }
+    .schem svg { width: 100%; height: auto; display: block; overflow: visible; }
+    .sc-line { stroke: rgba(44,74,115,.42); stroke-width: 2; fill: none; }
+    .sc-line-dc { stroke-dasharray: 6 5; }
+    .sc-box { fill: rgba(255,255,255,.9); stroke: rgba(44,74,115,.34); stroke-width: 1.5; }
+    .sc-mod { fill: rgba(44,74,115,.13); stroke: rgba(44,74,115,.45); stroke-width: 1.2; }
+    .sc-node { fill: #2C4A73; }
+    .sc-node-t { fill: #fff; font-size: 10px; font-weight: 700; text-anchor: middle; }
+    .sc-lbl { fill: #15151B; font-size: 12.5px; font-weight: 600; text-anchor: middle; }
+    .sc-sub { fill: rgba(24,24,30,.5); font-size: 10.5px; text-anchor: middle; }
+    .sc-tag { fill: rgba(24,24,30,.42); font-size: 10px; font-weight: 700; letter-spacing: .08em; }
+    .schem-legend {
+      display: flex; flex-wrap: wrap; gap: 8px 22px; margin-top: 20px;
+      padding-top: 16px; border-top: 1px solid var(--bdr);
+      font-size: 11.5px; color: var(--t3);
+    }
+    .schem-legend span { display: inline-flex; align-items: center; gap: 7px; }
+    .schem-key { width: 18px; height: 2px; background: rgba(44,74,115,.42); flex-shrink: 0; }
+    .schem-key.dc { background: repeating-linear-gradient(90deg, rgba(44,74,115,.42) 0 6px, transparent 6px 11px); }
+    @media (max-width: 760px) { .schem { padding: 24px 18px 20px; } .schem svg { min-width: 760px; }
+      .schem-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; } }
+
     .scope-note {
       max-width: var(--cmax); margin: 34px auto 0;
       font-size: 13.5px; line-height: 1.7; color: var(--t3);
@@ -375,9 +404,8 @@
         <span class="h1-line"><span class="h1-line-inner">We'll tell you what.</span></span>
       </h1>
       <p class="hero-sub" id="heroSub">
-        GSES doesn't sell panels, doesn't install systems and doesn't do repairs.
-        We are the engineers governments send to check other people's work &mdash; and you
-        can send us to check yours. One inspection, one honest report, evidence you can act on.
+        We don't sell panels, install systems or do repairs. We are the engineers governments send
+        to check other people's work &mdash; and you can send us to check yours.
       </p>
       <div class="hero-stats">
         <div class="hero-stat" data-delay="0">
@@ -409,15 +437,11 @@
         <span class="eyebrow">Why call us</span>
         <h2>When the installer says it's fine and you're not convinced.</h2>
         <div class="promise-body">
-          <p>Most homeowners come to us after they've already tried the obvious route. The installer
-          says the system is working. The retailer blames the weather. The warranty claim goes quiet.
-          Nobody in the chain has any reason to tell you the install was wrong.</p>
-          <p>We have no such conflict. GSES has never sold a panel or picked up a drill. Our entire
-          business is independent verification &mdash; the same work we do for the Clean Energy Regulator,
-          state governments and hospital portfolios, applied to one roof: yours.</p>
-          <p>You get a written report with photographs, the specific clause of the Australian Standard
-          that has been breached, and a plain-English list of what needs to happen next. That report
-          is the leverage most homeowners are missing.</p>
+          <p>The installer says it's working. The retailer blames the weather. The warranty claim goes
+          quiet. Nobody in that chain has a reason to tell you the install was wrong.</p>
+          <p>We have no such conflict &mdash; GSES has never sold a panel or picked up a drill. You get a
+          report with photographs, the exact clause breached, and a plain-English list of what happens
+          next. That report is the leverage most homeowners are missing.</p>
         </div>
       </div>
       <div class="promise-card rv">
@@ -443,9 +467,8 @@
         <h2>The problems an inspection actually solves.</h2>
       </div>
       <p class="problems-lede rv" style="margin-left:0">
-        These are the situations homeowners bring us most often. If yours isn't listed, it is almost
-        certainly a variation of one of them &mdash; call us and we'll tell you honestly whether an
-        inspection will help.
+        The situations homeowners bring us most often. If yours isn't here, it is probably a variation
+        of one of them &mdash; ask us and we'll say honestly whether an inspection helps.
       </p>
     </div>
 
@@ -453,110 +476,65 @@
 
       <div class="prob-card rv">
         <span class="prob-tag">Performance</span>
-        <h3 class="prob-h3">Your bill didn't drop the way you were promised</h3>
-        <p class="prob-p">The system is "working" but the savings never appeared. Common causes: undersized
-        or badly configured inverter, strings wired to the wrong MPPT, shading nobody modelled, export
-        limits set to protect the network rather than you, or a quoted yield that was never achievable.</p>
-        <div class="prob-fix"><strong>What we do:</strong> measure actual output against what the site can genuinely produce, and identify which of those causes applies.</div>
+        <h3 class="prob-h3">Your bill didn't drop</h3>
+        <p class="prob-p">Undersized inverter, strings on the wrong MPPT, unmodelled shading, or a quoted yield that was never achievable.</p>
+        <div class="prob-fix"><strong>We:</strong> measure actual output against what the site can genuinely produce.</div>
       </div>
 
       <div class="prob-card rv">
         <span class="prob-tag">Faults</span>
-        <h3 class="prob-h3">Inverter errors, dropouts and dead strings</h3>
-        <p class="prob-p">Repeat fault codes, an inverter that shuts down in the middle of the day, or one
-        section of the array producing nothing. Usually an isolator, connector, arc-fault or earthing
-        problem rather than the inverter itself &mdash; but you get told to replace the inverter.</p>
-        <div class="prob-fix"><strong>What we do:</strong> trace the fault to the actual component, so you replace the right thing once.</div>
+        <h3 class="prob-h3">Inverter errors and dead strings</h3>
+        <p class="prob-p">Repeat fault codes or a section producing nothing &mdash; usually an isolator, connector or earthing fault, not the inverter you're told to replace.</p>
+        <div class="prob-fix"><strong>We:</strong> trace the fault to the actual component, so you replace the right thing once.</div>
       </div>
 
       <div class="prob-card rv">
         <span class="prob-tag">Safety</span>
-        <h3 class="prob-h3">Water in the DC isolator and corroded rooftop gear</h3>
-        <p class="prob-p">One of the most frequent defects found nationally. Rooftop isolator enclosures
-        that fail their IP rating let water in, corrode the switch and create a real fire risk &mdash;
-        often years before anyone notices, because the system keeps producing.</p>
-        <div class="prob-fix"><strong>What we do:</strong> open and inspect every isolation point, document the condition and rate the urgency.</div>
+        <h3 class="prob-h3">Water in the DC isolator</h3>
+        <p class="prob-p">One of the most frequent defects found nationally. A failed IP rating corrodes the switch and creates a fire risk while the system keeps producing.</p>
+        <div class="prob-fix"><strong>We:</strong> open and inspect every isolation point, and rate the urgency.</div>
       </div>
 
       <div class="prob-card rv">
         <span class="prob-tag">Compliance</span>
-        <h3 class="prob-h3">Undersized or wrongly rated DC protection</h3>
-        <p class="prob-p">DC circuit-breaker rating and sizing is one of the defects we report on most.
-        Get it wrong and the device that is meant to protect the array can't do its job under fault
-        conditions &mdash; and your insurer may have something to say about it.</p>
-        <div class="prob-fix"><strong>What we do:</strong> verify protection device sizing and cable ratings against the installed array and AS/NZS 5033.</div>
-      </div>
-
-      <div class="prob-card rv">
-        <span class="prob-tag">Safety</span>
-        <h3 class="prob-h3">Earthing and equipotential bonding that isn't there</h3>
-        <p class="prob-p">Functional earthing and bonding of frames and rails is routinely skipped or done
-        badly. It is invisible from the ground, it doesn't stop the system generating, and it is exactly
-        the sort of thing that only surfaces after an incident.</p>
-        <div class="prob-fix"><strong>What we do:</strong> physically verify earthing continuity and bonding across the array and mounting system.</div>
+        <h3 class="prob-h3">Undersized protection, missing earthing</h3>
+        <p class="prob-p">DC breaker sizing and equipotential bonding are two of the defects we report most. Both are invisible from the ground and neither stops the system generating.</p>
+        <div class="prob-fix"><strong>We:</strong> verify protection sizing and earthing continuity against AS/NZS 5033.</div>
       </div>
 
       <div class="prob-card rv">
         <span class="prob-tag">Battery</span>
-        <h3 class="prob-h3">Is my home battery actually safe where it's installed?</h3>
-        <p class="prob-p">Batteries have hard rules about location, clearances, fire separation, ventilation
-        and signage under AS/NZS 5139. Garage walls shared with a bedroom, units mounted under stairs or
-        beside exit paths &mdash; these are not edge cases, we find them regularly.</p>
-        <div class="prob-fix"><strong>What we do:</strong> assess siting, clearances, protection and documentation against AS/NZS 5139 &mdash; the standard GSES helped author.</div>
+        <h3 class="prob-h3">Is my battery safe where it is?</h3>
+        <p class="prob-p">AS/NZS 5139 sets hard rules on location, clearances, fire separation and signage. Batteries beside exit paths or on bedroom walls are not edge cases.</p>
+        <div class="prob-fix"><strong>We:</strong> assess siting and protection against the standard GSES helped author.</div>
       </div>
 
       <div class="prob-card rv">
         <span class="prob-tag">Disputes</span>
-        <h3 class="prob-h3">The installer has gone quiet on your warranty claim</h3>
-        <p class="prob-p">Defect reported, nobody comes back. Or the installer has folded and the
-        manufacturer wants "evidence of a compliant installation" before they'll honour anything.
-        Without an independent report you're arguing opinion against opinion.</p>
-        <div class="prob-fix"><strong>What we do:</strong> produce the independent, standards-referenced evidence a warranty claim, insurer or tribunal will accept.</div>
-      </div>
-
-      <div class="prob-card rv">
-        <span class="prob-tag">Notices</span>
-        <h3 class="prob-h3">You've received a defect notice or failed an inspection</h3>
-        <p class="prob-p">A network, regulator or program inspection has flagged your system and you don't
-        know how serious it is, whether the quoted rectification is fair, or whether the work done since
-        actually closed the finding.</p>
-        <div class="prob-fix"><strong>What we do:</strong> translate the notice, confirm what genuinely needs fixing, and verify rectification once it's done.</div>
+        <h3 class="prob-h3">Warranty claims and defect notices</h3>
+        <p class="prob-p">The installer has gone quiet, or a regulator has flagged your system and you don't know how serious it is or whether the quoted fix is fair.</p>
+        <div class="prob-fix"><strong>We:</strong> produce standards-referenced evidence an insurer or tribunal will accept.</div>
       </div>
 
       <div class="prob-card rv">
         <span class="prob-tag">Property</span>
-        <h3 class="prob-h3">Buying or selling a home with solar or a battery</h3>
-        <p class="prob-p">A ten-year-old array with no paperwork is a liability, not a feature. Buyers
-        inherit the defects; sellers get the price knocked down over uncertainty. A building inspector
-        will not open a DC isolator.</p>
-        <div class="prob-fix"><strong>What we do:</strong> a condition and compliance assessment of the energy system, so the asset can be priced honestly.</div>
-      </div>
-
-      <div class="prob-card rv">
-        <span class="prob-tag">Roof</span>
-        <h3 class="prob-h3">Leaks, lifted tiles and mounting you're unsure about</h3>
-        <p class="prob-p">Penetrations that were never flashed properly, rails fixed to battens instead of
-        rafters, or an array that predates the current wind-loading requirements for your area. Water and
-        wind find these faster than you will.</p>
-        <div class="prob-fix"><strong>What we do:</strong> inspect mounting, fixings and penetrations, and flag structural concerns for a structural engineer where needed.</div>
+        <h3 class="prob-h3">Buying or selling with solar</h3>
+        <p class="prob-p">A ten-year-old array with no paperwork is a liability, not a feature &mdash; and a building inspector will not open a DC isolator.</p>
+        <div class="prob-fix"><strong>We:</strong> assess condition and compliance so the asset can be priced honestly.</div>
       </div>
 
       <div class="prob-card rv">
         <span class="prob-tag">EV</span>
-        <h3 class="prob-h3">Your EV charger trips the house or was never signed off</h3>
-        <p class="prob-p">Home chargers get installed on circuits that can't carry them, without load
-        management, RCD protection of the right type, or the paperwork the network required. It works
-        until the day it doesn't.</p>
-        <div class="prob-fix"><strong>What we do:</strong> verify the charger installation, protection and supply capacity &mdash; we run EV charger inspection programs for government.</div>
+        <h3 class="prob-h3">Your EV charger trips the house</h3>
+        <p class="prob-p">Chargers installed on circuits that can't carry them, without load management or the protection the network required.</p>
+        <div class="prob-fix"><strong>We:</strong> verify the installation, protection and supply capacity.</div>
       </div>
 
       <div class="prob-card rv">
         <span class="prob-tag">Paperwork</span>
-        <h3 class="prob-h3">You have no documentation for a system you paid for</h3>
-        <p class="prob-p">No compliance certificate, no shutdown procedure, no as-built diagram, no
-        commissioning data. That paperwork is a legal requirement of the installation &mdash; and it is
-        the first thing every insurer, buyer and manufacturer asks for.</p>
-        <div class="prob-fix"><strong>What we do:</strong> audit what exists, document what the installed system actually is, and give you a complete record.</div>
+        <h3 class="prob-h3">No documentation for what you paid for</h3>
+        <p class="prob-p">No compliance certificate, no shutdown procedure, no as-built diagram. That paperwork is a legal requirement &mdash; and the first thing every insurer asks for.</p>
+        <div class="prob-fix"><strong>We:</strong> audit what exists and document what the installed system actually is.</div>
       </div>
 
     </div>
@@ -570,6 +548,104 @@
       <span class="eyebrow">The inspection</span>
       <h2>What we actually look at.</h2>
     </div>
+    <div class="schem rv">
+      <div class="schem-ttl">Where we look, and in what order</div>
+      <div class="schem-sub">Every numbered point below is inspected, tested and documented.</div>
+      <div class="schem-scroll">
+        <svg viewBox="0 0 1080 300" role="img" aria-label="Schematic of a home solar and battery system: array, DC isolation, inverter, battery, switchboard, meter and grid, with six numbered inspection points.">
+          <!-- 01 ARRAY -->
+          <g>
+            <path class="sc-line" d="M40 122 L146 70" stroke-width="2.5"/>
+            <path class="sc-mod" d="M50 112 L76 99 L88 107 L62 120 Z"/>
+            <path class="sc-mod" d="M78 98 L104 85 L116 93 L90 106 Z"/>
+            <path class="sc-mod" d="M106 84 L132 71 L144 79 L118 92 Z"/>
+            <text class="sc-lbl" x="92" y="152">Array &amp; mounting</text>
+            <text class="sc-sub" x="92" y="169">Modules, rails, earthing</text>
+            <circle class="sc-node" cx="92" cy="40" r="11"/>
+            <text class="sc-node-t" x="92" y="44">01</text>
+          </g>
+
+          <path class="sc-line sc-line-dc" d="M156 96 L234 96"/>
+          <text class="sc-tag" x="182" y="86">DC</text>
+
+          <!-- 02 DC ISOLATION -->
+          <g>
+            <rect class="sc-box" x="234" y="70" width="92" height="52" rx="10"/>
+            <path class="sc-line" d="M256 106 L276 88" stroke-width="2"/>
+            <circle cx="254" cy="108" r="3.5" fill="#2C4A73"/>
+            <circle cx="304" cy="108" r="3.5" fill="#2C4A73"/>
+            <text class="sc-lbl" x="280" y="152">DC isolation</text>
+            <text class="sc-sub" x="280" y="169">Enclosure, IP, breaker sizing</text>
+            <circle class="sc-node" cx="280" cy="40" r="11"/>
+            <text class="sc-node-t" x="280" y="44">02</text>
+          </g>
+
+          <path class="sc-line sc-line-dc" d="M326 96 L424 96"/>
+
+          <!-- 03 INVERTER -->
+          <g>
+            <rect class="sc-box" x="424" y="70" width="92" height="52" rx="10"/>
+            <path class="sc-line" d="M444 106 L456 82 L468 106 L480 82 L492 106" stroke-width="2"/>
+            <text class="sc-lbl" x="470" y="152">Inverter</text>
+            <text class="sc-sub" x="470" y="169">AS/NZS 4777 settings</text>
+            <circle class="sc-node" cx="470" cy="40" r="11"/>
+            <text class="sc-node-t" x="470" y="44">03</text>
+          </g>
+
+          <!-- 04 BATTERY — branches off the DC bus at x=375, the clear lane between the
+               "DC isolation" and "Inverter" labels, so no line crosses text. -->
+          <path class="sc-line sc-line-dc" d="M375 96 L375 170"/>
+          <circle cx="375" cy="96" r="3.5" fill="#2C4A73"/>
+          <g>
+            <rect class="sc-box" x="329" y="170" width="92" height="52" rx="10"/>
+            <rect x="349" y="186" width="52" height="20" rx="3" fill="rgba(44,74,115,.16)" stroke="rgba(44,74,115,.4)" stroke-width="1.2"/>
+            <rect x="349" y="186" width="19" height="20" rx="3" fill="rgba(44,74,115,.45)"/>
+            <text class="sc-lbl" x="375" y="248">Battery</text>
+            <text class="sc-sub" x="375" y="265">AS/NZS 5139 siting</text>
+            <circle class="sc-node" cx="307" cy="196" r="11"/>
+            <text class="sc-node-t" x="307" y="200">04</text>
+          </g>
+
+          <path class="sc-line" d="M516 96 L614 96"/>
+          <text class="sc-tag" x="548" y="86">AC</text>
+
+          <!-- 05 SWITCHBOARD -->
+          <g>
+            <rect class="sc-box" x="614" y="70" width="92" height="52" rx="10"/>
+            <rect x="632" y="84" width="12" height="24" rx="2" fill="rgba(44,74,115,.2)"/>
+            <rect x="650" y="84" width="12" height="24" rx="2" fill="rgba(44,74,115,.2)"/>
+            <rect x="668" y="84" width="12" height="24" rx="2" fill="rgba(44,74,115,.34)"/>
+            <text class="sc-lbl" x="660" y="152">Switchboard</text>
+            <text class="sc-sub" x="660" y="169">Protection, RCDs, labelling</text>
+            <circle class="sc-node" cx="660" cy="40" r="11"/>
+            <text class="sc-node-t" x="660" y="44">05</text>
+          </g>
+
+          <path class="sc-line" d="M706 96 L804 96"/>
+
+          <!-- 06 METER & GRID -->
+          <g>
+            <rect class="sc-box" x="804" y="70" width="92" height="52" rx="10"/>
+            <circle cx="850" cy="96" r="15" fill="none" stroke="rgba(44,74,115,.4)" stroke-width="1.5"/>
+            <path class="sc-line" d="M850 96 L850 86" stroke-width="2"/>
+            <path class="sc-line" d="M850 96 L859 101" stroke-width="2"/>
+            <text class="sc-lbl" x="850" y="152">Meter &amp; grid</text>
+            <text class="sc-sub" x="850" y="169">Export limits, monitoring</text>
+            <circle class="sc-node" cx="850" cy="40" r="11"/>
+            <text class="sc-node-t" x="850" y="44">06</text>
+          </g>
+
+          <path class="sc-line" d="M896 96 L1030 96"/>
+          <path class="sc-line" d="M1030 74 L1030 118" stroke-width="2.5"/>
+        </svg>
+      </div>
+      <div class="schem-legend">
+        <span><i class="schem-key dc"></i>DC &mdash; array to inverter and battery</span>
+        <span><i class="schem-key"></i>AC &mdash; inverter to switchboard and grid</span>
+        <span>Documentation is checked against every point on this line.</span>
+      </div>
+    </div>
+
     <div class="scope-grid">
 
       <div class="scope-col rv">
@@ -646,9 +722,9 @@
 
     </div>
     <p class="scope-note rv">
-      Scope is set to your situation. A battery safety concern, a warranty dispute and a pre-purchase
-      assessment are three different jobs &mdash; we scope and price each one on what you actually need,
-      and tell you upfront if an inspection isn't the right answer.
+      Scope follows your situation &mdash; a battery safety concern, a warranty dispute and a
+      pre-purchase assessment are three different jobs. We'll tell you upfront if an inspection
+      isn't the right answer.
     </p>
   </section>
 
@@ -664,27 +740,26 @@
       <div class="step rv">
         <div class="step-n">Step 01</div>
         <h3 class="step-h3">Tell us what's happening</h3>
-        <p class="step-p">Email or call with the symptoms, your address and whatever paperwork you have.
-        An engineer &mdash; not a call centre &mdash; reads it and tells you whether an inspection will
-        help and what it will cost.</p>
+        <p class="step-p">Email or call with the symptoms and whatever paperwork you have. An engineer
+        &mdash; not a call centre &mdash; tells you whether an inspection helps, and what it costs.</p>
       </div>
       <div class="step rv">
         <div class="step-n">Step 02</div>
         <h3 class="step-h3">We schedule an inspector</h3>
-        <p class="step-p">We allocate a licensed, accredited inspector from our national field network
-        and book a time that suits you. Most residential inspections take two to three hours on site.</p>
+        <p class="step-p">A licensed, accredited inspector from our national network attends at a time
+        that suits you. Most residential inspections take two to three hours.</p>
       </div>
       <div class="step rv">
         <div class="step-n">Step 03</div>
         <h3 class="step-h3">You get the report</h3>
-        <p class="step-p">A written report with photographs, each finding referenced to the standard or
-        requirement it breaches, and a severity rating so you know what is urgent and what can wait.</p>
+        <p class="step-p">Photographs, each finding referenced to the standard it breaches, and a
+        severity rating so you know what is urgent and what can wait.</p>
       </div>
       <div class="step rv">
         <div class="step-n">Step 04</div>
         <h3 class="step-h3">We stand behind it</h3>
-        <p class="step-p">Use the report with your installer, insurer or a tribunal. If it escalates,
-        our engineers provide expert witness evidence &mdash; and we can re-inspect to verify the fix.</p>
+        <p class="step-p">Use it with your installer, insurer or a tribunal. If it escalates our
+        engineers give expert witness evidence, and we re-inspect to verify the fix.</p>
       </div>
     </div>
   </section>
@@ -768,13 +843,7 @@
           <button class="acc-btn" aria-label="Show answer" aria-expanded="false">+</button>
         </div>
         <div class="acc-body">
-          <div class="faq-a">
-            <p>No &mdash; deliberately. GSES does not install, repair or sell equipment. The moment we
-            could profit from the rectification, our findings stop being independent and the report
-            stops being worth anything to you.</p>
-            <p>We tell you exactly what needs doing so you can get competitive quotes, and we will
-            re-inspect afterwards to confirm the work was done properly.</p>
-          </div>
+          <div class="faq-a"><p>No &mdash; deliberately. The moment we could profit from the rectification, our findings stop being independent. We tell you exactly what needs doing so you can get competitive quotes, and we'll re-inspect to confirm it was done properly.</p></div>
         </div>
       </div>
 
@@ -784,26 +853,17 @@
           <button class="acc-btn" aria-label="Show answer" aria-expanded="false">+</button>
         </div>
         <div class="acc-body">
-          <div class="faq-a">
-            <p>It depends on scope and location &mdash; a battery safety check, a full compliance and
-            performance assessment and a pre-purchase report are different jobs. Tell us the situation
-            and we'll give you a fixed price before anyone is booked. No obligation, and no charge for
-            the conversation.</p>
-          </div>
+          <div class="faq-a"><p>It depends on scope and location. Tell us the situation and we'll give you a fixed price before anyone is booked. No charge for the conversation.</p></div>
         </div>
       </div>
 
       <div class="faq-item rv">
         <div class="faq-row">
-          <span class="faq-q">Will you inspect a system another company installed?</span>
+          <span class="faq-q">Will you inspect another company's work?</span>
           <button class="acc-btn" aria-label="Show answer" aria-expanded="false">+</button>
         </div>
         <div class="acc-body">
-          <div class="faq-a">
-            <p>That is essentially all we do. We have no commercial relationship with installers, and
-            we are engaged by regulators and governments specifically to assess other companies' work
-            without fear or favour. Your installer's identity changes nothing about the report.</p>
-          </div>
+          <div class="faq-a"><p>That is essentially all we do. Regulators and governments engage us specifically to assess other companies' work. Your installer's identity changes nothing about the report.</p></div>
         </div>
       </div>
 
@@ -813,11 +873,7 @@
           <button class="acc-btn" aria-label="Show answer" aria-expanded="false">+</button>
         </div>
         <div class="acc-body">
-          <div class="faq-a">
-            <p>Yes, or someone over 18 who can give access. The inspector needs safe access to the roof
-            area, the switchboard, the inverter and any battery. We'll also need to shut the system down
-            briefly to test it safely.</p>
-          </div>
+          <div class="faq-a"><p>Yes, or someone over 18 who can give access to the roof, switchboard, inverter and any battery. We'll shut the system down briefly to test it safely.</p></div>
         </div>
       </div>
 
@@ -827,27 +883,17 @@
           <button class="acc-btn" aria-label="Show answer" aria-expanded="false">+</button>
         </div>
         <div class="acc-body">
-          <div class="faq-a">
-            <p>Whatever you have: the original quote and invoice, the Certificate of Compliance or
-            electrical safety certificate, any system diagram, monitoring logins, warranty documents,
-            and any correspondence with the installer. If you have none of it, that itself is a finding
-            &mdash; bring us the problem anyway.</p>
-          </div>
+          <div class="faq-a"><p>The quote and invoice, the compliance certificate, any system diagram, monitoring logins and warranty documents. If you have none of it, that's a finding in itself.</p></div>
         </div>
       </div>
 
       <div class="faq-item rv">
         <div class="faq-row">
-          <span class="faq-q">Can the report be used in a dispute or insurance claim?</span>
+          <span class="faq-q">Can I use the report in a dispute?</span>
           <button class="acc-btn" aria-label="Show answer" aria-expanded="false">+</button>
         </div>
         <div class="acc-body">
-          <div class="faq-a">
-            <p>Yes. Findings are written against the specific Australian Standard, scheme requirement or
-            manufacturer instruction that has been breached, with photographic evidence. GSES engineers
-            also provide expert witness services on Australian Standards, government program
-            requirements and network requirements where a matter escalates.</p>
-          </div>
+          <div class="faq-a"><p>Yes. Findings cite the specific standard or requirement breached, with photographic evidence. Our engineers also provide expert witness services where a matter escalates.</p></div>
         </div>
       </div>
 
@@ -857,12 +903,7 @@
           <button class="acc-btn" aria-label="Show answer" aria-expanded="false">+</button>
         </div>
         <div class="acc-body">
-          <div class="faq-a">
-            <p>We operate a national inspector network across every state and territory, so lead time
-            depends on your location and how urgent the safety concern is. If you describe something
-            that sounds like an immediate hazard, tell us on the call &mdash; and shut the system down
-            at the isolator in the meantime.</p>
-          </div>
+          <div class="faq-a"><p>We cover every state and territory, so lead time depends on location and urgency. If it sounds like an immediate hazard, say so on the call &mdash; and shut the system down at the isolator meanwhile.</p></div>
         </div>
       </div>
 
@@ -876,8 +917,8 @@
     <div class="cta-glow"></div>
     <div class="container">
       <h2 class="rv">Get an answer you can trust.</h2>
-      <p class="cta-p rv">Tell us what's happening with your system. We'll tell you whether an
-      inspection helps, what it costs, and how soon we can be there &mdash; before you commit to anything.</p>
+      <p class="cta-p rv">Tell us what's happening. We'll tell you whether an inspection helps, what it
+      costs and how soon we can be there &mdash; before you commit to anything.</p>
       <div class="cta-buttons rv">
         <a href="mailto:consultancy@gses.com.au?subject=Homeowner%20inspection%20enquiry" class="btn-primary">Book an inspection &rarr;</a>
         <a href="tel:+61290245312" class="btn-outline">Call +61 2 9024 5312</a>

@@ -350,7 +350,7 @@
     }
     .team-grid {
       max-width: var(--cmax); margin: 0 auto;
-      display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px;
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
     }
     .team-card {
       background: rgba(255,255,255,.55);
@@ -395,7 +395,7 @@
     .team-bio { font-size: 13.5px; line-height: 1.75; color: var(--t2); padding-top: 16px; }
     .team-bio p + p { margin-top: 12px; }
     .team-bio strong { color: var(--t1); font-weight: 600; }
-    @media (max-width: 1000px) { .team-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 900px) { .team-grid { grid-template-columns: 1fr 1fr; } }
     @media (max-width: 560px) { .team-grid { grid-template-columns: 1fr; } }
 
     .why-gses { padding: var(--sec) var(--cpad); background: var(--bg); }
@@ -904,7 +904,7 @@
       <div class="team-card rv">
         <img src="assets/gregori-nojnitski.png" alt="Gregori Nojnitski" class="team-photo">
         <div class="team-name">Gregori Nojnitski</div>
-        <div class="team-role">Project Engineer</div>
+        <div class="team-role">Senior Project Engineer</div>
         <div class="team-meta">
           7 years' industry experience<br>
           BE Renewable Energy Engineering (Hons), UNSW<br>
@@ -974,6 +974,46 @@
         </div>
       </div>
 
+      <!-- Kanav Verma -->
+      <div class="team-card rv">
+        <div class="team-monogram" aria-hidden="true">KV</div>
+        <div class="team-name">Kanav Verma</div>
+        <div class="team-role">Renewable Project Engineer</div>
+        <div class="team-meta">
+          MEngSc (Renewable Energy), UNSW<br>
+          BEng Electronics &amp; Communication, BMS College of Engineering<br>
+          Google Advanced Data Analytics certificate
+        </div>
+        <p class="team-snap">Techno-economic analysis and energy market modelling, plus the data
+        and automation tooling behind our delivery.</p>
+        <div class="team-foot">
+          <span class="team-more">Full bio</span>
+          <button class="acc-btn" aria-label="Show bio for Kanav Verma" aria-expanded="false">+</button>
+        </div>
+        <div class="acc-body">
+          <div class="team-bio">
+            <p>Kanav works across consulting delivery and the analytical tooling that supports it,
+            covering <strong>solar PV, BESS and EV charging</strong> for federal, state and corporate
+            clients alongside National Electricity Market analysis &mdash; techno-economic assessment,
+            procurement, quality assurance and operational optimisation.</p>
+            <p>He builds the automation and data workstreams that modernise internal delivery: Python
+            scrapers, API integrations and workflow tooling replacing manual technical and compliance
+            tasks. He designed and built <strong>ARIA</strong>, a live NEM analytics platform on AEMO
+            dispatch and SCADA data covering revenue capture, curtailment and price forecasting across
+            500+ wind, solar, BESS and hydro assets.</p>
+            <p>Before GSES he was an energy market analyst at Energy Synapse, covering spot market
+            dynamics, BESS dispatch economics, curtailment risk and REZ access; a data specialist in
+            sustainability and fleet at <strong>FedEx Express Australasia</strong>, building carbon
+            abatement and cost-benefit models across a 3,000+ asset fleet for an EV rollout and Net
+            Zero 2040 roadmap; and a project engineer at <strong>Aurecon on TransGrid's</strong> NSW
+            transmission network, assessing DER integration and the operational impact of rising
+            rooftop solar penetration.</p>
+            <p>Modelling and analysis toolkit: PVsyst, HOMER Pro, Python, SQL, Power BI, and
+            LCOE, NPV, IRR and P50/P90 analysis.</p>
+          </div>
+        </div>
+      </div>
+
       <!-- Mariana Gomez -->
       <div class="team-card rv">
         <div class="team-monogram" aria-hidden="true">MG</div>
@@ -1007,6 +1047,18 @@
             coordination.</p>
           </div>
         </div>
+      </div>
+
+      <!-- Lameess -->
+      <div class="team-card rv">
+        <div class="team-monogram" aria-hidden="true">L</div>
+        <div class="team-name">Lameess</div>
+        <div class="team-role">Project Engineer</div>
+        <div class="team-meta">
+          Solar PV, battery storage and compliance delivery
+        </div>
+        <p class="team-snap">Project delivery across the consultancy team's inspection and
+        engineering engagements.</p>
       </div>
 
     </div>

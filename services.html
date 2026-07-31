@@ -105,6 +105,30 @@
     .svc-proof-p { font-size:14px; line-height:1.75; color:var(--t2); }
     .svc-proof-p strong { color:var(--t1); font-weight:600; }
 
+    /* Practice-mix figure — single-series magnitude, one hue, every bar labelled */
+    .mix { padding: 0 var(--cpad) var(--sec); background: var(--bg-mid); }
+    .mix-inner { max-width: var(--cmax); margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1.25fr; gap: 48px; align-items: center; }
+    @media (max-width: 860px){ .mix-inner { grid-template-columns: 1fr; gap: 32px; } }
+    .mix-h2 { font-size: clamp(24px,3vw,38px); font-weight: 800; letter-spacing: -1.2px;
+      line-height: 1.12; margin-bottom: 16px; }
+    .mix-p { font-size: 15.5px; line-height: 1.75; color: var(--t2); }
+    .mix-fig { background: rgba(255,255,255,.55); border: 1px solid rgba(255,255,255,.75);
+      border-radius: 22px; backdrop-filter: blur(14px); padding: 30px 28px; }
+    .mix-fig-ttl { font-size: 14.5px; font-weight: 700; letter-spacing: -.02em; }
+    .mix-fig-sub { font-size: 12.5px; line-height: 1.55; color: var(--t3); margin-top: 5px; }
+    .mix-rows { margin-top: 22px; }
+    .mix-row { display: grid; grid-template-columns: 1fr 46px; gap: 14px;
+      align-items: center; padding: 7px 0; }
+    .mix-lbl { font-size: 13px; font-weight: 600; color: var(--t1); margin-bottom: 7px; }
+    .mix-track { height: 12px; background: rgba(24,24,30,.05); border-radius: 4px; overflow: hidden; }
+    .mix-fill { height: 100%; background: var(--ac); border-radius: 0 4px 4px 0;
+      width: 0; transition: width .9s var(--e1); }
+    .mix-val { font-size: 13px; font-weight: 700; color: var(--t1);
+      font-variant-numeric: tabular-nums; text-align: right; }
+    .mix-note { font-size: 11.5px; line-height: 1.6; color: var(--t3);
+      margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--bdr); }
+
     /* Tech + sectors */
     .tech { padding: var(--sec) var(--cpad); background: var(--bg-mid); }
     .tech-inner { max-width: var(--cmax); margin:0 auto; }
@@ -224,12 +248,10 @@
           <h2 class="svc-h2">Compliance &amp; QA inspections</h2>
         </div>
         <div class="svc-def">
-          <p>Independent field verification against Australian Standards, scheme rules, WHS obligations,
-          manufacturer instructions and the client's own specification &mdash; whichever of those the
-          asset is answerable to.</p>
-          <p>This is our largest practice by volume and the reason regulators and state governments
-          appoint us: findings that hold up because the firm producing them has nothing to gain from
-          the outcome.</p>
+          <p>Independent field verification against Australian Standards, scheme rules, WHS obligations
+          and the client's own specification.</p>
+          <p>Our largest practice by volume, and the reason regulators appoint us: findings that hold up
+          because the firm producing them has nothing to gain from the outcome.</p>
         </div>
       </div>
 
@@ -318,11 +340,10 @@
           <h2 class="svc-h2">Owners Engineer &amp; procurement</h2>
         </div>
         <div class="svc-def">
-          <p>We sit on the owner's side of the table for the whole asset lifecycle &mdash; writing the
-          technical requirement, running the tender, reviewing the design and holding the contractor
-          to what was agreed.</p>
-          <p>Typically engaged by government departments, health districts, councils, universities
-          and property groups who need engineering judgement they cannot get from a bidder.</p>
+          <p>We sit on the owner's side for the whole lifecycle &mdash; writing the requirement,
+          running the tender, reviewing the design, holding the contractor to what was agreed.</p>
+          <p>Engaged by departments, health districts, councils and property groups who need
+          engineering judgement they cannot get from a bidder.</p>
         </div>
       </div>
 
@@ -412,10 +433,10 @@
           <h2 class="svc-h2">Feasibility, modelling &amp; business case</h2>
         </div>
         <div class="svc-def">
-          <p>Whether a project should proceed at all, at what size, and on what financial basis
-          &mdash; answered before capital is committed rather than after.</p>
-          <p>We model the site as it actually behaves: real load profiles, real tariffs, real export
-          constraints and real roof geometry, not a vendor's headline yield.</p>
+          <p>Whether a project should proceed, at what size, on what financial basis &mdash; answered
+          before capital is committed.</p>
+          <p>We model the site as it behaves: real load profiles, tariffs, export constraints and roof
+          geometry, not a vendor's headline yield.</p>
         </div>
       </div>
 
@@ -504,10 +525,10 @@
           <h2 class="svc-h2">Remediation, O&amp;M &amp; monitoring</h2>
         </div>
         <div class="svc-def">
-          <p>Assets that were built wrong, have drifted, or have quietly stopped earning. We find the
-          actual fault, scope the fix, and verify it was done &mdash; then keep watching.</p>
-          <p>A growing share of our delivered work, because the national fleet is now old enough that
-          underperformance, not installation, is the dominant problem.</p>
+          <p>Assets built wrong, drifted, or quietly stopped earning. We find the actual fault, scope
+          the fix and verify it was done &mdash; then keep watching.</p>
+          <p>A growing share of our work: the national fleet is now old enough that underperformance,
+          not installation, is the dominant problem.</p>
         </div>
       </div>
 
@@ -596,11 +617,10 @@
           <h2 class="svc-h2">Programs, tools &amp; advisory</h2>
         </div>
         <div class="svc-def">
-          <p>Where a client needs a capability rather than a report &mdash; a whole inspection program
-          stood up, a reporting system built, a team brought up to competence, or a standing technical
-          adviser on call.</p>
-          <p>This is the line that produced Australia's installer accreditation scheme, its national
-          inspection scheme, and certification frameworks in West Africa and the Pacific.</p>
+          <p>Where a client needs a capability rather than a report &mdash; a program stood up, a
+          reporting system built, a team brought to competence, an adviser on call.</p>
+          <p>The line that produced Australia's installer accreditation scheme, its national inspection
+          scheme, and certification frameworks in West Africa and the Pacific.</p>
         </div>
       </div>
 
@@ -680,13 +700,65 @@
     </div>
   </section>
 
+  <!-- PRACTICE MIX -->
+  <section class="mix" style="padding-top:var(--sec)">
+    <div class="mix-inner">
+      <div class="rv">
+        <span class="eyebrow">The mix</span>
+        <h2 class="mix-h2">Inspection is the core. It is not the whole practice.</h2>
+        <p class="mix-p">Where our consultancy engagements have actually landed. Inspection and
+        compliance leads, but two in five engagements are advisory &mdash; feasibility, Owners
+        Engineer or procurement work done before anything is built.</p>
+      </div>
+
+      <figure class="mix-fig rv" style="margin:0">
+        <figcaption>
+          <div class="mix-fig-ttl">Consultancy engagements by service line</div>
+          <div class="mix-fig-sub">259 classified projects. Bars scaled to the largest line.</div>
+        </figcaption>
+        <div class="mix-rows" id="mixRows">
+          <div class="mix-row">
+            <div><div class="mix-lbl">Inspection &amp; compliance</div>
+              <div class="mix-track"><div class="mix-fill" data-pct="100"></div></div></div>
+            <span class="mix-val">42%</span>
+          </div>
+          <div class="mix-row">
+            <div><div class="mix-lbl">Feasibility &amp; modelling</div>
+              <div class="mix-track"><div class="mix-fill" data-pct="49.5"></div></div></div>
+            <span class="mix-val">21%</span>
+          </div>
+          <div class="mix-row">
+            <div><div class="mix-lbl">Owners Engineer &amp; procurement</div>
+              <div class="mix-track"><div class="mix-fill" data-pct="34.9"></div></div></div>
+            <span class="mix-val">15%</span>
+          </div>
+          <div class="mix-row">
+            <div><div class="mix-lbl">Remediation, O&amp;M &amp; monitoring</div>
+              <div class="mix-track"><div class="mix-fill" data-pct="26.6"></div></div></div>
+            <span class="mix-val">11%</span>
+          </div>
+          <div class="mix-row">
+            <div><div class="mix-lbl">Programs, tools &amp; advisory</div>
+              <div class="mix-track"><div class="mix-fill" data-pct="26.6"></div></div></div>
+            <span class="mix-val">11%</span>
+          </div>
+        </div>
+        <div class="mix-note">
+          Counted per engagement, not per site. CER inspection volume is counted per inspection and
+          sits outside this figure &mdash; see the <a href="projects.html#cer" style="color:var(--ac)">CER
+          program</a>.
+        </div>
+      </figure>
+    </div>
+  </section>
+
   <!-- TECHNOLOGIES + SECTORS -->
   <section class="tech">
     <div class="tech-inner">
       <span class="eyebrow rv">Coverage</span>
       <h2 class="rv">What we cover, and who we do it for.</h2>
-      <p class="tech-lede rv">Every service line above applies across each of these technologies.
-      We are a specialist firm &mdash; energy is not one of our divisions, it is the entire business.</p>
+      <p class="tech-lede rv">Every service line applies across each technology. Energy is not one of
+      our divisions &mdash; it is the entire business.</p>
 
       <div class="tech-grid">
         <div class="tech-card rv">
@@ -799,9 +871,8 @@
     <div class="cta-glow"></div>
     <div class="container">
       <h2 class="rv">Tell us what you need verified.</h2>
-      <p class="cta-p rv">One site or a national portfolio, a single inspection or a program stood up
-      from scratch &mdash; describe the problem and we will tell you which of the five lines above
-      actually fits, including when the answer is none of them.</p>
+      <p class="cta-p rv">One site or a national portfolio. Describe the problem and we will tell you
+      which line fits &mdash; including when the answer is none of them.</p>
       <div class="cta-buttons rv">
         <a href="mailto:consultancy@gses.com.au?subject=Services%20enquiry" class="btn-primary">Talk to an engineer &rarr;</a>
         <a href="projects.html" class="btn-outline">See the work</a>
@@ -896,6 +967,28 @@ var obs = new IntersectionObserver(function(entries){
   });
 }, { threshold: 0.08 });
 document.querySelectorAll('.rv').forEach(function(el){ obs.observe(el); });
+
+/* Practice-mix bars grow once the figure is in view */
+var reduced = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+var mixRows = document.getElementById('mixRows');
+if (mixRows) {
+  if (reduced) {
+    mixRows.querySelectorAll('.mix-fill').forEach(function(f){
+      f.style.transition='none'; f.style.width = f.dataset.pct + '%';
+    });
+  } else {
+    var mixObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (!e.isIntersecting) return;
+        e.target.querySelectorAll('.mix-fill').forEach(function(f,i){
+          setTimeout(function(){ f.style.width = f.dataset.pct + '%'; }, i*80);
+        });
+        mixObs.unobserve(e.target);
+      });
+    }, { threshold: 0.3 });
+    mixObs.observe(mixRows);
+  }
+}
 
 })();
   </script>
